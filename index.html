@@ -1,42 +1,33 @@
-HTML
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <title>Kiểm tra phát âm Caddie</title>
-    <style>
-        body { font-family: sans-serif; text-align: center; padding: 50px; }
-        button { padding: 15px 30px; font-size: 18px; cursor: pointer; background: #007bff; color: white; border: none; border-radius: 5px; }
-        #result { margin-top: 20px; font-weight: bold; font-size: 20px; }
-    </style>
-</head>
-<body>
-    <h1>Luyện phát âm: "Good morning, Sir."</h1>
-    <button onclick="startListening()">Bấm để nói</button>
-    <p id="status">Đang đợi...</p>
-    <p id="result"></p>
-
-    <script>
-        function startListening() {
-            const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-            recognition.lang = 'en-US';
-            recognition.start();
-            document.getElementById('status').innerText = "Đang lắng nghe...";
-
-            recognition.onresult = function(event) {
-                const transcript = event.results[0][0].transcript.toLowerCase();
-                document.getElementById('status').innerText = "Bạn đã nói: " + transcript;
-                
-                // So sánh linh hoạt (chỉ cần chứa từ khóa)
-                if (transcript.includes("good morning")) {
-                    document.getElementById('result').innerText = "✅ Chính xác!";
-                    document.getElementById('result').style.color = "green";
-                } else {
-                    document.getElementById('result').innerText = "❌ Thử lại nhé!";
-                    document.getElementById('result').style.color = "red";
-                }
-            };
+<script>
+    function startListening() {
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        
+        if (!SpeechRecognition) {
+            document.getElementById('status').innerText = "Trình duyệt của bạn không hỗ trợ nhận diện giọng nói. Hãy thử dùng Chrome!";
+            return;
         }
-    </script>
-</body>
-</html>
+
+        const recognition = new SpeechRecognition();
+        recognition.lang = 'en-US';
+        recognition.start();
+        
+        document.getElementById('status').innerText = "Đang lắng nghe...";
+
+        recognition.onresult = function(event) {
+            const transcript = event.results[0][0].transcript.toLowerCase();
+            document.getElementById('status').innerText = "Bạn đã nói: " + transcript;
+            
+            if (transcript.includes("good morning")) {
+                document.getElementById('result').innerText = "✅ Chính xác!";
+                document.getElementById('result').style.color = "green";
+            } else {
+                document.getElementById('result').innerText = "❌ Chưa khớp. Hãy thử lại!";
+                document.getElementById('result').style.color = "red";
+            }
+        };
+
+        recognition.onerror = function(event) {
+            document.getElementById('status').innerText = "Lỗi: " + event.error;
+        };
+    }
+</script>
