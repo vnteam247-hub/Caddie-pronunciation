@@ -3,44 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luyện phát âm Caddie</title>
+    <title>Chuỗi Luyện Phát Âm Caddie</title>
     <style>
         body { font-family: sans-serif; text-align: center; padding: 20px; }
-        button { padding: 20px 40px; font-size: 20px; background: #007bff; color: white; border: none; border-radius: 10px; cursor: pointer; }
-        #status, #result { margin-top: 20px; font-size: 18px; }
+        button { padding: 15px 30px; font-size: 18px; background: #28a745; color: white; border: none; border-radius: 10px; cursor: pointer; }
+        #question { font-size: 24px; font-weight: bold; margin: 20px 0; color: #333; }
+        #status { font-size: 16px; color: #666; }
     </style>
 </head>
 <body>
-    <h1>Luyện phát âm</h1>
-    <p>Câu mẫu: <b>"Good morning, Sir."</b></p>
+    <h1>Luyện tập Chào hỏi</h1>
+    <p>Hãy đọc câu sau:</p>
+    <div id="question"></div>
     <button onclick="startListening()">Bấm để nói</button>
     <p id="status">Sẵn sàng...</p>
-    <p id="result"></p>
+    <p id="progress"></p>
 
     <script>
-        function startListening() {
-            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-            if (!SpeechRecognition) {
-                alert("Trình duyệt không hỗ trợ nhận diện giọng nói. Vui lòng dùng Chrome.");
-                return;
+        const sentences = [
+            "good morning sir",
+            "good afternoon madam",
+            "my name is caddie",
+            "i will be your caddie today",
+            "it is a pleasure to serve you"
+        ];
+        let currentIndex = 0;
+
+        function showQuestion() {
+            if (currentIndex < sentences.length) {
+                document.getElementById('question').innerText = sentences[currentIndex];
+                document.getElementById('progress').innerText = "Câu " + (currentIndex + 1) + "/" + sentences.length;
+            } else {
+                document.getElementById('question').innerText = "Chúc mừng! Bạn đã hoàn thành bài tập.";
+                document.querySelector('button').style.display = 'none';
             }
-            const recognition = new SpeechRecognition();
+        }
+
+        function startListening() {
+            const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
             recognition.lang = 'en-US';
             recognition.start();
             document.getElementById('status').innerText = "Đang lắng nghe...";
 
             recognition.onresult = function(event) {
                 const transcript = event.results[0][0].transcript.toLowerCase();
-                document.getElementById('status').innerText = "Bạn đã nói: " + transcript;
-                if (transcript.includes("good morning")) {
-                    document.getElementById('result').innerText = "✅ Chính xác!";
-                    document.getElementById('result').style.color = "green";
+                if (transcript.includes(sentences[currentIndex])) {
+                    document.getElementById('status').innerText = "✅ Chính xác! Chuyển câu tiếp...";
+                    currentIndex++;
+                    setTimeout(showQuestion, 1500);
                 } else {
-                    document.getElementById('result').innerText = "❌ Thử lại nhé!";
-                    document.getElementById('result').style.color = "red";
+                    document.getElementById('status').innerText = "❌ Chưa khớp: " + transcript + ". Thử lại nhé!";
                 }
             };
         }
+        showQuestion();
     </script>
 </body>
 </html>
