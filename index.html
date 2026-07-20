@@ -1,4 +1,4 @@
-BRG-GROUP
+BRG LEARNING
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -98,17 +98,38 @@ BRG-GROUP
             }
         }
 
+        // Hàm phát âm mẫu nâng cấp chọn giọng đọc tự nhiên
         function playSampleAudio() {
             if ('speechSynthesis' in window) {
                 window.speechSynthesis.cancel();
                 const utterance = new SpeechSynthesisUtterance(sentences[currentIndex]);
-                utterance.lang = 'en-US';
-                utterance.rate = 0.85;
+                
+                utterance.rate = 0.9;  // Tốc độ phát tự nhiên
+                utterance.pitch = 1.0; // Tần số giọng vừa phải
+
+                // Lọc lấy giọng đọc cao cấp của Google / Microsoft / Natural Voices
+                const voices = window.speechSynthesis.getVoices();
+                const premiumVoice = voices.find(voice => 
+                    (voice.lang === 'en-US' || voice.lang === 'en-GB') && 
+                    (voice.name.includes('Google') || voice.name.includes('Natural') || voice.name.includes('Premium') || voice.name.includes('Online'))
+                ) || voices.find(voice => voice.lang === 'en-US');
+
+                if (premiumVoice) {
+                    utterance.voice = premiumVoice;
+                }
+
                 window.speechSynthesis.speak(utterance);
                 document.getElementById('status').innerText = "🔊 Đang phát âm mẫu...";
             } else {
                 document.getElementById('error').innerText = "Trình duyệt không hỗ trợ phát âm thanh.";
             }
+        }
+
+        // Nạp danh sách giọng đọc khi trình duyệt sẵn sàng
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.onvoiceschanged = () => {
+                window.speechSynthesis.getVoices();
+            };
         }
 
         function markAsSkipped() {
