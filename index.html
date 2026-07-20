@@ -2,21 +2,21 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chuỗi Luyện Phát Âm Caddie</title>
+    <title>Luyện phát âm Caddie</title>
     <style>
         body { font-family: sans-serif; text-align: center; padding: 20px; }
-        button { padding: 15px 30px; font-size: 18px; background: #28a745; color: white; border: none; border-radius: 10px; cursor: pointer; }
-        #question { font-size: 24px; font-weight: bold; margin: 20px 0; color: #333; }
-        #status { font-size: 16px; color: #666; }
+        button { padding: 15px 30px; font-size: 18px; background: #007bff; color: white; border: none; border-radius: 10px; cursor: pointer; }
+        #question { font-size: 24px; font-weight: bold; margin: 20px 0; }
+        #status { font-size: 16px; color: #555; }
+        #error { color: red; font-weight: bold; margin-top: 10px; }
     </style>
 </head>
 <body>
     <h1>Luyện tập Chào hỏi</h1>
-    <p>Hãy đọc câu sau:</p>
     <div id="question"></div>
     <button onclick="startListening()">Bấm để nói</button>
     <p id="status">Sẵn sàng...</p>
+    <p id="error"></p>
     <p id="progress"></p>
 
     <script>
@@ -34,28 +34,50 @@
                 document.getElementById('question').innerText = sentences[currentIndex];
                 document.getElementById('progress').innerText = "Câu " + (currentIndex + 1) + "/" + sentences.length;
             } else {
-                document.getElementById('question').innerText = "Chúc mừng! Bạn đã hoàn thành bài tập.";
+                document.getElementById('question').innerText = "Chúc mừng! Bạn đã hoàn thành.";
                 document.querySelector('button').style.display = 'none';
             }
         }
 
         function startListening() {
-            const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            
+            if (!SpeechRecognition) {
+                document.getElementById('error').innerText = "Trình duyệt của bạn không hỗ trợ nhận diện giọng nói. Vui lòng dùng Chrome.";
+                return;
+            }
+
+            const recognition = new SpeechRecognition();
             recognition.lang = 'en-US';
-            recognition.start();
-            document.getElementById('status').innerText = "Đang lắng nghe...";
+
+            recognition.onstart = () => {
+                document.getElementById('status').innerText = "Đang lắng nghe...";
+                document.getElementById('error').innerText = "";
+            };
+
+            recognition.onerror = (event) => {
+                document.getElementById('status').innerText = "Chưa nhận diện được giọng nói!";
+                if (event.error === 'not-allowed') {
+                    document.getElementById('error').innerText = "Trình duyệt của bạn không nhận diện được Micro. Hãy kiểm tra lại cài đặt quyền truy cập.";
+                } else {
+                    document.getElementById('error').innerText = "Trình duyệt của bạn không nhận diện được giọng nói.";
+                }
+            };
 
             recognition.onresult = function(event) {
                 const transcript = event.results[0][0].transcript.toLowerCase();
                 if (transcript.includes(sentences[currentIndex])) {
-                    document.getElementById('status').innerText = "✅ Chính xác! Chuyển câu tiếp...";
+                    document.getElementById('status').innerText = "✅ Chính xác!";
                     currentIndex++;
                     setTimeout(showQuestion, 1500);
                 } else {
-                    document.getElementById('status').innerText = "❌ Chưa khớp: " + transcript + ". Thử lại nhé!";
+                    document.getElementById('status').innerText = "❌ Bạn nói: " + transcript + ". Thử lại nhé!";
                 }
             };
+
+            recognition.start();
         }
+
         showQuestion();
     </script>
 </body>
