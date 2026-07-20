@@ -2,7 +2,8 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Luyện phát âm Caddie</title>
+    <!-- Tên script: script0 -->
+    <title>TIẾNG ANH GIAO TIẾP CƠ BẢN CHO CADDIE - LUYỆN TẬP PHÁT ÂM</title>
     <style>
         body { font-family: sans-serif; text-align: center; padding: 20px; }
         .btn-group { margin-top: 20px; }
@@ -15,7 +16,9 @@
     </style>
 </head>
 <body>
-    <h1>Luyện tập Chào hỏi</h1>
+    <h1>TIẾNG ANH GIAO TIẾP CƠ BẢN CHO CADDIE - LUYỆN TẬP PHÁT ÂM</h1>
+    <h2>LESSON 1: Chào hỏi</h2>
+    
     <div id="question"></div>
     <div class="btn-group">
         <button id="speak-btn" onclick="startListening()">Bấm để nói</button>
@@ -26,12 +29,13 @@
     <p id="progress"></p>
 
     <script>
+        // Danh sách câu hỏi đã viết hoa chữ cái đầu
         const sentences = [
-            "good morning sir",
-            "good afternoon madam",
-            "my name is caddie",
-            "i will be your caddie today",
-            "it is a pleasure to serve you"
+            "Good morning sir",
+            "Good afternoon madam",
+            "My name is caddie",
+            "I will be your caddie today",
+            "It is a pleasure to serve you"
         ];
         let currentIndex = 0;
         let correctCount = 0;
@@ -39,7 +43,7 @@
 
         function showQuestion() {
             if (currentIndex < sentences.length) {
-                document.getElementById('question').innerText = sentences[currentIndex];
+                document.getElementById('question').innerText = sentences[currentIndex].charAt(0).toUpperCase() + sentences[currentIndex].slice(1);
                 document.getElementById('progress').innerText = "Câu " + (currentIndex + 1) + "/" + sentences.length;
                 document.getElementById('status').innerText = "Sẵn sàng...";
             } else {
@@ -70,7 +74,7 @@
             recognition.onstart = () => { document.getElementById('status').innerText = "Đang lắng nghe..."; };
             recognition.onresult = function(event) {
                 const transcript = event.results[0][0].transcript.toLowerCase();
-                if (transcript.includes(sentences[currentIndex])) {
+                if (transcript.includes(sentences[currentIndex].toLowerCase())) {
                     correctCount++;
                     document.getElementById('status').innerText = "✅ Chính xác!";
                     setTimeout(() => { currentIndex++; showQuestion(); }, 1500);
