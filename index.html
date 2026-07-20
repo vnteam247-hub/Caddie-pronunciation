@@ -1,33 +1,46 @@
-<script>
-    function startListening() {
-        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-        
-        if (!SpeechRecognition) {
-            document.getElementById('status').innerText = "Trình duyệt của bạn không hỗ trợ nhận diện giọng nói. Hãy thử dùng Chrome!";
-            return;
-        }
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luyện phát âm Caddie</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; padding: 20px; }
+        button { padding: 20px 40px; font-size: 20px; background: #007bff; color: white; border: none; border-radius: 10px; cursor: pointer; }
+        #status, #result { margin-top: 20px; font-size: 18px; }
+    </style>
+</head>
+<body>
+    <h1>Luyện phát âm</h1>
+    <p>Câu mẫu: <b>"Good morning, Sir."</b></p>
+    <button onclick="startListening()">Bấm để nói</button>
+    <p id="status">Sẵn sàng...</p>
+    <p id="result"></p>
 
-        const recognition = new SpeechRecognition();
-        recognition.lang = 'en-US';
-        recognition.start();
-        
-        document.getElementById('status').innerText = "Đang lắng nghe...";
-
-        recognition.onresult = function(event) {
-            const transcript = event.results[0][0].transcript.toLowerCase();
-            document.getElementById('status').innerText = "Bạn đã nói: " + transcript;
-            
-            if (transcript.includes("good morning")) {
-                document.getElementById('result').innerText = "✅ Chính xác!";
-                document.getElementById('result').style.color = "green";
-            } else {
-                document.getElementById('result').innerText = "❌ Chưa khớp. Hãy thử lại!";
-                document.getElementById('result').style.color = "red";
+    <script>
+        function startListening() {
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            if (!SpeechRecognition) {
+                alert("Trình duyệt không hỗ trợ nhận diện giọng nói. Vui lòng dùng Chrome.");
+                return;
             }
-        };
+            const recognition = new SpeechRecognition();
+            recognition.lang = 'en-US';
+            recognition.start();
+            document.getElementById('status').innerText = "Đang lắng nghe...";
 
-        recognition.onerror = function(event) {
-            document.getElementById('status').innerText = "Lỗi: " + event.error;
-        };
-    }
-</script>
+            recognition.onresult = function(event) {
+                const transcript = event.results[0][0].transcript.toLowerCase();
+                document.getElementById('status').innerText = "Bạn đã nói: " + transcript;
+                if (transcript.includes("good morning")) {
+                    document.getElementById('result').innerText = "✅ Chính xác!";
+                    document.getElementById('result').style.color = "green";
+                } else {
+                    document.getElementById('result').innerText = "❌ Thử lại nhé!";
+                    document.getElementById('result').style.color = "red";
+                }
+            };
+        }
+    </script>
+</body>
+</html>
