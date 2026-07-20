@@ -5,7 +5,10 @@
     <title>Luyện phát âm Caddie</title>
     <style>
         body { font-family: sans-serif; text-align: center; padding: 20px; }
-        button { padding: 15px 30px; font-size: 18px; background: #007bff; color: white; border: none; border-radius: 10px; cursor: pointer; }
+        .btn-group { margin-top: 20px; }
+        button { padding: 15px 30px; font-size: 18px; border: none; border-radius: 10px; cursor: pointer; margin: 5px; }
+        #speak-btn { background: #007bff; color: white; }
+        #skip-btn { background: #6c757d; color: white; }
         #question { font-size: 24px; font-weight: bold; margin: 20px 0; }
         #status { font-size: 16px; color: #555; }
         #error { color: red; font-weight: bold; margin-top: 10px; }
@@ -14,7 +17,10 @@
 <body>
     <h1>Luyện tập Chào hỏi</h1>
     <div id="question"></div>
-    <button onclick="startListening()">Bấm để nói</button>
+    <div class="btn-group">
+        <button id="speak-btn" onclick="startListening()">Bấm để nói</button>
+        <button id="skip-btn" onclick="markAsSkipped()">Bỏ qua</button>
+    </div>
     <p id="status">Sẵn sàng...</p>
     <p id="error"></p>
     <p id="progress"></p>
@@ -28,56 +34,52 @@
             "it is a pleasure to serve you"
         ];
         let currentIndex = 0;
+        let correctCount = 0;
+        let skippedCount = 0;
 
         function showQuestion() {
             if (currentIndex < sentences.length) {
                 document.getElementById('question').innerText = sentences[currentIndex];
                 document.getElementById('progress').innerText = "Câu " + (currentIndex + 1) + "/" + sentences.length;
+                document.getElementById('status').innerText = "Sẵn sàng...";
             } else {
-                document.getElementById('question').innerText = "Chúc mừng! Bạn đã hoàn thành.";
-                document.querySelector('button').style.display = 'none';
+                document.getElementById('question').innerHTML = 
+                    "Kết quả cuối cùng:<br>" + 
+                    "✅ Đạt: " + correctCount + "<br>" + 
+                    "⏭️ Bỏ qua: " + skippedCount;
+                document.getElementById('speak-btn').style.display = 'none';
+                document.getElementById('skip-btn').style.display = 'none';
+                document.getElementById('progress').innerText = "";
             }
+        }
+
+        function markAsSkipped() {
+            skippedCount++;
+            currentIndex++;
+            showQuestion();
         }
 
         function startListening() {
             const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-            
             if (!SpeechRecognition) {
                 document.getElementById('error').innerText = "Trình duyệt của bạn không hỗ trợ nhận diện giọng nói. Vui lòng dùng Chrome.";
                 return;
             }
-
             const recognition = new SpeechRecognition();
             recognition.lang = 'en-US';
-
-            recognition.onstart = () => {
-                document.getElementById('status').innerText = "Đang lắng nghe...";
-                document.getElementById('error').innerText = "";
-            };
-
-            recognition.onerror = (event) => {
-                document.getElementById('status').innerText = "Chưa nhận diện được giọng nói!";
-                if (event.error === 'not-allowed') {
-                    document.getElementById('error').innerText = "Trình duyệt của bạn không nhận diện được Micro. Hãy kiểm tra lại cài đặt quyền truy cập.";
-                } else {
-                    document.getElementById('error').innerText = "Trình duyệt của bạn không nhận diện được giọng nói.";
-                }
-            };
-
+            recognition.onstart = () => { document.getElementById('status').innerText = "Đang lắng nghe..."; };
             recognition.onresult = function(event) {
                 const transcript = event.results[0][0].transcript.toLowerCase();
                 if (transcript.includes(sentences[currentIndex])) {
+                    correctCount++;
                     document.getElementById('status').innerText = "✅ Chính xác!";
-                    currentIndex++;
-                    setTimeout(showQuestion, 1500);
+                    setTimeout(() => { currentIndex++; showQuestion(); }, 1500);
                 } else {
-                    document.getElementById('status').innerText = "❌ Bạn nói: " + transcript + ". Thử lại nhé!";
+                    document.getElementById('status').innerText = "❌ Bạn nói: " + transcript + ". Thử lại hoặc nhấn Bỏ qua.";
                 }
             };
-
             recognition.start();
         }
-
         showQuestion();
     </script>
 </body>
