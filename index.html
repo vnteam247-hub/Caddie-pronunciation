@@ -1,42 +1,81 @@
+BRG-GROUP
 <!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <!-- Tên script: script0 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TIẾNG ANH GIAO TIẾP CƠ BẢN CHO CADDIE - LUYỆN TẬP PHÁT ÂM</title>
     <style>
-        body { font-family: sans-serif; text-align: center; padding: 20px; }
-        .btn-group { margin-top: 20px; }
-        button { padding: 15px 30px; font-size: 18px; border: none; border-radius: 10px; cursor: pointer; margin: 5px; }
+        body { font-family: sans-serif; text-align: center; padding: 15px; background-color: #f8f9fa; margin: 0; }
+        .container { max-width: 600px; margin: 0 auto; background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        h1 { color: #1e7e34; font-size: 20px; margin-bottom: 5px; }
+        h2 { color: #555; font-size: 15px; margin-top: 0; margin-bottom: 20px; }
+        .btn-group { margin-top: 20px; display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
+        button { padding: 12px 18px; font-size: 16px; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; }
+        #listen-btn { background: #17a2b8; color: white; }
         #speak-btn { background: #007bff; color: white; }
         #skip-btn { background: #6c757d; color: white; }
-        #question { font-size: 24px; font-weight: bold; margin: 20px 0; }
-        #status { font-size: 16px; color: #555; }
-        #error { color: red; font-weight: bold; margin-top: 10px; }
+        #question { font-size: 22px; font-weight: bold; color: #212529; margin: 25px 0; min-height: 60px; display: flex; align-items: center; justify-content: center; line-height: 1.4; }
+        #status { font-size: 17px; font-weight: bold; color: #495057; margin-top: 15px; }
+        #error { color: #dc3545; font-weight: bold; margin-top: 10px; }
+        #progress { font-size: 15px; color: #6c757d; font-weight: bold; }
     </style>
 </head>
 <body>
-    <h1>TIẾNG ANH GIAO TIẾP CƠ BẢN CHO CADDIE - LUYỆN TẬP PHÁT ÂM</h1>
-    <h2>LESSON 1: Chào hỏi</h2>
-    
-    <div id="question"></div>
-    <div class="btn-group">
-        <button id="speak-btn" onclick="startListening()">Bấm để nói</button>
-        <button id="skip-btn" onclick="markAsSkipped()">Bỏ qua</button>
+    <div class="container">
+        <h1>TIẾNG ANH GIAO TIẾP CƠ BẢN CHO CADDIE</h1>
+        <h2>LUYỆN TẬP PHÁT ÂM (SCRIPT 0)</h2>
+        
+        <div id="progress"></div>
+        <div id="question"></div>
+        
+        <div class="btn-group">
+            <button id="listen-btn" onclick="playSampleAudio()">🔊 Nghe mẫu</button>
+            <button id="speak-btn" onclick="startListening()">🎤 Bấm để nói</button>
+            <button id="skip-btn" onclick="markAsSkipped()">⏭️ Bỏ qua</button>
+        </div>
+        
+        <p id="status">Sẵn sàng...</p>
+        <p id="error"></p>
     </div>
-    <p id="status">Sẵn sàng...</p>
-    <p id="error"></p>
-    <p id="progress"></p>
 
     <script>
-        // Danh sách câu hỏi đã viết hoa chữ cái đầu
         const sentences = [
+            // Bài học cơ bản
             "Good morning sir",
             "Good afternoon madam",
             "My name is caddie",
             "I will be your caddie today",
-            "It is a pleasure to serve you"
+            "It is a pleasure to serve you",
+
+            // Scene 1: Meet & Greet (Hole 1 - Tee Box)
+            "Good morning! Are you joining our flight today?",
+            "Yes, I am. Hi, I'm Alex. Nice to meet you all!",
+            "Nice to meet you! Wish us all a great round today!",
+            "Thanks! By the way, what’s your index or handicap?",
+            "I’m playing around 18. How about you?",
+            "I'm a 15. Let's have a good game!",
+
+            // Scene 2: On the Tee Box (Order of Play)
+            "Whose honor is it?",
+            "You go ahead. After you!",
+            "Thanks! Mind if I take a practice swing?",
+            "Go right ahead. Take your time.",
+
+            // Scene 3: In-Play Interactions (Fairway & Green)
+            "Great shot! Right down the middle!",
+            "Thank you! Lucky shot.",
+            "Would you like me to attend the flag?",
+            "No need. You can pull it out. Thanks!",
+            "FORE!",
+
+            // Scene 4: Post-Game & Networking (Hole 18 & Clubhouse)
+            "Great game today! Thanks for the wonderful round.",
+            "I really enjoyed playing with you. How did you shoot?",
+            "Not too bad, 85 today. Let’s grab a drink at the clubhouse!",
+            "Sounds great! Here is my business card."
         ];
+
         let currentIndex = 0;
         let correctCount = 0;
         let skippedCount = 0;
@@ -48,22 +87,39 @@
                 document.getElementById('status').innerText = "Sẵn sàng...";
             } else {
                 document.getElementById('question').innerHTML = 
-                    "Kết quả cuối cùng:<br>" + 
+                    "🎉 Hoàn thành bài tập!<br><br>" + 
                     "✅ Đạt: " + correctCount + "<br>" + 
                     "⏭️ Bỏ qua: " + skippedCount;
+                document.getElementById('listen-btn').style.display = 'none';
                 document.getElementById('speak-btn').style.display = 'none';
                 document.getElementById('skip-btn').style.display = 'none';
                 document.getElementById('progress').innerText = "";
+                document.getElementById('status').innerText = "";
+            }
+        }
+
+        function playSampleAudio() {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(sentences[currentIndex]);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.85;
+                window.speechSynthesis.speak(utterance);
+                document.getElementById('status').innerText = "🔊 Đang phát âm mẫu...";
+            } else {
+                document.getElementById('error').innerText = "Trình duyệt không hỗ trợ phát âm thanh.";
             }
         }
 
         function markAsSkipped() {
+            window.speechSynthesis.cancel();
             skippedCount++;
             currentIndex++;
             showQuestion();
         }
 
         function startListening() {
+            window.speechSynthesis.cancel();
             const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
             if (!SpeechRecognition) {
                 document.getElementById('error').innerText = "Trình duyệt của bạn không hỗ trợ nhận diện giọng nói. Vui lòng dùng Chrome.";
@@ -71,19 +127,23 @@
             }
             const recognition = new SpeechRecognition();
             recognition.lang = 'en-US';
-            recognition.onstart = () => { document.getElementById('status').innerText = "Đang lắng nghe..."; };
+            recognition.onstart = () => { document.getElementById('status').innerText = "🎙️ Đang lắng nghe..."; };
             recognition.onresult = function(event) {
                 const transcript = event.results[0][0].transcript.toLowerCase();
-                if (transcript.includes(sentences[currentIndex].toLowerCase())) {
+                const targetText = sentences[currentIndex].toLowerCase().replace(/[^a-z0-9 ]/g, "");
+                const spokenText = transcript.replace(/[^a-z0-9 ]/g, "");
+
+                if (spokenText.includes(targetText) || targetText.includes(spokenText)) {
                     correctCount++;
                     document.getElementById('status').innerText = "✅ Chính xác!";
-                    setTimeout(() => { currentIndex++; showQuestion(); }, 1500);
+                    setTimeout(() => { currentIndex++; showQuestion(); }, 1200);
                 } else {
-                    document.getElementById('status').innerText = "❌ Bạn nói: " + transcript + ". Thử lại hoặc nhấn Bỏ qua.";
+                    document.getElementById('status').innerText = "❌ Bạn nói: \"" + transcript + "\". Thử lại hoặc nhấn Bỏ qua.";
                 }
             };
             recognition.start();
         }
+
         showQuestion();
     </script>
 </body>
