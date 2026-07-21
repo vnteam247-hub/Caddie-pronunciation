@@ -167,6 +167,31 @@
         let timerInterval;
         let lastSessionMessage = "🎉 HOÀN THÀNH BÀI KIỂM TRA PHÁT ÂM!";
 
+        // Hàm hỗ trợ chọn giọng đọc tự nhiên, mượt mà nhất trên trình duyệt của người dùng
+        function getBestEnglishVoice(speechInstance) {
+            const voices = window.speechSynthesis.getVoices();
+            // Ưu tiên tìm giọng tiếng Anh chuẩn Mỹ (en-US) chất lượng cao (thường có từ khóa Google, Natural hoặc Enhanced)
+            let selectedVoice = voices.find(v => v.lang === 'en-US' && (v.name.includes('Google') || v.name.includes('Natural') || v.name.includes('En-US')));
+            if (!selectedVoice) {
+                // Nếu không có, lấy bất kỳ giọng tiếng Anh Mỹ nào
+                selectedVoice = voices.find(v => v.lang === 'en-US' || v.lang === 'en_US');
+            }
+            if (!selectedVoice && voices.length > 0) {
+                // Hoặc lấy giọng tiếng Anh bất kỳ làm phương án dự phòng
+                selectedVoice = voices.find(v => v.lang.startsWith('en'));
+            }
+            if (selectedVoice) {
+                speechInstance.voice = selectedVoice;
+            }
+        }
+
+        // Đảm bảo load danh sách voice trên một số trình duyệt (như Chrome)
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.onvoiceschanged = () => {
+                window.speechSynthesis.getVoices();
+            };
+        }
+
         function initQuiz() {
             let combined = originalItems.map((item, index) => ({ item, index }));
             for (let i = combined.length - 1; i > 0; i--) {
@@ -402,12 +427,18 @@
             `;
         }
 
+        // Tối ưu hóa hàm phát âm mẫu: Chuyên nghiệp, tròn và rõ ràng từng âm cuối
         function playSpecificAudio(text) {
             if ('speechSynthesis' in window) {
                 window.speechSynthesis.cancel();
                 const utterance = new SpeechSynthesisUtterance(text);
                 utterance.lang = 'en-US';
-                utterance.rate = 0.85;
+                // Đặt tốc độ 0.82 giúp người nghe (caddie) kịp nghe rõ trọng âm và phụ âm cuối rõ nét
+                utterance.rate = 0.82; 
+                utterance.pitch = 1.0;  // Chuẩn độ cao tự nhiên của giọng nói
+                
+                getBestEnglishVoice(utterance);
+
                 window.speechSynthesis.speak(utterance);
             }
         }
@@ -426,9 +457,15 @@
         function playSampleAudio() {
             if ('speechSynthesis' in window) {
                 window.speechSynthesis.cancel();
-                const utterance = new SpeechSynthesisUtterance(activeItems[currentIndex].text);
+                const currentText = activeItems[currentIndex].text;
+                const utterance = new SpeechSynthesisUtterance(currentText);
                 utterance.lang = 'en-US';
-                utterance.rate = 0.85;
+                // Tốc độ chuyên nghiệp, nhịp nhàng, dễ nghe và tự nhiên
+                utterance.rate = 0.82;
+                utterance.pitch = 1.0;
+
+                getBestEnglishVoice(utterance);
+
                 window.speechSynthesis.speak(utterance);
                 document.getElementById('status').innerText = "🔊 Đang phát âm mẫu...";
             } else {
