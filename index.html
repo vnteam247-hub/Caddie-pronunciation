@@ -57,6 +57,14 @@
         .review-text-group { display: flex; flex-direction: column; }
         .review-trans { font-size: 12px; font-style: italic; color: #6c757d; margin-top: 2px; }
         .btn-audio-small { background: #198754; color: white; padding: 5px 10px; font-size: 12px; border-radius: 5px; cursor: pointer; border: none; font-weight: bold; }
+        
+        /* Style định dạng từ phát âm sai cần chú ý */
+        .mispronounced-word {
+            color: #dc3545;
+            font-weight: bold;
+            font-style: italic;
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -162,6 +170,7 @@
         let activeItems = [];
         let itemIndices = [];
         let itemStatus = [];
+        let itemTranscripts = {}; // Lưu trữ văn bản thực tế học viên đã phát âm cho từng câu
         let currentIndex = 0;
         
         let initialSeconds = activeItems.length * 55 || (originalItems.length * 55);
@@ -199,6 +208,7 @@
             activeItems = combined.map(item => item.item);
             itemIndices = combined.map(item => item.index);
             itemStatus = new Array(originalItems.length).fill('pending');
+            itemTranscripts = {};
             currentIndex = 0;
             initialSeconds = activeItems.length * 55;
             totalSeconds = initialSeconds;
@@ -333,11 +343,30 @@
             return (mins > 0 ? mins + " phút " : "") + secs + " giây";
         }
 
+        // Hàm phân tích từng từ để làm nổi bật từ phát âm thiếu/lệch dạng chữ đỏ in đậm nghiêng
+        function formatHighlightedSentence(targetText, spokenText) {
+            if (!spokenText) return targetText;
+            
+            let targetWords = targetText.split(/\s+/);
+            let spokenWordsSet = new Set(spokenText.toLowerCase().replace(/[^a-z0-9 ]/g, "").split(/\s+/));
+            
+            let htmlResult = targetWords.map(word => {
+                let cleanWord = word.toLowerCase().replace(/[^a-z0-9]/g, "");
+                if (cleanWord === "" || spokenWordsSet.has(cleanWord)) {
+                    return word; // Từ đọc đúng hoặc ký tự đặc biệt giữ nguyên
+                } else {
+                    // Từ bị phát âm lệch/thiếu sẽ được bôi đỏ, đậm, nghiêng
+                    return `<span class="mispronounced-word">${word}</span>`;
+                }
+            }).join(" ");
+            
+            return htmlResult;
+        }
+
         function finishSession(message) {
             clearInterval(timerInterval);
             lastSessionMessage = message;
             
-            // Tính toán thời gian làm bài thực tế và thời gian còn lại
             let elapsedSeconds = initialSeconds - totalSeconds;
             if (elapsedSeconds < 0) elapsedSeconds = 0;
             let remainingSeconds = totalSeconds;
@@ -403,19 +432,27 @@
                 let st = itemStatus[index];
                 let icon = '';
                 let colorStyle = '';
+                let displaySentenceHtml = "";
                 
                 if (st === 'passed') {
                     icon = '✅ Đạt (Đúng)';
                     colorStyle = 'color: #155724;';
+                    displaySentenceHtml = `"${item.text}"`;
                 } else if (st === 'approx') {
                     icon = '🟡 Gần đúng (Chưa đạt)';
                     colorStyle = 'color: #0c5460;';
+                    // Tự động phân tích từ đọc sai dựa trên văn bản thực tế học viên đã nói
+                    let spoken = itemTranscripts[index] || "";
+                    displaySentenceHtml = `"${formatHighlightedSentence(item.text, spoken)}"`;
                 } else if (st === 'skipped') {
                     icon = '⏭️ Đã bỏ qua';
                     colorStyle = 'color: #721c24;';
+                    displayName = `"${item.text}"`;
+                    displaySentenceHtml = `"${item.text}"`;
                 } else {
                     icon = '⏳ Chưa hoàn thành';
                     colorStyle = 'color: #721c24;';
+                    displaySentenceHtml = `"${item.text}"`;
                 }
                 
                 let safeText = item.text.replace(/'/g, "\\'");
@@ -424,7 +461,7 @@
                 reviewHtml += `
                     <div class="review-item" style="${colorStyle}">
                         <div class="review-text-group">
-                            <div><b>Câu ${index + 1}:</b> ${labelPrefix}"${item.text}" - <b>${icon}</b></div>
+                            <div><b>Câu ${index + 1}:</b> ${labelPrefix}${displaySentenceHtml} - <b>${icon}</b></div>
                             <div class="review-trans">${item.meaning}</div>
                         </div>
                         <button class="btn-audio-small" onclick="playSpecificAudio('${safeText}')">🔊 Nghe</button>
@@ -534,6 +571,8 @@
                 const spokenText = transcript.replace(/[^a-z0-9 ]/g, "");
 
                 const realIdx = itemIndices[currentIndex];
+                itemTranscripts[realIdx] = transcript; // Lưu lại văn bản học viên vừa nói để phục vụ hiển thị chi tiết từ sai
+                
                 const similarity = getSimilarityScore(targetText, spokenText);
 
                 if (spokenText.includes(targetText) || targetText.includes(spokenText) || similarity >= 0.95) {
