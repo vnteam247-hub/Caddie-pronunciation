@@ -1,4 +1,3 @@
-BRG LEARNING
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -9,7 +8,13 @@ BRG LEARNING
         body { font-family: sans-serif; text-align: center; padding: 20px; background-color: #f8f9fa; margin: 0; }
         .container { max-width: 600px; margin: 0 auto; background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
         h1 { color: #1e7e34; font-size: 20px; margin-bottom: 5px; }
-        h2 { color: #555; font-size: 15px; margin-top: 0; margin-bottom: 20px; }
+        h2 { color: #555; font-size: 15px; margin-top: 0; margin-bottom: 15px; }
+        
+        /* Hiển thị đồng hồ đếm ngược và hiệu ứng nhấp nháy đỏ */
+        #timer-box { font-size: 16px; font-weight: bold; background: #e9ecef; padding: 8px 15px; border-radius: 20px; display: inline-block; margin-bottom: 15px; color: #333; transition: all 0.3s ease; }
+        .blink-red { background-color: #f8d7da !important; color: #721c24 !important; animation: blink 1s infinite; }
+        @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
+
         .btn-group { margin-top: 20px; display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
         button { padding: 12px 16px; font-size: 15px; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; }
         #prev-btn { background: #fd7e14; color: white; }
@@ -28,9 +33,13 @@ BRG LEARNING
 </head>
 <body>
     <div class="container">
+        <h1>BRG LEARNING</h1>
         <h1>TIẾNG ANH GIAO TIẾP CƠ BẢN CHO CADDIE</h1>
         <h2>LUYỆN TẬP PHÁT ÂM (LESSON: 0)</h2>
         
+        <!-- Đồng hồ đếm ngược -->
+        <div id="timer-box">⏳ Thời gian còn lại: <span id="time-display">--:--</span></div>
+        <br>
         <div id="progress"></div>
         <div id="question"></div>
         <div id="item-status"></div>
@@ -86,6 +95,30 @@ BRG LEARNING
         let sentenceStatus = new Array(sentences.length).fill('pending');
         let currentIndex = 0;
 
+        // Tính tổng thời gian: trung bình 55 giây mỗi câu
+        let totalSeconds = sentences.length * 55; 
+        let timerInterval;
+
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                if (totalSeconds > 0) {
+                    totalSeconds--;
+                    let minutes = Math.floor(totalSeconds / 60);
+                    let seconds = totalSeconds % 60;
+                    document.getElementById('time-display').innerText = 
+                        (minutes < 10 ? "0" : "") + minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+
+                    // Khi thời gian còn lại từ 3 phút (180 giây) trở xuống, kích hoạt nhấp nháy đỏ
+                    if (totalSeconds <= 180) {
+                        document.getElementById('timer-box').classList.add('blink-red');
+                    }
+                } else {
+                    clearInterval(timerInterval);
+                    alert("Đã hết thời gian luyện tập!");
+                }
+            }, 1000);
+        }
+
         function showQuestion() {
             if (currentIndex < sentences.length) {
                 document.getElementById('question').innerText = sentences[currentIndex].charAt(0).toUpperCase() + sentences[currentIndex].slice(1);
@@ -113,6 +146,7 @@ BRG LEARNING
                     document.getElementById('prev-btn').style.display = 'inline-block';
                 }
             } else {
+                clearInterval(timerInterval); // Dừng đồng hồ khi hoàn thành xong toàn bộ bài
                 let finalPassed = sentenceStatus.filter(st => st === 'passed').length;
                 let finalSkipped = sentenceStatus.filter(st => st === 'skipped' || st === 'pending').length;
 
@@ -121,6 +155,7 @@ BRG LEARNING
                     "✅ Đạt: " + finalPassed + "/" + sentences.length + "<br>" + 
                     "⏭️ Chưa đạt / Bỏ qua: " + finalSkipped;
                 
+                document.getElementById('timer-box').style.display = 'none';
                 document.getElementById('item-status').style.display = 'none';
                 document.getElementById('prev-btn').style.display = 'none';
                 document.getElementById('listen-btn').style.display = 'none';
@@ -159,7 +194,6 @@ BRG LEARNING
             showQuestion();
         }
 
-        // Cấu trúc startListening nguyên bản theo script cũ của bạn
         function startListening() {
             const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
             
@@ -168,7 +202,6 @@ BRG LEARNING
                 return;
             }
 
-            // Ngắt âm thanh loa nếu đang phát trước khi bật nhận diện giọng nói
             if ('speechSynthesis' in window) {
                 window.speechSynthesis.cancel();
             }
@@ -215,6 +248,8 @@ BRG LEARNING
             recognition.start();
         }
 
+        // Khởi động đồng hồ và hiển thị câu đầu tiên
+        startTimer();
         showQuestion();
     </script>
 </body>
