@@ -163,21 +163,19 @@
         let itemIndices = [];
         let itemStatus = [];
         let currentIndex = 0;
-        let totalSeconds = 0;
+        
+        let initialSeconds = activeItems.length * 55 || (originalItems.length * 55);
+        let totalSeconds = initialSeconds;
         let timerInterval;
         let lastSessionMessage = "🎉 HOÀN THÀNH BÀI KIỂM TRA PHÁT ÂM!";
 
-        // Hàm hỗ trợ chọn giọng đọc tự nhiên, mượt mà nhất trên trình duyệt của người dùng
         function getBestEnglishVoice(speechInstance) {
             const voices = window.speechSynthesis.getVoices();
-            // Ưu tiên tìm giọng tiếng Anh chuẩn Mỹ (en-US) chất lượng cao (thường có từ khóa Google, Natural hoặc Enhanced)
             let selectedVoice = voices.find(v => v.lang === 'en-US' && (v.name.includes('Google') || v.name.includes('Natural') || v.name.includes('En-US')));
             if (!selectedVoice) {
-                // Nếu không có, lấy bất kỳ giọng tiếng Anh Mỹ nào
                 selectedVoice = voices.find(v => v.lang === 'en-US' || v.lang === 'en_US');
             }
             if (!selectedVoice && voices.length > 0) {
-                // Hoặc lấy giọng tiếng Anh bất kỳ làm phương án dự phòng
                 selectedVoice = voices.find(v => v.lang.startsWith('en'));
             }
             if (selectedVoice) {
@@ -185,7 +183,6 @@
             }
         }
 
-        // Đảm bảo load danh sách voice trên một số trình duyệt (như Chrome)
         if ('speechSynthesis' in window) {
             window.speechSynthesis.onvoiceschanged = () => {
                 window.speechSynthesis.getVoices();
@@ -203,7 +200,8 @@
             itemIndices = combined.map(item => item.index);
             itemStatus = new Array(originalItems.length).fill('pending');
             currentIndex = 0;
-            totalSeconds = activeItems.length * 55;
+            initialSeconds = activeItems.length * 55;
+            totalSeconds = initialSeconds;
         }
 
         function startTimer() {
@@ -329,9 +327,24 @@
             return costs[s2.length];
         }
 
+        function formatTime(seconds) {
+            let mins = Math.floor(seconds / 60);
+            let secs = seconds % 60;
+            return (mins > 0 ? mins + " phút " : "") + secs + " giây";
+        }
+
         function finishSession(message) {
             clearInterval(timerInterval);
             lastSessionMessage = message;
+            
+            // Tính toán thời gian làm bài thực tế và thời gian còn lại
+            let elapsedSeconds = initialSeconds - totalSeconds;
+            if (elapsedSeconds < 0) elapsedSeconds = 0;
+            let remainingSeconds = totalSeconds;
+            if (remainingSeconds < 0) remainingSeconds = 0;
+
+            let timeSpentText = formatTime(elapsedSeconds);
+            let timeLeftText = formatTime(remainingSeconds);
             
             let finalPassed = itemStatus.filter(st => st === 'passed').length;
             let finalApprox = itemStatus.filter(st => st === 'approx').length;
@@ -362,6 +375,8 @@
                             <div style="color: #155724;">✅ Số câu ĐÚNG (Đạt): ${finalPassed} câu</div>
                             <div style="color: #0c5460;">🟡 Số câu GẦN ĐÚNG (Chưa đạt): ${finalApprox} câu</div>
                             <div style="color: #721c24;">❌ Số câu chưa đạt / bỏ qua: ${finalUnfinishedOrSkipped} câu</div>
+                            <div style="border-top: 1px solid #dee2e6; margin-top: 8px; padding-top: 6px; color: #004085;">⏱️ Thời gian làm bài thực tế: <b>${timeSpentText}</b></div>
+                            <div style="color: #6c757d;">⏳ Thời gian còn lại: <b>${timeLeftText}</b></div>
                         </div>
 
                         <div class="action-buttons">
@@ -427,15 +442,13 @@
             `;
         }
 
-        // Tối ưu hóa hàm phát âm mẫu: Chuyên nghiệp, tròn và rõ ràng từng âm cuối
         function playSpecificAudio(text) {
             if ('speechSynthesis' in window) {
                 window.speechSynthesis.cancel();
                 const utterance = new SpeechSynthesisUtterance(text);
                 utterance.lang = 'en-US';
-                // Đặt tốc độ 0.82 giúp người nghe (caddie) kịp nghe rõ trọng âm và phụ âm cuối rõ nét
                 utterance.rate = 0.82; 
-                utterance.pitch = 1.0;  // Chuẩn độ cao tự nhiên của giọng nói
+                utterance.pitch = 1.0;
                 
                 getBestEnglishVoice(utterance);
 
@@ -460,7 +473,6 @@
                 const currentText = activeItems[currentIndex].text;
                 const utterance = new SpeechSynthesisUtterance(currentText);
                 utterance.lang = 'en-US';
-                // Tốc độ chuyên nghiệp, nhịp nhàng, dễ nghe và tự nhiên
                 utterance.rate = 0.82;
                 utterance.pitch = 1.0;
 
