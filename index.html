@@ -5,66 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TIẾNG ANH GIAO TIẾP CƠ BẢN CHO CADDIE - LUYỆN TẬP PHÁT ÂM</title>
     <style>
-        body { font-family: sans-serif; text-align: center; padding: 20px; background-color: #f8f9fa; margin: 0; }
+        body { font-family: sans-serif; text-align: center; padding: 20px 10px; background-color: #f8f9fa; margin: 0; }
         
-        .external-brand { color: #a91d22; font-size: 24px; font-weight: bold; margin-bottom: 15px; letter-spacing: 0.5px; }
+        /* Brand Header BRG LEARNING */
+        .external-brand { color: #B21818; font-size: 20px; font-weight: bold; margin-bottom: 10px; letter-spacing: 1.5px; text-transform: uppercase; }
 
-        .container { max-width: 600px; margin: 0 auto; background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .container { max-width: 600px; margin: 0 auto; background: white; padding: 25px 15px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
         
-        h1 { color: #1e7e34; font-size: 19px; margin-bottom: 5px; font-weight: bold; }
-        .sub-type { color: #555; font-size: 14px; margin-top: 0; margin-bottom: 5px; font-weight: bold; text-transform: uppercase; }
-        #lesson-subtitle { color: #0056b3; font-size: 15px; margin-top: 0; margin-bottom: 20px; font-weight: bold; text-transform: uppercase; }
+        h1 { color: #1e7e34; font-size: 18px; margin-bottom: 5px; font-weight: bold; text-transform: uppercase; line-height: 1.3; }
+        .sub-type { color: #555; font-size: 12px; margin-top: 0; margin-bottom: 5px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px; }
+        #lesson-subtitle { color: #0d6efd; font-size: 13.5px; margin-top: 0; margin-bottom: 15px; font-weight: bold; text-transform: uppercase; }
         
-        .info-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px; }
-        #item-status { font-size: 14px; font-weight: bold; padding: 6px 14px; border-radius: 20px; display: inline-block; }
-        .status-passed { background-color: #d4edda; color: #155724; }
-        .status-approx { background-color: #d1ecf1; color: #0c5460; }
-        .status-skipped { background-color: #e2e3e5; color: #383d41; }
-        .status-pending { background-color: #fff3cd; color: #856404; }
+        .info-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 8px; }
+        #item-status { font-size: 12px; font-weight: bold; padding: 5px 12px; border-radius: 15px; display: inline-block; }
+        .status-passed { background-color: #d1e7dd; color: #0f5132; border: 1px solid #badbcc; }
+        .status-approx { background-color: #cff4fc; color: #055160; border: 1px solid #b6effb; }
+        .status-skipped { background-color: #e2e3e5; color: #383d41; border: 1px solid #d6d8db; }
+        .status-pending { background-color: #fff3cd; color: #664d03; border: 1px solid #ffecb5; }
 
-        #timer-box { font-size: 14px; font-weight: bold; background: #e7f1ff; padding: 6px 14px; border-radius: 20px; display: inline-block; color: #004085; transition: all 0.3s ease; }
-        .blink-red { background-color: #f8d7da !important; color: #721c24 !important; animation: blink 1s infinite; }
-        @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
+        #timer-box { font-size: 12px; font-weight: bold; background: #e7f1ff; padding: 5px 12px; border-radius: 15px; display: inline-block; color: #0d6efd; border: 1px solid #b6d4fe; transition: all 0.3s ease; }
+        .blink-red { background-color: #f8d7da !important; color: #721c24 !important; border-color: #f5c6cb !important; animation: blink 1s infinite; }
+        @keyframes blink { 50% { opacity: 0.5; } }
 
-        #progress { font-size: 16px; color: #333; font-weight: bold; background: #f1f3f5; padding: 8px 16px; border-radius: 8px; display: inline-block; margin-bottom: 10px; border: 1px solid #dee2e6; }
-        #progress span { color: #d9534f; font-size: 18px; }
+        #progress { font-size: 14px; color: #333; font-weight: bold; background: #f1f3f5; padding: 6px 14px; border-radius: 8px; display: inline-block; margin-bottom: 10px; border: 1px solid #dee2e6; }
+        #progress span { color: #d9534f; font-size: 16px; }
 
-        .btn-group { margin-top: 20px; display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
-        button { padding: 12px 16px; font-size: 15px; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; }
+        .btn-group { margin-top: 18px; display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
+        button { padding: 11px 14px; font-size: 14px; font-weight: bold; border: none; border-radius: 6px; cursor: pointer; }
         #prev-btn { background: #fd7e14; color: white; }
         #listen-btn { background: #17a2b8; color: white; }
-        #speak-btn { background: #007bff; color: white; }
+        #speak-btn { background: #0d6efd; color: white; }
         #skip-btn { background: #6c757d; color: white; }
         
-        #question { font-size: 22px; font-weight: bold; color: #212529; margin: 15px 0 10px 0; min-height: 50px; display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1.4; }
-        .vietnamese-translation { font-size: 14px; font-style: italic; color: #6c757d; margin-top: 5px; font-weight: normal; }
+        #question { font-size: 18px; font-weight: bold; color: #212529; margin: 15px 0 10px 0; min-height: 60px; display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1.4; background: #f8f9fa; padding: 12px; border-radius: 8px; border: 1px solid #e9ecef; }
+        .vietnamese-translation { font-size: 13.5px; font-style: italic; color: #555; margin-top: 6px; font-weight: normal; }
         
-        #status { font-size: 17px; font-weight: bold; color: #495057; margin-top: 10px; }
-        #error { color: #dc3545; font-weight: bold; margin-top: 10px; }
+        #status { font-size: 14px; font-weight: bold; color: #0d6efd; margin-top: 12px; }
+        #error { color: #dc3545; font-weight: bold; margin-top: 8px; font-size: 13.5px; }
         
-        /* Giao diện bảng tổng kết và xem lại */
+        /* Giao diện tổng kết */
         .result-card { text-align: center; }
-        .stats-box { background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 15px; margin: 15px 0; text-align: left; font-size: 15px; }
-        .stats-box div { margin: 6px 0; font-weight: bold; }
+        .stats-box { background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px; padding: 12px; margin: 15px 0; text-align: left; font-size: 13.5px; line-height: 1.6; }
         
-        .action-buttons { display: flex; gap: 10px; justify-content: center; margin-top: 20px; }
-        .btn-review { background: #17a2b8; color: white; flex: 1; padding: 12px; border-radius: 8px; font-weight: bold; border: none; cursor: pointer; }
-        .btn-retry { background: #007bff; color: white; flex: 1; padding: 12px; border-radius: 8px; font-weight: bold; border: none; cursor: pointer; }
+        .action-buttons { display: flex; gap: 10px; justify-content: center; margin-top: 15px; flex-wrap: wrap; }
+        .btn-review { background: #17a2b8; color: white; flex: 1; padding: 11px; border-radius: 6px; font-weight: bold; border: none; cursor: pointer; min-width: 130px; }
+        .btn-retry { background: #0d6efd; color: white; flex: 1; padding: 11px; border-radius: 6px; font-weight: bold; border: none; cursor: pointer; min-width: 130px; }
 
         /* Giao diện xem lại chi tiết */
         #review-container { text-align: left; margin-top: 10px; max-height: 350px; overflow-y: auto; padding-right: 5px; }
-        .review-item { background: #f1f3f5; padding: 10px 12px; border-radius: 6px; margin-bottom: 8px; font-size: 14px; display: flex; justify-content: space-between; align-items: center; }
+        .review-item { background: #f8f9fa; padding: 10px 12px; border-radius: 6px; margin-bottom: 8px; font-size: 13.5px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #e9ecef; }
         .review-text-group { display: flex; flex-direction: column; }
         .review-trans { font-size: 12px; font-style: italic; color: #6c757d; margin-top: 2px; }
         .btn-audio-small { background: #198754; color: white; padding: 5px 10px; font-size: 12px; border-radius: 5px; cursor: pointer; border: none; font-weight: bold; }
         
-        /* Style định dạng từ phát âm sai cần chú ý */
-        .mispronounced-word {
-            color: #dc3545;
-            font-weight: bold;
-            font-style: italic;
-            text-decoration: underline;
-        }
+        /* Highlight từ nói sai */
+        .mispronounced-word { color: #dc3545 !important; font-weight: bold !important; font-style: italic !important; text-decoration: underline; }
     </style>
 </head>
 <body>
@@ -72,12 +67,12 @@
 
     <div class="container" id="main-container">
         <h1>TIẾNG ANH GIAO TIẾP CƠ BẢN CHO CADDIE</h1>
-        <div class="sub-type">LUYỆN TẬP KỸ NĂNG PHÁT ÂM</div>
-        <div id="lesson-subtitle">LESSON 1: CHÀO HỎI CƠ BẢN</div>
+        <div class="sub-type">LUYỆN TẬP KỸ NĂNG PHÁT ÂM (SPEAKING PRACTICE)</div>
+        <div id="lesson-subtitle">ĐANG TẢI BÀI HỌC...</div>
         
         <div class="info-bar" id="top-info-bar">
             <div id="item-status" class="status-pending">⏳ Trạng thái: Chưa hoàn thành</div>
-            <div id="timer-box">⏳ Thời gian làm bài: <span id="time-display">--:--</span></div>
+            <div id="timer-box">⏳ Thời gian: <span id="time-display">--:--</span></div>
         </div>
 
         <div id="progress"></div>
@@ -95,123 +90,125 @@
         <p id="error"></p>
     </div>
 
+    <!-- KHỞI TẠO MẢNG DỮ LIỆU CHUNG TRƯỚC KHI NẠP TỆP -->
+    <script> window.masterQuizData = []; </script>
+
+    <!-- NẠP CÁC TỆP DỮ LIỆU BÀI HỌC TỪ THƯ MỤC DATA -->
+    <script src="data/lesson1.js"></script>
+    <script src="data/lesson2.js"></script>
+    <script src="data/lesson3.js"></script>
+    <script src="data/lesson4.js"></script>
+    <script src="data/lesson5.js"></script>
+    <script src="data/lesson6.js"></script>
+    <script src="data/exams.js"></script>
+
+    <!-- CORE ENGINE LUYỆN PHÁT ÂM -->
     <script>
-        const lessonsData = {
-            "1": {
-                title: "LESSON 1: Chào hỏi cơ bản",
-                items: [
-                    { type: "vocab", text: "Caddie", ipa: "/ˈkædi/", meaning: "Nhân viên phục vụ gôn" },
-                    { type: "sentence", text: "Good morning sir", meaning: "Chào buổi sáng thưa ông" },
-                    { type: "sentence", text: "Good afternoon madam", meaning: "Chào buổi chiều thưa bà" },
-                    { type: "sentence", text: "My name is caddie", meaning: "Tên tôi là nhân viên caddie" },
-                    { type: "sentence", text: "I will be your caddie today", meaning: "Tôi sẽ là caddie phục vụ quý khách hôm nay" },
-                    { type: "sentence", text: "It is a pleasure to serve you", meaning: "Thật là vinh hạnh khi được phục vụ quý khách" }
-                ]
-            },
-            "2": {
-                title: "LESSON 2: Gặp gỡ tại Tee Box",
-                items: [
-                    { type: "vocab", text: "Handicap", ipa: "/ˈhændikæp/", meaning: "Điểm chấp (trong gôn)" },
-                    { type: "sentence", text: "Good morning! Are you joining our flight today?", meaning: "Chào buổi sáng! Quý khách có tham gia nhóm chơi cùng chúng tôi hôm nay không?" },
-                    { type: "sentence", text: "Yes, I am. Hi, I'm Alex. Nice to meet you all!", meaning: "Có chứ. Xin chào, tôi là Alex. Rất vui được gặp tất cả mọi người!" },
-                    { type: "sentence", text: "Nice to meet you! Wish us all a great round today!", meaning: "Rất vui được gặp bạn! Chúc tất cả chúng ta có một vòng đấu thật tuyệt vời hôm nay!" },
-                    { type: "sentence", text: "Thanks! By the way, what’s your index or handicap?", meaning: "Cảm ơn nhé! Nhân tiện, điểm chấp hoặc index của bạn là bao nhiêu?" },
-                    { type: "sentence", text: "I’m playing around 18. How about you?", meaning: "Tôi đang chơi ở mức khoảng 18. Còn bạn thì sao?" },
-                    { type: "sentence", text: "I'm a 15. Let's have a good game!", meaning: "Tôi là 15. Chúc chúng ta có một ván đấu thật tốt!" }
-                ]
-            },
-            "3": {
-                title: "LESSON 3: Thứ tự phát bóng",
-                items: [
-                    { type: "vocab", text: "Honor", ipa: "/ˈɒnər/", meaning: "Quyền đánh trước (tại tee box)" },
-                    { type: "sentence", text: "Whose honor is it?", meaning: "Ai là người có quyền phát bóng trước thế ạ?" },
-                    { type: "sentence", text: "You go ahead. After you!", meaning: "Anh cứ đi trước đi. Xin mời anh!" },
-                    { type: "sentence", text: "Thanks! Mind if I take a practice swing?", meaning: "Cảm ơn! Tôi đánh một gậy thử nháp có phiền ai không?" },
-                    { type: "sentence", text: "Go right ahead. Take your time.", meaning: "Anh cứ tự nhiên. Cứ thong thả không phải vội." }
-                ]
-            },
-            "4": {
-                title: "LESSON 4: Tương tác trên Fairway & Green",
-                items: [
-                    { type: "vocab", text: "Fairway", ipa: "/ˈfɛərweɪ/", meaning: "Khu vực cỏ ngắn chính giữa sân" },
-                    { type: "sentence", text: "Great shot! Right down the middle!", meaning: "Cú đánh tuyệt vời! Bóng đi thẳng xuống ngay giữa fairway rồi!" },
-                    { type: "sentence", text: "Thank you! Lucky shot.", meaning: "Cảm ơn bạn! Cú đánh may mắn thôi." },
-                    { type: "sentence", text: "Would you like me to attend the flag?", meaning: "Quý khách có muốn tôi rút/cầm cờ giúp không ạ?" },
-                    { type: "sentence", text: "No need. You can pull it out. Thanks!", meaning: "Không cần đâu. Em cứ rút hẳn cờ ra nhé. Cảm ơn!" },
-                    { type: "sentence", text: "FORE!", meaning: "Cẩn thận bóng bay! (Tiếng hô cảnh báo)" }
-                ]
-            },
-            "5": {
-                title: "LESSON 5: Tổng kết vòng đấu",
-                items: [
-                    { type: "vocab", text: "Round", ipa: "/raʊnd/", meaning: "Vòng đấu gôn" },
-                    { type: "sentence", text: "Great game today! Thanks for the wonderful round.", meaning: "Ván đấu hôm nay tuyệt quá! Cảm ơn vì vòng đấu tuyệt vời nhé." },
-                    { type: "sentence", text: "I really enjoyed playing with you. How did you shoot?", meaning: "Tôi rất thích thú khi được chơi cùng bạn. Hôm nay tổng điểm của bạn là bao nhiêu?" },
-                    { type: "sentence", text: "Not too bad, 85 today.", meaning: "Cũng không tệ lắm, hôm nay tôi đánh 85 gậy." }
-                ]
-            },
-            "6": {
-                title: "LESSON 6: Giao lưu tại Clubhouse",
-                items: [
-                    { type: "vocab", text: "Clubhouse", ipa: "/ˈklʌbˌhaʊs/", meaning: "Nhà câu lạc bộ trung tâm" },
-                    { type: "sentence", text: "Let’s grab a drink at the clubhouse!", meaning: "Cùng ra nhà câu lạc bộ làm ly nước nhé!" },
-                    { type: "sentence", text: "Sounds great! Here is my business card.", meaning: "Nghe tuyệt đấy! Đây là danh thiếp của tôi." }
-                ]
+        // Dữ liệu dự phòng nếu các tệp data chưa kịp nạp
+        const fallbackSpeakingData = [
+            { text: "Good morning Sir, welcome to our golf club", meaning: "Chào buổi sáng anh, chào mừng anh đến với sân gôn" },
+            { text: "It is one hundred and fifty yards to the green", meaning: "Khoảng cách đến green là 150 yard" },
+            { text: "Please aim to the left, watch out for the bunker on the right", meaning: "Anh ngắm sang bên trái nhé, chú ý bẫy cát bên phải ạ" }
+        ];
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
             }
-        };
+        }
 
-        const urlParams = new URLSearchParams(window.location.search);
-        const lessonId = urlParams.get('lesson') || "1";
-        
-        const currentLesson = lessonsData[lessonId] || lessonsData["1"];
-        document.getElementById('lesson-subtitle').innerText = currentLesson.title;
+        // ================= THUẬT TOÁN ĐỌC URL & LỌC CÂU HỎI PHÁT ÂM ĐỘC BẢN =================
+        function getFilteredSpeakingItems() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const reqLesson = urlParams.get('lesson');   
+            const reqSection = urlParams.get('section'); 
+            const reqExam = urlParams.get('exam');       
 
-        let originalItems = [...currentLesson.items];
-        let activeItems = [];
-        let itemIndices = [];
-        let itemStatus = [];
+            let rawPool = (window.masterQuizData && window.masterQuizData.length > 0) ? [...window.masterQuizData] : [];
+            let filtered = [];
+            let targetCount = 20; 
+            let titleBanner = "LUYỆN PHÁT ÂM TỔNG HỢP";
+
+            if (reqExam === "examall") {
+                targetCount = 30;
+                titleBanner = "KIỂM TRA PHÁT ÂM CUỐI KHÓA - TỔNG QUAN";
+            } else if (reqExam === "exam1") {
+                rawPool = rawPool.filter(q => q.lesson === "L1");
+                targetCount = 30;
+                titleBanner = "KIỂM TRA PHÁT ÂM GIAI ĐOẠN 1";
+            } else if (reqSection || reqLesson) {
+                let lessonNum = "1"; 
+                if (reqLesson) lessonNum = reqLesson.replace('L', '');
+                else if (reqSection) lessonNum = reqSection.replace('section', '').split('.')[0];
+
+                titleBanner = `LUYỆN PHÁT ÂM - LESSON ${lessonNum}`;
+
+                if (reqSection) {
+                    let secFiltered = rawPool.filter(q => q.section === reqSection);
+                    if (secFiltered.length > 0) rawPool = secFiltered;
+                    targetCount = 20;
+                } else if (reqLesson) {
+                    let lesFiltered = rawPool.filter(q => q.lesson === reqLesson);
+                    if (lesFiltered.length > 0) rawPool = lesFiltered;
+                    targetCount = 30;
+                }
+            }
+
+            document.getElementById('lesson-subtitle').innerText = titleBanner;
+
+            // Chuyển đổi dữ liệu câu hỏi thành danh sách mẫu câu cần đọc
+            rawPool.forEach(item => {
+                let targetText = "";
+                let meaningText = "";
+
+                if (item.audioText) {
+                    targetText = item.audioText;
+                } else if (item.type === "mcq" && item.options && item.options[item.correct]) {
+                    targetText = item.options[item.correct].en;
+                    meaningText = item.options[item.correct].vi;
+                }
+
+                if (item.options && item.options[item.correct] && !meaningText) {
+                    meaningText = item.options[item.correct].vi;
+                } else if (item.translation) {
+                    meaningText = item.translation;
+                }
+
+                // Loại bỏ mã tựa đề tiếng Anh dạng "A. ", "B. "
+                targetText = targetText.replace(/^[A-D]\.\s*/, "").trim();
+
+                if (targetText && targetText.length > 2) {
+                    filtered.push({ text: targetText, meaning: meaningText || "Mẫu câu giao tiếp Caddie chuẩn" });
+                }
+            });
+
+            if (filtered.length === 0) filtered = [...fallbackSpeakingData];
+
+            shuffleArray(filtered);
+            return filtered.slice(0, Math.min(targetCount, filtered.length));
+        }
+
+        let originalItems = getFilteredSpeakingItems();
+        let activeItems = [...originalItems];
+        let itemStatus = new Array(originalItems.length).fill('pending');
         let itemTranscripts = {}; 
         let currentIndex = 0;
         
-        let initialSeconds = originalItems.length * 90; // Đặt thời gian tính trung bình 90s/câu
+        let initialSeconds = originalItems.length * 60; // 60 giây/câu
         let totalSeconds = initialSeconds;
         let timerInterval;
         let lastSessionMessage = "🎉 HOÀN THÀNH BÀI KIỂM TRA PHÁT ÂM!";
 
         function getBestEnglishVoice(speechInstance) {
             const voices = window.speechSynthesis.getVoices();
-            let selectedVoice = voices.find(v => v.lang === 'en-US' && (v.name.includes('Google') || v.name.includes('Natural') || v.name.includes('En-US')));
-            if (!selectedVoice) {
-                selectedVoice = voices.find(v => v.lang === 'en-US' || v.lang === 'en_US');
-            }
-            if (!selectedVoice && voices.length > 0) {
-                selectedVoice = voices.find(v => v.lang.startsWith('en'));
-            }
-            if (selectedVoice) {
-                speechInstance.voice = selectedVoice;
-            }
+            let selectedVoice = voices.find(v => (v.lang === 'en-US' || v.lang === 'en_US') && (v.name.includes('Google') || v.name.includes('Natural') || v.name.includes('Samantha') || v.name.includes('Karen')));
+            if (!selectedVoice) selectedVoice = voices.find(v => v.lang.startsWith('en'));
+            if (selectedVoice) speechInstance.voice = selectedVoice;
         }
 
         if ('speechSynthesis' in window) {
-            window.speechSynthesis.onvoiceschanged = () => {
-                window.speechSynthesis.getVoices();
-            };
-        }
-
-        function initQuiz() {
-            let combined = originalItems.map((item, index) => ({ item, index }));
-            for (let i = combined.length - 1; i > 0; i--) {
-                let j = Math.floor(Math.random() * (i + 1));
-                [combined[i], combined[j]] = [combined[j], combined[i]];
-            }
-
-            activeItems = combined.map(item => item.item);
-            itemIndices = combined.map(item => item.index);
-            itemStatus = new Array(originalItems.length).fill('pending');
-            itemTranscripts = {};
-            currentIndex = 0;
-            initialSeconds = activeItems.length * 90; // Cấu hình 90 giây cho mỗi câu trong bài
-            totalSeconds = initialSeconds;
+            window.speechSynthesis.onvoiceschanged = () => { window.speechSynthesis.getVoices(); };
         }
 
         function startTimer() {
@@ -226,7 +223,7 @@
                         timeDisplay.innerText = (minutes < 10 ? "0" : "") + minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
                     }
 
-                    if (totalSeconds <= 180) {
+                    if (totalSeconds <= 120) {
                         const timerBox = document.getElementById('timer-box');
                         if (timerBox) timerBox.classList.add('blink-red');
                     }
@@ -240,37 +237,26 @@
         function showQuestion() {
             if (currentIndex < activeItems.length) {
                 const currentItem = activeItems[currentIndex];
-                let displayHtml = "";
                 
-                if (currentItem.type === "vocab") {
-                    displayHtml = `
-                        <div style="font-size: 13px; color: #a91d22; font-weight: bold; margin-bottom: 2px; text-transform: uppercase;">CHÚ Ý TRỌNG ÂM & ÂM CUỐI</div>
-                        <div>${currentItem.text}</div>
-                        <div style="font-size: 15px; color: #0056b3; font-weight: normal; margin-top: 4px;">Phiên âm: ${currentItem.ipa}</div>
-                        <div class="vietnamese-translation">Nghĩa: ${currentItem.meaning}</div>
-                    `;
-                } else {
-                    displayHtml = `
-                        <div>${currentItem.text.charAt(0).toUpperCase() + currentItem.text.slice(1)}</div>
-                        <div class="vietnamese-translation">${currentItem.meaning}</div>
-                    `;
-                }
+                let displayHtml = `
+                    <div>${currentItem.text}</div>
+                    <div class="vietnamese-translation">${currentItem.meaning}</div>
+                `;
 
                 document.getElementById('question').innerHTML = displayHtml;
-                document.getElementById('progress').innerHTML = "Câu hỏi: <span>" + (currentIndex + 1) + "</span> / " + activeItems.length;
+                document.getElementById('progress').innerHTML = "Câu phát âm: <span>" + (currentIndex + 1) + "</span> / " + activeItems.length;
                 document.getElementById('status').innerText = "Sẵn sàng...";
                 document.getElementById('error').innerText = "";
 
                 const statusTag = document.getElementById('item-status');
-                const realIdx = itemIndices[currentIndex];
-                const currentSt = itemStatus[realIdx];
+                const currentSt = itemStatus[currentIndex];
                 
                 if (currentSt === 'passed') {
                     statusTag.className = "status-passed";
                     statusTag.innerText = "✅ Trạng thái: Đạt";
                 } else if (currentSt === 'approx') {
                     statusTag.className = "status-approx";
-                    statusTag.innerText = "🟡 Trạng thái: Gần đúng (Chưa đạt)";
+                    statusTag.innerText = "🟡 Trạng thái: Gần đúng";
                 } else if (currentSt === 'skipped') {
                     statusTag.className = "status-skipped";
                     statusTag.innerText = "⏭️ Trạng thái: Đã bỏ qua";
@@ -299,16 +285,10 @@
         }
 
         function getSimilarityScore(s1, s2) {
-            let longer = s1;
-            let shorter = s2;
-            if (s1.length < s2.length) {
-                longer = s2;
-                shorter = s1;
-            }
+            let longer = s1.length < s2.length ? s2 : s1;
+            let shorter = s1.length < s2.length ? s1 : s2;
             let longerLength = longer.length;
-            if (longerLength === 0) {
-                return 1.0;
-            }
+            if (longerLength === 0) return 1.0;
             return (longerLength - editDistance(longer, shorter)) / parseFloat(longerLength);
         }
 
@@ -319,8 +299,7 @@
             for (let i = 0; i <= s1.length; i++) {
                 let lastValue = i;
                 for (let j = 0; j <= s2.length; j++) {
-                    if (i == 0)
-                        costs[j] = j;
+                    if (i == 0) costs[j] = j;
                     else {
                         if (j > 0) {
                             let newValue = costs[j - 1];
@@ -331,8 +310,7 @@
                         }
                     }
                 }
-                if (s1.length > 0)
-                    costs[s2.length] = lastValue;
+                if (s1.length > 0) costs[s2.length] = lastValue;
             }
             return costs[s2.length];
         }
@@ -349,7 +327,7 @@
             let targetWords = targetText.split(/\s+/);
             let spokenWordsSet = new Set(spokenText.toLowerCase().replace(/[^a-z0-9 ]/g, "").split(/\s+/));
             
-            let htmlResult = targetWords.map(word => {
+            return targetWords.map(word => {
                 let cleanWord = word.toLowerCase().replace(/[^a-z0-9]/g, "");
                 if (cleanWord === "" || spokenWordsSet.has(cleanWord)) {
                     return word; 
@@ -357,65 +335,53 @@
                     return `<span class="mispronounced-word">${word}</span>`;
                 }
             }).join(" ");
-            
-            return htmlResult;
         }
 
         function finishSession(message) {
             clearInterval(timerInterval);
             lastSessionMessage = message;
             
-            let elapsedSeconds = initialSeconds - totalSeconds;
-            if (elapsedSeconds < 0) elapsedSeconds = 0;
-            let remainingSeconds = totalSeconds;
-            if (remainingSeconds < 0) remainingSeconds = 0;
+            let elapsedSeconds = Math.max(0, initialSeconds - totalSeconds);
+            let remainingSeconds = Math.max(0, totalSeconds);
 
             let timeSpentText = formatTime(elapsedSeconds);
             let timeLeftText = formatTime(remainingSeconds);
             
             let finalPassed = itemStatus.filter(st => st === 'passed').length;
             let finalApprox = itemStatus.filter(st => st === 'approx').length;
-            let finalUnfinishedOrSkipped = itemStatus.filter(st => st === 'skipped' || st === 'pending').length;
+            let finalSkipped = itemStatus.filter(st => st === 'skipped' || st === 'pending').length;
             let totalItems = originalItems.length;
             
             let accuracyRate = Math.round((finalPassed / totalItems) * 100);
-            let adviceText = accuracyRate >= 80 ? "Caddie đã nắm rất tốt kỹ năng phát âm." : "Caddie cần rèn luyện thêm kỹ năng phát âm.";
+            let adviceText = accuracyRate >= 70 ? "✅ Caddie đạt chuẩn kỹ năng phát âm!" : "⚠️ Caddie cần rèn luyện thêm kỹ năng phát âm.";
 
             const container = document.getElementById('main-container');
             container.innerHTML = `
                 <h1>TIẾNG ANH GIAO TIẾP CƠ BẢN CHO CADDIE</h1>
                 <div class="sub-type">LUYỆN TẬP KỸ NĂNG PHÁT ÂM</div>
-                <div id="lesson-subtitle">${currentLesson.title}</div>
+                <div id="lesson-subtitle">${document.getElementById('lesson-subtitle').innerText}</div>
 
-                <div class="info-bar" id="top-info-bar" style="display: none;"></div>
-                <div id="progress" style="display: none;"></div>
-                
-                <div id="question">
-                    <div class="result-card">
-                        <div style="font-size: 18px; font-weight: bold; color: #1e7e34; margin-bottom: 5px;">🎉 ${message}</div>
-                        <div style="font-size: 22px; font-weight: bold; color: #212529; margin: 10px 0;">${finalPassed} / ${totalItems}</div>
-                        <div style="font-size: 16px; font-weight: bold; color: #495057;">Tỷ lệ đạt chuẩn: ${accuracyRate}%</div>
-                        <div style="font-size: 14px; color: #856404; margin-top: 8px;">⚠️ ${adviceText}</div>
+                <div class="result-card">
+                    <b style="font-size:16px;">${message}</b>
+                    <div style="font-size: 32px; font-weight: bold; color: #1e7e34; margin: 10px 0;">${finalPassed} / ${totalItems}</div>
+                    <p><b>Tỷ lệ đạt chuẩn: ${accuracyRate}%</b></p>
+                    <p>${adviceText}</p>
 
-                        <div class="stats-box">
-                            <div style="border-bottom: 1px solid #dee2e6; padding-bottom: 6px; margin-bottom: 8px; color: #333;">📊 BẢNG THỐNG KÊ CHI TIẾT:</div>
-                            <div style="color: #155724;">✅ Số câu ĐÚNG (Đạt): ${finalPassed} câu</div>
-                            <div style="color: #0c5460;">🟡 Số câu GẦN ĐÚNG (Chưa đạt): ${finalApprox} câu</div>
-                            <div style="color: #721c24;">❌ Số câu chưa đạt / bỏ qua: ${finalUnfinishedOrSkipped} câu</div>
-                            <div style="border-top: 1px solid #dee2e6; margin-top: 8px; padding-top: 6px; color: #004085;">⏱️ Thời gian làm bài thực tế: <b>${timeSpentText}</b></div>
-                            <div style="color: #6c757d;">⏳ Thời gian còn lại: <b>${timeLeftText}</b></div>
-                        </div>
+                    <div class="stats-box">
+                        📊 <b>BẢNG THỐNG KÊ CHI TIẾT:</b><br>
+                        • ✅ Số câu ĐÚNG (Đạt): <b>${finalPassed}</b> câu<br>
+                        • 🟡 Số câu GẦN ĐÚNG (Chưa đạt): <b>${finalApprox}</b> câu<br>
+                        • ❌ Số câu CHƯA ĐẠT / BỎ QUA: <b>${finalSkipped}</b> câu<br>
+                        <hr style="border: 0; border-top: 1px dashed #ccc; margin: 8px 0;">
+                        • ⏱️ Thời gian làm thực tế: <b>${timeSpentText}</b><br>
+                        • ⏳ Thời gian còn lại: <b>${timeLeftText}</b>
+                    </div>
 
-                        <div class="action-buttons">
-                            <button class="btn-review" onclick="showReviewScreen()">🔍 Xem lại chi tiết</button>
-                            <button class="btn-retry" onclick="restartQuiz()">🔄 Làm lại bài test</button>
-                        </div>
+                    <div class="action-buttons">
+                        <button class="btn-review" onclick="showReviewScreen()">🔍 Xem lại chi tiết</button>
+                        <button class="btn-retry" onclick="restartQuiz()">🔄 Làm lại bài test</button>
                     </div>
                 </div>
-
-                <div class="btn-group" id="learning-buttons" style="display: none;"></div>
-                <p id="status" style="display: none;"></p>
-                <p id="error" style="display: none;"></p>
             `;
         }
 
@@ -424,7 +390,7 @@
         }
 
         function showReviewScreen() {
-            let reviewHtml = `<div style="font-weight: bold; font-size: 16px; margin-bottom: 10px; color: #1e7e34;">🔍 XEM LẠI CHI TIẾT VÀ NGHE LẠI:</div><div id="review-container">`;
+            let reviewHtml = `<div style="font-weight: bold; font-size: 15px; margin-bottom: 10px; color: #1e7e34;">🔍 XEM LẠI CHI TIẾT VÀ NGHE LẠI:</div><div id="review-container">`;
             
             originalItems.forEach((item, index) => {
                 let st = itemStatus[index];
@@ -433,44 +399,38 @@
                 let displaySentenceHtml = "";
                 
                 if (st === 'passed') {
-                    icon = '✅ Đạt (Đúng)';
+                    icon = '✅ Đạt';
                     colorStyle = 'color: #155724;';
                     displaySentenceHtml = `"${item.text}"`;
                 } else if (st === 'approx') {
-                    icon = '🟡 Gần đúng (Chưa đạt)';
+                    icon = '🟡 Gần đúng';
                     colorStyle = 'color: #0c5460;';
                     let spoken = itemTranscripts[index] || "";
                     displaySentenceHtml = `"${formatHighlightedSentence(item.text, spoken)}"`;
-                } else if (st === 'skipped') {
-                    icon = '⏭️ Đã bỏ qua';
-                    colorStyle = 'color: #721c24;';
-                    displaySentenceHtml = `"${item.text}"`;
                 } else {
-                    icon = '⏳ Chưa hoàn thành';
+                    icon = '❌ Bỏ qua / Chưa đạt';
                     colorStyle = 'color: #721c24;';
                     displaySentenceHtml = `"${item.text}"`;
                 }
                 
                 let safeText = item.text.replace(/'/g, "\\'");
-                let labelPrefix = item.type === "vocab" ? "[Từ vựng] " : "";
 
                 reviewHtml += `
                     <div class="review-item" style="${colorStyle}">
                         <div class="review-text-group">
-                            <div><b>Câu ${index + 1}:</b> ${labelPrefix}${displaySentenceHtml} - <b>${icon}</b></div>
+                            <div><b>Câu ${index + 1}:</b> ${displaySentenceHtml} - <b>${icon}</b></div>
                             <div class="review-trans">${item.meaning}</div>
                         </div>
                         <button class="btn-audio-small" onclick="playSpecificAudio('${safeText}')">🔊 Nghe</button>
                     </div>`;
             });
 
-            reviewHtml += `</div><button class="btn-retry" style="width: 100%; margin-top: 15px;" onclick="goBackToResults()">Quay lại</button>`;
+            reviewHtml += `</div><button class="btn-retry" style="width: 100%; margin-top: 15px;" onclick="goBackToResults()">Quay lại Màn hình Điểm</button>`;
             
             const container = document.getElementById('main-container');
             container.innerHTML = `
                 <h1>TIẾNG ANH GIAO TIẾP CƠ BẢN CHO CADDIE</h1>
                 <div class="sub-type">LUYỆN TẬP KỸ NĂNG PHÁT ÂM</div>
-                <div id="lesson-subtitle">${currentLesson.title}</div>
                 ${reviewHtml}
             `;
         }
@@ -482,9 +442,7 @@
                 utterance.lang = 'en-US';
                 utterance.rate = 0.82; 
                 utterance.pitch = 1.0;
-                
                 getBestEnglishVoice(utterance);
-
                 window.speechSynthesis.speak(utterance);
             }
         }
@@ -508,20 +466,17 @@
                 utterance.lang = 'en-US';
                 utterance.rate = 0.82;
                 utterance.pitch = 1.0;
-
                 getBestEnglishVoice(utterance);
-
                 window.speechSynthesis.speak(utterance);
-                document.getElementById('status').innerText = "🔊 Đang phát âm mẫu...";
+                document.getElementById('status').innerText = "🔊 Đang phát phát âm mẫu...";
             } else {
                 document.getElementById('error').innerText = "Trình duyệt không hỗ trợ phát âm thanh.";
             }
         }
 
         function markAsSkipped() {
-            const realIdx = itemIndices[currentIndex];
-            if (itemStatus[realIdx] !== 'passed' && itemStatus[realIdx] !== 'approx') {
-                itemStatus[realIdx] = 'skipped';
+            if (itemStatus[currentIndex] !== 'passed' && itemStatus[currentIndex] !== 'approx') {
+                itemStatus[currentIndex] = 'skipped';
             }
             
             if (currentIndex === activeItems.length - 1) {
@@ -536,7 +491,7 @@
             const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
             
             if (!SpeechRecognition) {
-                document.getElementById('error').innerText = "Trình duyệt của bạn không hỗ trợ nhận diện giọng nói. Vui lòng dùng Chrome.";
+                document.getElementById('error').innerText = "Trình duyệt không hỗ trợ nhận diện giọng nói. Vui lòng sử dụng Google Chrome.";
                 return;
             }
 
@@ -548,14 +503,14 @@
             recognition.lang = 'en-US';
 
             recognition.onstart = () => {
-                document.getElementById('status').innerText = "🎙️ Đang lắng nghe...";
+                document.getElementById('status').innerText = "🎙️ Đang lắng nghe... Hãy nói câu tiếng Anh trên màn hình.";
                 document.getElementById('error').innerText = "";
             };
 
             recognition.onerror = (event) => {
                 document.getElementById('status').innerText = "Chưa nhận diện được giọng nói!";
                 if (event.error === 'not-allowed') {
-                    document.getElementById('error').innerText = "Trình duyệt chưa được cấp quyền Micro. Vui lòng bật Micro trong cài đặt trang web.";
+                    document.getElementById('error').innerText = "Chưa cấp quyền Micro. Vui lòng cho phép Micro trên trình duyệt.";
                 } else {
                     document.getElementById('error').innerText = "Chưa nghe rõ, vui lòng bấm nói lại.";
                 }
@@ -566,14 +521,12 @@
                 const targetText = activeItems[currentIndex].text.toLowerCase().replace(/[^a-z0-9 ]/g, "");
                 const spokenText = transcript.replace(/[^a-z0-9 ]/g, "");
 
-                const realIdx = itemIndices[currentIndex];
-                itemTranscripts[realIdx] = transcript; 
-                
+                itemTranscripts[currentIndex] = transcript; 
                 const similarity = getSimilarityScore(targetText, spokenText);
 
-                if (spokenText.includes(targetText) || targetText.includes(spokenText) || similarity >= 0.95) {
-                    itemStatus[realIdx] = 'passed';
-                    document.getElementById('status').innerText = "✅ Chính xác!";
+                if (spokenText.includes(targetText) || targetText.includes(spokenText) || similarity >= 0.85) {
+                    itemStatus[currentIndex] = 'passed';
+                    document.getElementById('status').innerText = "✅ Chính xác! Phát âm rất tốt.";
                     const statusTag = document.getElementById('item-status');
                     statusTag.className = "status-passed";
                     statusTag.innerText = "✅ Trạng thái: Đạt";
@@ -587,22 +540,21 @@
                         }
                     }, 1500);
 
-                } else if (similarity >= 0.55) {
-                    itemStatus[realIdx] = 'approx';
-                    document.getElementById('status').innerText = "🟡 Gần đúng: \"" + transcript + "\". Vẫn tính là chưa đạt, bạn có thể nói lại hoặc bấm Câu tiếp.";
+                } else if (similarity >= 0.50) {
+                    itemStatus[currentIndex] = 'approx';
+                    document.getElementById('status').innerText = "🟡 Bạn nói: \"" + transcript + "\". Gần đúng, bạn có thể nói lại hoặc bấm Câu tiếp.";
                     const statusTag = document.getElementById('item-status');
                     statusTag.className = "status-approx";
-                    statusTag.innerText = "🟡 Trạng thái: Gần đúng (Chưa đạt)";
+                    statusTag.innerText = "🟡 Trạng thái: Gần đúng";
 
                 } else {
-                    document.getElementById('status').innerText = "❌ Bạn nói: \"" + transcript + "\". Thử lại hoặc bấm Bỏ qua/Câu tiếp.";
+                    document.getElementById('status').innerText = "❌ Bạn nói: \"" + transcript + "\". Hãy thử lại hoặc bấm Bỏ qua/Câu tiếp.";
                 }
             };
 
             recognition.start();
         }
 
-        initQuiz();
         startTimer();
         showQuestion();
     </script>
