@@ -100,36 +100,46 @@
     <!-- KHỞI TẠO MẢNG DỮ LIỆU CHUNG -->
     <script> window.masterQuizData = []; </script>
 
-    <!-- TRÌNH NẠP DỮ LIỆU ĐỘNG VÔ HẠN LESSON & EXAMS -->
+    <!-- TRÌNH NẠP DỮ LIỆU ĐỘNG VÔ HẠN LESSONS & EXAMS (UNLIMITED LESSONS) -->
     <script>
-        (function loadDataFiles() {
+        (function loadDataFilesDynamically() {
             const urlParams = new URLSearchParams(window.location.search);
             const reqLesson = urlParams.get('lesson');
             const reqSection = urlParams.get('section');
+            const reqExam = urlParams.get('exam');
+
             const filesToLoad = ['data/exams.js'];
-
             let targetLessonNum = null;
+
             if (reqLesson) {
-                targetLessonNum = reqLesson.replace(/[^\d]/g, '');
+                targetLessonNum = parseInt(reqLesson.replace(/[^\d]/g, ''));
             } else if (reqSection) {
-                targetLessonNum = reqSection.replace('section', '').split('.')[0];
+                let secClean = reqSection.replace('section', '').trim();
+                targetLessonNum = parseInt(secClean.split('.')[0]);
             }
 
-            const defaultLessonsCount = 6;
-            let maxLessonToLoad = defaultLessonsCount;
-
-            if (targetLessonNum && parseInt(targetLessonNum) > defaultLessonsCount) {
-                maxLessonToLoad = parseInt(targetLessonNum);
-            }
-
-            for (let i = 1; i <= maxLessonToLoad; i++) {
-                filesToLoad.push(`data/lesson${i}.js`);
+            if (targetLessonNum && !isNaN(targetLessonNum)) {
+                filesToLoad.push(`data/lesson${targetLessonNum}.js`);
+            } else if (reqExam) {
+                let examClean = reqExam.toLowerCase().trim();
+                let examNum = parseInt(examClean.replace(/[^\d]/g, ''));
+                let maxToLoad = !isNaN(examNum) ? Math.max(examNum, 10) : 20; 
+                for (let i = 1; i <= maxToLoad; i++) {
+                    filesToLoad.push(`data/lesson${i}.js`);
+                }
+            } else {
+                for (let i = 1; i <= 10; i++) {
+                    filesToLoad.push(`data/lesson${i}.js`);
+                }
             }
 
             filesToLoad.forEach(src => {
                 const script = document.createElement('script');
                 script.src = src;
                 script.async = false;
+                script.onerror = function() {
+                    console.log(`[BRG Learning] File ${src} chưa được tạo hoặc không tồn tại.`);
+                };
                 document.head.appendChild(script);
             });
         })();
@@ -175,7 +185,7 @@
                 .replace(/\b17\b/g, "seventeen")
                 .replace(/\b18\b/g, "eighteen");
 
-            // 2. Loại bỏ toàn bộ dấu câu (chấm, phẩy, gạch ngang, chấm cảm, v.v.)
+            // 2. Loại bỏ toàn bộ dấu câu
             text = text.replace(/[^a-z0-9\s]/g, "");
 
             // 3. Chuẩn hóa khoảng trắng
@@ -209,7 +219,7 @@
                 } else {
                     let examNum = cleanExam.replace(/[^\d]/g, '');
                     if (examNum) {
-                        rawPool = rawPool.filter(q => q.lesson === `L${examNum}` || q.exam === `exam${examNum}` || q.exam === examNum);
+                        rawPool = rawPool.filter(q => q.lesson === examNum || q.lesson === `L${examNum}` || q.exam === examNum || q.exam === `exam${examNum}`);
                     }
                     targetCount = 30;
                     titleBanner = `KIỂM TRA PHÁT ÂM GIAI ĐOẠN ${examNum}`;
@@ -236,13 +246,14 @@
                     targetCount = 20;
                 } else if (lessonNum) {
                     titleBanner = `LUYỆN PHÁT ÂM - LESSON ${lessonNum}`;
-                    let lesFiltered = rawPool.filter(q => q.lesson === `L${lessonNum}` || q.lesson === lessonNum);
+                    let lesFiltered = rawPool.filter(q => q.lesson === lessonNum || q.lesson === `L${lessonNum}`);
                     if (lesFiltered.length > 0) rawPool = lesFiltered;
                     targetCount = 30;
                 }
             }
 
-            document.getElementById('lesson-subtitle').innerText = titleBanner;
+            const subTitleElem = document.getElementById('lesson-subtitle');
+            if (subTitleElem) subTitleElem.innerText = titleBanner;
 
             rawPool.forEach(item => {
                 let targetText = "";
@@ -468,20 +479,20 @@
 
             if (calculatedScore >= 90) {
                 levelBadgeHtml = `<div class="level-badge level-excellent">🌟 MỐC NĂNG LỰC: XUẤT SẮC (${calculatedScore}/100)</div>`;
-                adviceText = "<b>Đánh giá:</b> Nghe hiểu toàn diện, nắm bắt tốt chi tiết và ý chính.";
+                adviceText = "<b>Đánh giá:</b> Phát âm chuẩn xác, khẩu hình và âm điệu tự nhiên.";
             } else if (calculatedScore >= 70) {
                 levelBadgeHtml = `<div class="level-badge level-passed">✅ MỐC NĂNG LỰC: ĐẠT (${calculatedScore}/100)</div>`;
-                adviceText = "<b>Đánh giá:</b> Nghe hiểu ý chính và phần lớn thông tin chi tiết; cần rà soát lại các lỗi bất cẩn hoặc từ vựng mới.";
+                adviceText = "<b>Đánh giá:</b> Phát âm rõ ràng, giao tiếp tốt; cần rà soát lại các từ chưa đạt chuẩn trọng âm hoặc nối âm.";
             } else {
                 levelBadgeHtml = `<div class="level-badge level-needs-improvement">⚠️ MỐC NĂNG LỰC: CẦN CẢI THIỆN (${calculatedScore}/100)</div>`;
-                adviceText = "<b>Đánh giá:</b> Gặp rào cản về từ vựng, tốc độ đọc lướt hoặc cấu trúc ngữ pháp; chưa nên chuyển dạng bài ngay mà cần nghe lại (dictation/shadowing).";
+                adviceText = "<b>Đánh giá:</b> Phát âm chưa rõ phụ âm cuối hoặc chưa chuẩn ngữ điệu; khuyến nghị nghe lại mẫu nhiều lần.";
             }
 
             const container = document.getElementById('main-container');
             container.innerHTML = `
                 <h1>TIẾNG ANH GIAO TIẾP CƠ BẢN CHO CADDIE</h1>
                 <div class="sub-type">LUYỆN TẬP KỸ NĂNG PHÁT ÂM</div>
-                <div id="lesson-subtitle">${document.getElementById('lesson-subtitle').innerText}</div>
+                <div id="lesson-subtitle">${document.getElementById('lesson-subtitle') ? document.getElementById('lesson-subtitle').innerText : ''}</div>
 
                 <div class="result-card">
                     <b style="font-size:15px;">${message}</b>
@@ -613,7 +624,7 @@
             }
         }
 
-        // ================= CẢI TIẾN LOGIC NHẬN DIỆN GIỌNG NÓI =================
+        // ================= LOGIC NHẬN DIỆN GIỌNG NÓI =================
         function startListening() {
             const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
             
@@ -646,16 +657,13 @@
             recognition.onresult = function(event) {
                 const rawTranscript = event.results[0][0].transcript;
                 
-                // Chuẩn hóa câu gốc và câu người dùng nói
                 const normTarget = normalizeText(activeItems[currentIndex].text);
                 const normSpoken = normalizeText(rawTranscript);
 
                 itemTranscripts[currentIndex] = rawTranscript; 
                 
-                // So sánh theo chuỗi đã chuẩn hóa
                 const similarity = getSimilarityScore(normTarget, normSpoken);
 
-                // Điểm đạt: bao gồm cả trường hợp chứa chuỗi hoặc độ tương đồng >= 0.80
                 if (normSpoken.includes(normTarget) || normTarget.includes(normSpoken) || similarity >= 0.80) {
                     itemStatus[currentIndex] = 'passed';
                     document.getElementById('status').innerText = "✅ Chính xác! Phát âm rất tốt.";
