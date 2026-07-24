@@ -1,5 +1,5 @@
 // =========================================================================
-// LESSON 4: COLORS, BASIC COMMUNICATION & SMALL TALK PRACTICE FOR CADDY
+// LESSON 4: COLORS, BASIC COMMUNICATION, DIRECTIONS & SMALL TALK FOR CADDY
 // File: lesson4.js
 // =========================================================================
 
@@ -9,7 +9,7 @@ if (typeof window.masterQuizData === 'undefined') {
 
 window.masterQuizData.push(
     // -------------------------------------------------------------------------
-    // SECTION 4.1: MÀU SẮC (COLORS IN GOLF - 35 CÂU)
+    // SECTION 4.1: MÀU SẮC (COLORS IN GOLF - 40 CÂU)
     // -------------------------------------------------------------------------
     {
         "lesson": "4",
@@ -226,12 +226,28 @@ window.masterQuizData.push(
         "title": "[4.1 Luyện phát âm] Luyện phát âm màu sắc trang phục khách gôn 'Professional outfit':",
         "audioText": "I like your outfit today, Sir. The colors look very professional!",
         "phonetic": "/aɪ laɪk jʊər ˈaʊt.fɪt təˈdeɪ, sɜːr. ðə ˈkʌl.ɚz lʊk ˈver.i prəˈfeʃ.ən.əl/",
-        "translation": "Tôi rất thích bộ đồ của ông hôm nay. Phối màu nhìn rất chuyên nghiệp!",
+        "translation": "Tôi rất thích bộ đồ của ông hôm nay. Phối màu nhìn rất chuyên nghiệp ạ!",
         "options": [
                 { "en": "A. I like your outfit today, Sir. The colors look very professional!", "vi": "Trang phục màu sắc chuyên nghiệp (/ˈaʊt.fɪt/)" },
                 { "en": "B. Your clothes are dirty today, Sir.", "vi": "Quần áo bẩn" },
                 { "en": "C. You should change your shoes, Sir.", "vi": "Đổi giày" },
                 { "en": "D. Don't wear hat on the course, Sir.", "vi": "Đừng đội mũ" }
+        ],
+        "correct": 0
+    },
+    {
+        "lesson": "4",
+        "section": "section4.1",
+        "type": "mcq",
+        "title": "[4.1 Luyện phát âm] Luyện âm từ chỉ vạch ranh giới bẫy phạt màu đỏ 'Red line':",
+        "audioText": "Please drop your ball behind the red line, Sir.",
+        "phonetic": "/pliːz drɑːp jʊər bɔːl bɪˈhaɪnd ðə red laɪn, sɜːr/",
+        "translation": "Xin vui lòng thả bóng ở phía sau vạch đỏ thưa ông.",
+        "options": [
+                { "en": "A. Please drop your ball behind the red line, Sir.", "vi": "Vạch đỏ (/red laɪn/)" },
+                { "en": "B. Drop your ball on the white path, Sir.", "vi": "Đường trắng" },
+                { "en": "C. Place your ball on the green fringe, Sir.", "vi": "Mép green" },
+                { "en": "D. Throw your ball over the yellow stake, Sir.", "vi": "Cọc vàng" }
         ],
         "correct": 0
     },
@@ -283,9 +299,21 @@ window.masterQuizData.push(
         "targetWord": "yellow",
         "hint": "💡 Gợi ý: Điền từ (6 ký tự)."
     },
+    {
+        "lesson": "4",
+        "section": "section4.1",
+        "type": "fill",
+        "title": "[4.1 Luyện phát âm - Điền từ] Nghe câu phát bóng tee đen và ĐIỀN TỪ CHUẨN:",
+        "audioText": "The black tee box is for professional players, Sir.",
+        "phonetic": "/ðə blæk tiː bɑːks ɪz fɔːr prəˈfeʃ.ən.əl ˈpleɪ.ɚz, sɜːr/",
+        "translation": "Hố phát bóng màu đen dành cho các tay golf chuyên nghiệp thưa ông.",
+        "displaySentence": "The _______ tee box is for professional players, Sir.",
+        "targetWord": "black",
+        "hint": "💡 Gợi ý: Điền từ (5 ký tự)."
+    },
 
     // -------------------------------------------------------------------------
-    // SECTION 4.2: GIAO TIẾP CƠ BẢN & SMALL TALK (BASIC COMMUNICATION - 40 CÂU)
+    // SECTION 4.2: GIAO TIẾP CƠ BẢN & SMALL TALK (BASIC COMMUNICATION - 45 CÂU)
     // -------------------------------------------------------------------------
     {
         "lesson": "4",
@@ -768,7 +796,9 @@ window.masterQuizData.push(
         "correct": 0
     },
     {
-        "lesson": "4", "section": "section4.3", "type": "mcq",
+        "lesson": "4",
+        "section": "section4.3",
+        "type": "mcq",
         "title": "[4.3 Đóng vai thực chiến 3] Gọi hỗ trợ từ Đội điều hành Marshal/Starter khi chấn thương:",
         "audioText": "If it still hurts, I will call the Marshal or Starter for support right away, Sir.",
         "phonetic": "/ɪf ɪt stɪl hɜːrts, aɪ wɪl kɔːl ðə ˈmɑːr.ʃəl ɔːr ˈstɑːr.t̬ɚ fɔːr səˈpɔːrt raɪt əˈweɪ, sɜːr/",
@@ -782,7 +812,9 @@ window.masterQuizData.push(
         "correct": 0
     },
     {
-        "lesson": "4", "section": "section4.3", "type": "mcq",
+        "lesson": "4",
+        "section": "section4.3",
+        "type": "mcq",
         "title": "[4.3 Đóng vai thực chiến 4] Chủ động gợi ý nghỉ chân tại nhà chòi Kiosk 'Kiosk House':",
         "audioText": "We are approaching the Kiosk House, Sir. Would you like to try a fresh coconut?",
         "phonetic": "/wiː ɑːr əˈproʊ.tʃɪŋ ðə ˈkiː.ɑːsk haʊs, sɜːr. wʊd juː laɪk tə traɪ ə freʃ ˈkoʊ.kə.nʌt/",
@@ -796,7 +828,9 @@ window.masterQuizData.push(
         "correct": 0
     },
     {
-        "lesson": "4", "section": "section4.3", "type": "mcq",
+        "lesson": "4",
+        "section": "section4.3",
+        "type": "mcq",
         "title": "[4.3 Đóng vai thực chiến 4] Giới thiệu thực đơn món ăn nhẹ tại trạm dừng nghỉ 'sandwiches and snacks':",
         "audioText": "Yes, Sir. We have delicious sandwiches and snacks. I can get the menu for you.",
         "phonetic": "/jes sɜːr. wiː hæv dɪˈlɪʃ.əs ˈsæn.wɪdʒ.ɪz ænd snæks. aɪ kæn ɡet ðə ˈmen.juː fɔːr juː/",
