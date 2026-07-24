@@ -91,7 +91,8 @@
 
             <div id="fill-container" class="fill-container" style="display:none;">
                 <div id="blank-sentence" class="blank-sentence"></div>
-                <input type="text" id="fill-input" class="fill-input" placeholder="Nhập từ còn thiếu..." oninput="saveFillAnswer(this.value)">
+                <!-- Bổ sung hàm xử lý sự kiện Enter 1 lần trực tiếp tại đây -->
+                <input type="text" id="fill-input" class="fill-input" placeholder="Nhập từ còn thiếu..." oninput="saveFillAnswer(this.value)" onkeydown="handleFillKeydown(event)">
                 <span id="char-hint" class="char-hint"></span>
                 <span id="correct-answer-display" class="correct-answer-text" style="display:none;"></span>
             </div>
@@ -110,7 +111,6 @@
 
     <!-- TRÌNH NẠP DỮ LIỆU ĐỘNG TỐI ƯU & HỖ TRỢ DÃY/RANGE -->
     <script>
-        // Hàm phân tích chuỗi dãy (vd: "1-3,5" => [1, 2, 3, 5])
         function parseRangeSequence(inputStr) {
             if (!inputStr) return [];
             let results = new Set();
@@ -143,7 +143,6 @@
             const filesToLoad = new Set(['data/exams.js']);
 
             if (reqSection) {
-                // Rút ra các số lesson từ chuỗi section (vd: "3.1,4.2" => [3, 4])
                 let secMatches = reqSection.match(/\d+/g);
                 if (secMatches) {
                     secMatches.forEach(numStr => {
@@ -231,7 +230,6 @@
             else if (reqSection || reqLesson) {
                 targetCount = 30; 
 
-                // 1. ƯU TIÊN HÀNG ĐẦU DÀNH CHO SECTION NẾU CÓ TRÊN URL
                 if (reqSection) {
                     let rawSecList = reqSection.split(',');
                     let cleanSecList = rawSecList.map(s => s.trim().toLowerCase().replace('section', ''));
@@ -248,7 +246,6 @@
 
                     titleBanner = `LUYỆN NGHE - SECTION (${reqSection.toUpperCase()}) (30 CÂU)`;
                 } 
-                // 2. NẾU KHÔNG CÓ SECTION MỚI LỌC THEO LESSON
                 else if (reqLesson) {
                     let lessonList = parseRangeSequence(reqLesson);
                     if (lessonList.length > 0) {
@@ -300,7 +297,6 @@
             listenCounts = new Array(quizData.length).fill(0);
             userAnswers = new Array(quizData.length).fill(null);
             
-            // Cấu hình thời gian trung bình: 45 giây / 1 câu
             initialSeconds = Math.round(quizData.length * 45); 
             totalSeconds = initialSeconds;
 
@@ -480,6 +476,8 @@
                     } else {
                         fillInput.disabled = false;
                         correctDisplay.style.display = "none";
+                        // Tự động focus vào ô nhập từ khi chuyển câu mới
+                        setTimeout(() => fillInput.focus(), 100);
                     }
                 }
 
@@ -584,6 +582,18 @@
             if (isReviewMode) return;
             userAnswers[currentIndex] = val.trim();
             updateItemStatusTag();
+        }
+
+        // ================= HÀM XỬ LÝ SỰ KIỆN ENTER 1 LẦN DỨT ĐIỂM =================
+        function handleFillKeydown(event) {
+            // Chặn nhận phím Enter khi đang dùng bộ gõ tiếng Việt (IME composing)
+            if (event.isComposing || event.keyCode === 229) return;
+
+            if (event.key === 'Enter') {
+                event.preventDefault(); // Chặn hành vi submit form / reload mặc định
+                saveFillAnswer(event.target.value); // Cập nhật lại câu trả lời mới nhất
+                goToNext(); // Chuyển câu lập tức chỉ sau 1 lần Enter
+            }
         }
 
         function goToNext() {
