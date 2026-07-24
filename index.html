@@ -6,10 +6,7 @@
     <title>TIẾNG ANH GIAO TIẾP CƠ BẢN CHO CADDIE - LUYỆN TẬP PHÁT ÂM</title>
     <style>
         body { font-family: sans-serif; text-align: center; padding: 20px 10px; background-color: #f8f9fa; margin: 0; }
-        
-        /* Brand Header BRG LEARNING */
         .external-brand { color: #B21818; font-size: 20px; font-weight: bold; margin-bottom: 10px; letter-spacing: 1.5px; text-transform: uppercase; }
-
         .container { max-width: 600px; margin: 0 auto; background: white; padding: 25px 15px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
         
         h1 { color: #1e7e34; font-size: 18px; margin-bottom: 5px; font-weight: bold; text-transform: uppercase; line-height: 1.3; }
@@ -65,8 +62,8 @@
         .review-trans { font-size: 12px; font-style: italic; color: #6c757d; margin-top: 2px; }
         .btn-audio-small { background: #198754; color: white; padding: 5px 10px; font-size: 12px; border-radius: 5px; cursor: pointer; border: none; font-weight: bold; }
         
-        /* Highlight từ nói sai */
         .mispronounced-word { color: #dc3545 !important; font-weight: bold !important; font-style: italic !important; text-decoration: underline; }
+        .hidden { display: none !important; }
     </style>
 </head>
 <body>
@@ -77,30 +74,38 @@
         <div class="sub-type">LUYỆN TẬP KỸ NĂNG PHÁT ÂM (SPEAKING PRACTICE)</div>
         <div id="lesson-subtitle">ĐANG TẢI BÀI HỌC...</div>
         
-        <div class="info-bar" id="top-info-bar">
-            <div id="item-status" class="status-pending">⏳ Trạng thái: Chưa hoàn thành</div>
-            <div id="timer-box">⏳ Thời gian: <span id="time-display">--:--</span></div>
+        <!-- VIEW 1: MÀN HÌNH LÀM BÀI -->
+        <div id="practice-view">
+            <div class="info-bar" id="top-info-bar">
+                <div id="item-status" class="status-pending">⏳ Trạng thái: Chưa hoàn thành</div>
+                <div id="timer-box">⏳ Thời gian: <span id="time-display">--:--</span></div>
+            </div>
+
+            <div id="progress"></div>
+            <div id="question"></div>
+            
+            <div class="btn-group" id="learning-buttons">
+                <button id="prev-btn" onclick="goToPrevious()">⏮️ Quay lại</button>
+                <button id="listen-btn" onclick="playSampleAudio()">🔊 Nghe mẫu</button>
+                <button id="speak-btn" onclick="startListening()">🎤 Bấm để nói</button>
+                <button id="skip-btn" onclick="markAsSkipped()">⏭️ Câu tiếp</button>
+            </div>
+            
+            <p id="status">Sẵn sàng...</p>
+            <p id="error"></p>
         </div>
 
-        <div id="progress"></div>
-        
-        <div id="question"></div>
-        
-        <div class="btn-group" id="learning-buttons">
-            <button id="prev-btn" onclick="goToPrevious()">⏮️ Quay lại</button>
-            <button id="listen-btn" onclick="playSampleAudio()">🔊 Nghe mẫu</button>
-            <button id="speak-btn" onclick="startListening()">🎤 Bấm để nói</button>
-            <button id="skip-btn" onclick="markAsSkipped()">⏭️ Câu tiếp</button>
-        </div>
-        
-        <p id="status">Sẵn sàng...</p>
-        <p id="error"></p>
+        <!-- VIEW 2: MÀN HÌNH TỔNG KẾT DỰ PHÒNG CHUẨN DOM -->
+        <div id="result-view" class="hidden"></div>
+
+        <!-- VIEW 3: MÀN HÌNH XEM LẠI -->
+        <div id="review-view" class="hidden"></div>
     </div>
 
     <!-- KHỞI TẠO MẢNG DỮ LIỆU CHUNG -->
     <script> window.masterQuizData = []; </script>
 
-    <!-- TRÌNH NẠP DỮ LIỆU ĐỘNG VÔ HẠN LESSONS & EXAMS (UNLIMITED LESSONS) -->
+    <!-- TRÌNH NẠP DỮ LIỆU ĐỘNG -->
     <script>
         (function loadDataFilesDynamically() {
             const urlParams = new URLSearchParams(window.location.search);
@@ -133,12 +138,16 @@
                 }
             }
 
+            let loadedCount = 0;
             filesToLoad.forEach(src => {
                 const script = document.createElement('script');
                 script.src = src;
                 script.async = false;
-                script.onerror = function() {
-                    console.log(`[BRG Learning] File ${src} chưa được tạo hoặc không tồn tại.`);
+                script.onload = script.onerror = () => {
+                    loadedCount++;
+                    if (loadedCount === filesToLoad.length) {
+                        initApp();
+                    }
                 };
                 document.head.appendChild(script);
             });
@@ -147,49 +156,30 @@
 
     <!-- CORE ENGINE LUYỆN PHÁT ÂM -->
     <script>
-        // Dữ liệu dự phòng
         const fallbackSpeakingData = [
             { text: "Good morning Sir, welcome to our golf club", meaning: "Chào buổi sáng anh, chào mừng anh đến với sân gôn" },
             { text: "It is one hundred and fifty yards to the green", meaning: "Khoảng cách đến green là 150 yard" },
             { text: "Please aim to the left, watch out for the bunker on the right", meaning: "Anh ngắm sang bên trái nhé, chú ý bẫy cát bên phải ạ" }
         ];
 
-        // ================= HÀM CHUẨN HÓA VĂN BẢN (FIX LỖI CẶP TỪ CHỮ / SỐ) =================
+        // Chuẩn hóa văn bản
         function normalizeText(str) {
             if (!str) return "";
+            const numberMap = {
+                '1st': 'first', '2nd': 'second', '3rd': 'third', '4th': 'fourth', '5th': 'fifth',
+                '6th': 'sixth', '7th': 'seventh', '8th': 'eighth', '9th': 'ninth', '10th': 'tenth',
+                '1': 'one', '2': 'two', '3': 'three', '4': 'four', '5': 'five',
+                '6': 'six', '7': 'seven', '8': 'eight', '9': 'nine', '10': 'ten',
+                '14': 'fourteen', '17': 'seventeen', '18': 'eighteen'
+            };
+
             let text = str.toLowerCase();
-            
-            // 1. Chuyển đổi số thứ tự & chữ số thông dụng trong Golf sang chữ tiếng Anh
-            text = text
-                .replace(/\b1st\b/g, "first")
-                .replace(/\b2nd\b/g, "second")
-                .replace(/\b3rd\b/g, "third")
-                .replace(/\b4th\b/g, "fourth")
-                .replace(/\b5th\b/g, "fifth")
-                .replace(/\b6th\b/g, "sixth")
-                .replace(/\b7th\b/g, "seventh")
-                .replace(/\b8th\b/g, "eighth")
-                .replace(/\b9th\b/g, "ninth")
-                .replace(/\b10th\b/g, "tenth")
-                .replace(/\b1\b/g, "one")
-                .replace(/\b2\b/g, "two")
-                .replace(/\b3\b/g, "three")
-                .replace(/\b4\b/g, "four")
-                .replace(/\b5\b/g, "five")
-                .replace(/\b6\b/g, "six")
-                .replace(/\b7\b/g, "seven")
-                .replace(/\b8\b/g, "eight")
-                .replace(/\b9\b/g, "nine")
-                .replace(/\b10\b/g, "ten")
-                .replace(/\b14\b/g, "fourteen")
-                .replace(/\b17\b/g, "seventeen")
-                .replace(/\b18\b/g, "eighteen");
+            Object.keys(numberMap).forEach(key => {
+                const regex = new RegExp(`\\b${key}\\b`, 'g');
+                text = text.replace(regex, numberMap[key]);
+            });
 
-            // 2. Loại bỏ toàn bộ dấu câu
-            text = text.replace(/[^a-z0-9\s]/g, "");
-
-            // 3. Chuẩn hóa khoảng trắng
-            return text.replace(/\s+/g, " ").trim();
+            return text.replace(/[^a-z0-9\s]/g, "").replace(/\s+/g, " ").trim();
         }
 
         function shuffleArray(array) {
@@ -199,7 +189,6 @@
             }
         }
 
-        // ================= THUẬT TOÁN ĐỌC URL & LỌC CÂU HỎI PHÁT ÂM =================
         function getFilteredSpeakingItems() {
             const urlParams = new URLSearchParams(window.location.search);
             const reqLesson = urlParams.get('lesson');   
@@ -224,8 +213,7 @@
                     targetCount = 30;
                     titleBanner = `KIỂM TRA PHÁT ÂM GIAI ĐOẠN ${examNum}`;
                 }
-            } 
-            else if (reqSection || reqLesson) {
+            } else if (reqSection || reqLesson) {
                 let lessonNum = "";
                 let secQuery = reqSection || "";
 
@@ -256,21 +244,13 @@
             if (subTitleElem) subTitleElem.innerText = titleBanner;
 
             rawPool.forEach(item => {
-                let targetText = "";
-                let meaningText = "";
+                let targetText = item.audioText || "";
+                let meaningText = item.translation || "";
                 let ipaText = item.phonetic || item.ipa || "";
 
-                if (item.audioText) {
-                    targetText = item.audioText;
-                } else if (item.type === "mcq" && item.options && item.options[item.correct]) {
+                if (!targetText && item.type === "mcq" && item.options && item.options[item.correct]) {
                     targetText = item.options[item.correct].en || item.options[item.correct].text || "";
                     meaningText = item.options[item.correct].vi || item.options[item.correct].meaning || "";
-                }
-
-                if (item.options && item.options[item.correct] && !meaningText) {
-                    meaningText = item.options[item.correct].vi || "";
-                } else if (item.translation) {
-                    meaningText = item.translation;
                 }
 
                 targetText = targetText.replace(/^[A-D]\.\s*/, "").trim();
@@ -332,7 +312,7 @@
                     let seconds = totalSeconds % 60;
                     const timeDisplay = document.getElementById('time-display');
                     if (timeDisplay) {
-                        timeDisplay.innerText = (minutes < 10 ? "0" : "") + minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+                        timeDisplay.innerText = `${minutes < 10 ? "0" : ""}${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
                     }
 
                     if (totalSeconds <= 120) {
@@ -347,43 +327,38 @@
         }
 
         function showQuestion() {
+            document.getElementById('practice-view').classList.remove('hidden');
+            document.getElementById('result-view').classList.add('hidden');
+            document.getElementById('review-view').classList.add('hidden');
+
             if (currentIndex < activeItems.length) {
                 const currentItem = activeItems[currentIndex];
                 let ipaHtml = currentItem.ipa ? `<div class="ipa-phonetic">/${currentItem.ipa.replace(/^\/|\/$/g, '')}/</div>` : "";
                 
-                let displayHtml = `
+                document.getElementById('question').innerHTML = `
                     <div>${currentItem.text}</div>
                     ${ipaHtml}
                     <div class="vietnamese-translation">${currentItem.meaning}</div>
                 `;
 
-                document.getElementById('question').innerHTML = displayHtml;
-                document.getElementById('progress').innerHTML = "Câu phát âm: <span>" + (currentIndex + 1) + "</span> / " + activeItems.length;
+                document.getElementById('progress').innerHTML = `Câu phát âm: <span>${currentIndex + 1}</span> / ${activeItems.length}`;
                 document.getElementById('status').innerText = "Sẵn sàng...";
                 document.getElementById('error').innerText = "";
 
                 const statusTag = document.getElementById('item-status');
                 const currentSt = itemStatus[currentIndex];
                 
-                if (currentSt === 'passed') {
-                    statusTag.className = "status-passed";
-                    statusTag.innerText = "✅ Trạng thái: Đạt";
-                } else if (currentSt === 'approx') {
-                    statusTag.className = "status-approx";
-                    statusTag.innerText = "🟡 Trạng thái: Gần đúng";
-                } else if (currentSt === 'skipped') {
-                    statusTag.className = "status-skipped";
-                    statusTag.innerText = "⏭️ Trạng thái: Đã bỏ qua";
-                } else {
-                    statusTag.className = "status-pending";
-                    statusTag.innerText = "⏳ Trạng thái: Chưa hoàn thành";
-                }
+                const statusMap = {
+                    'passed': { class: 'status-passed', text: '✅ Trạng thái: Đạt' },
+                    'approx': { class: 'status-approx', text: '🟡 Trạng thái: Gần đúng' },
+                    'skipped': { class: 'status-skipped', text: '⏭️ Trạng thái: Đã bỏ qua' },
+                    'pending': { class: 'status-pending', text: '⏳ Trạng thái: Chưa hoàn thành' }
+                };
 
-                if (currentIndex === 0) {
-                    document.getElementById('prev-btn').style.display = 'none';
-                } else {
-                    document.getElementById('prev-btn').style.display = 'inline-block';
-                }
+                statusTag.className = statusMap[currentSt].class;
+                statusTag.innerText = statusMap[currentSt].text;
+
+                document.getElementById('prev-btn').style.display = (currentIndex === 0) ? 'none' : 'inline-block';
 
                 const skipBtn = document.getElementById('skip-btn');
                 if (currentIndex === activeItems.length - 1) {
@@ -398,41 +373,42 @@
             }
         }
 
-        function getSimilarityScore(s1, s2) {
-            let longer = s1.length < s2.length ? s2 : s1;
-            let shorter = s1.length < s2.length ? s1 : s2;
-            let longerLength = longer.length;
-            if (longerLength === 0) return 1.0;
-            return (longerLength - editDistance(longer, shorter)) / parseFloat(longerLength);
-        }
-
+        // Tối ưu hóa Levenshtein distance 1D Array
         function editDistance(s1, s2) {
             s1 = s1.toLowerCase();
             s2 = s2.toLowerCase();
-            let costs = new Array();
+            let costs = new Array(s2.length + 1);
+            
             for (let i = 0; i <= s1.length; i++) {
                 let lastValue = i;
                 for (let j = 0; j <= s2.length; j++) {
-                    if (i == 0) costs[j] = j;
-                    else {
-                        if (j > 0) {
-                            let newValue = costs[j - 1];
-                            if (s1.charAt(i - 1) != s2.charAt(j - 1))
-                                newValue = Math.min(Math.min(newValue, lastValue), costs[j]) + 1;
-                            costs[j - 1] = lastValue;
-                            lastValue = newValue;
+                    if (i === 0) {
+                        costs[j] = j;
+                    } else if (j > 0) {
+                        let newValue = costs[j - 1];
+                        if (s1.charAt(i - 1) !== s2.charAt(j - 1)) {
+                            newValue = Math.min(Math.min(newValue, lastValue), costs[j]) + 1;
                         }
+                        costs[j - 1] = lastValue;
+                        lastValue = newValue;
                     }
                 }
-                if (s1.length > 0) costs[s2.length] = lastValue;
+                if (i > 0) costs[s2.length] = lastValue;
             }
             return costs[s2.length];
+        }
+
+        function getSimilarityScore(s1, s2) {
+            let longer = s1.length < s2.length ? s2 : s1;
+            let shorter = s1.length < s2.length ? s1 : s2;
+            if (longer.length === 0) return 1.0;
+            return (longer.length - editDistance(longer, shorter)) / parseFloat(longer.length);
         }
 
         function formatTime(seconds) {
             let mins = Math.floor(seconds / 60);
             let secs = seconds % 60;
-            return (mins > 0 ? mins + " phút " : "") + secs + " giây";
+            return (mins > 0 ? `${mins} phút ` : "") + `${secs} giây`;
         }
 
         function formatHighlightedSentence(targetText, spokenText) {
@@ -459,15 +435,11 @@
             let elapsedSeconds = Math.max(0, initialSeconds - totalSeconds);
             let remainingSeconds = Math.max(0, totalSeconds);
 
-            let timeSpentText = formatTime(elapsedSeconds);
-            let timeLeftText = formatTime(remainingSeconds);
-            
             let finalPassed = itemStatus.filter(st => st === 'passed').length;
             let finalApprox = itemStatus.filter(st => st === 'approx').length;
             let finalSkipped = itemStatus.filter(st => st === 'skipped' || st === 'pending').length;
             let totalItems = originalItems.length;
             
-            // Tính toán thang điểm 100
             let calculatedScore = 0;
             if (totalItems > 0) {
                 let pointsPerQuestion = 100 / totalItems;
@@ -488,38 +460,34 @@
                 adviceText = "<b>Đánh giá:</b> Phát âm chưa rõ phụ âm cuối hoặc chưa chuẩn ngữ điệu; khuyến nghị nghe lại mẫu nhiều lần.";
             }
 
-            const container = document.getElementById('main-container');
-            container.innerHTML = `
-                <h1>TIẾNG ANH GIAO TIẾP CƠ BẢN CHO CADDIE</h1>
-                <div class="sub-type">LUYỆN TẬP KỸ NĂNG PHÁT ÂM</div>
-                <div id="lesson-subtitle">${document.getElementById('lesson-subtitle') ? document.getElementById('lesson-subtitle').innerText : ''}</div>
-
+            const resultView = document.getElementById('result-view');
+            resultView.innerHTML = `
                 <div class="result-card">
                     <b style="font-size:15px;">${message}</b>
                     <div class="score-box">${calculatedScore} <span style="font-size:18px; color:#555;">/ 100 điểm</span></div>
-                    
                     ${levelBadgeHtml}
-                    
                     <p style="font-size:13.5px; line-height:1.5; color:#333; margin: 5px 0 15px 0; background:#e9ecef; padding:10px; border-radius:6px; text-align:left;">
                         ${adviceText}
                     </p>
-
                     <div class="stats-box">
                         📊 <b>BẢNG THỐNG KÊ CHI TIẾT:</b><br>
                         • ✅ Số câu ĐÚNG (100% điểm): <b>${finalPassed} / ${totalItems}</b> câu<br>
                         • 🟡 Số câu GẦN ĐÚNG (50% điểm): <b>${finalApprox} / ${totalItems}</b> câu<br>
                         • ❌ Số câu CHƯA ĐẠT / BỎ QUA (0 điểm): <b>${finalSkipped} / ${totalItems}</b> câu<br>
                         <hr style="border: 0; border-top: 1px dashed #ccc; margin: 8px 0;">
-                        • ⏱️ Thời gian làm thực tế: <b>${timeSpentText}</b><br>
-                        • ⏳ Thời gian còn lại: <b>${timeLeftText}</b>
+                        • ⏱️ Thời gian làm thực tế: <b>${formatTime(elapsedSeconds)}</b><br>
+                        • ⏳ Thời gian còn lại: <b>${formatTime(remainingSeconds)}</b>
                     </div>
-
                     <div class="action-buttons">
                         <button class="btn-review" onclick="showReviewScreen()">🔍 Xem lại chi tiết</button>
                         <button class="btn-retry" onclick="restartQuiz()">🔄 Làm lại bài test</button>
                     </div>
                 </div>
             `;
+
+            document.getElementById('practice-view').classList.add('hidden');
+            document.getElementById('review-view').classList.add('hidden');
+            resultView.classList.remove('hidden');
         }
 
         function goBackToResults() {
@@ -564,12 +532,12 @@
 
             reviewHtml += `</div><button class="btn-retry" style="width: 100%; margin-top: 15px;" onclick="goBackToResults()">Quay lại Màn hình Điểm</button>`;
             
-            const container = document.getElementById('main-container');
-            container.innerHTML = `
-                <h1>TIẾNG ANH GIAO TIẾP CƠ BẢN CHO CADDIE</h1>
-                <div class="sub-type">LUYỆN TẬP KỸ NĂNG PHÁT ÂM</div>
-                ${reviewHtml}
-            `;
+            const reviewView = document.getElementById('review-view');
+            reviewView.innerHTML = reviewHtml;
+
+            document.getElementById('practice-view').classList.add('hidden');
+            document.getElementById('result-view').classList.add('hidden');
+            reviewView.classList.remove('hidden');
         }
 
         function playSpecificAudio(text) {
@@ -624,7 +592,6 @@
             }
         }
 
-        // ================= LOGIC NHẬN DIỆN GIỌNG NÓI =================
         function startListening() {
             const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
             
@@ -656,12 +623,10 @@
 
             recognition.onresult = function(event) {
                 const rawTranscript = event.results[0][0].transcript;
-                
                 const normTarget = normalizeText(activeItems[currentIndex].text);
                 const normSpoken = normalizeText(rawTranscript);
 
                 itemTranscripts[currentIndex] = rawTranscript; 
-                
                 const similarity = getSimilarityScore(normTarget, normSpoken);
 
                 if (normSpoken.includes(normTarget) || normTarget.includes(normSpoken) || similarity >= 0.80) {
@@ -682,22 +647,18 @@
 
                 } else if (similarity >= 0.45) {
                     itemStatus[currentIndex] = 'approx';
-                    document.getElementById('status').innerText = "🟡 Bạn nói: \"" + rawTranscript + "\". Gần đúng, bạn có thể nói lại hoặc bấm Câu tiếp.";
+                    document.getElementById('status').innerText = `🟡 Bạn nói: "${rawTranscript}". Gần đúng, bạn có thể nói lại hoặc bấm Câu tiếp.`;
                     const statusTag = document.getElementById('item-status');
                     statusTag.className = "status-approx";
                     statusTag.innerText = "🟡 Trạng thái: Gần đúng";
 
                 } else {
-                    document.getElementById('status').innerText = "❌ Bạn nói: \"" + rawTranscript + "\". Hãy thử lại hoặc bấm Bỏ qua/Câu tiếp.";
+                    document.getElementById('status').innerText = `❌ Bạn nói: "${rawTranscript}". Hãy thử lại hoặc bấm Bỏ qua/Câu tiếp.`;
                 }
             };
 
             recognition.start();
         }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            setTimeout(initApp, 300);
-        });
     </script>
 </body>
 </html>
