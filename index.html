@@ -24,9 +24,10 @@
         .blink-red { background-color: #f8d7da !important; color: #721c24 !important; border-color: #f5c6cb !important; animation: blink 1s infinite; }
         @keyframes blink { 50% { opacity: 0.5; } }
 
-        /* KHUNG CHUNG CHO CÂU PHÁT ÂM VÀ SECTION */
+        /* KHUNG CHUNG CHO CÂU PHÁT ÂM VÀ SECTION ĐÃ ĐIỀU CHỈNH */
         .progress-box { font-size: 14px; color: #333; font-weight: bold; background: #f1f3f5; padding: 6px 14px; border-radius: 8px; display: inline-block; margin-bottom: 10px; border: 1px solid #dee2e6; }
         .progress-box span { color: #d9534f; font-size: 16px; }
+        .section-tag { font-size: 13.5px; color: #555; font-weight: normal; font-style: normal; text-transform: none; }
 
         .btn-group { margin-top: 18px; display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
         button { padding: 11px 14px; font-size: 14px; font-weight: bold; border: none; border-radius: 6px; cursor: pointer; }
@@ -82,7 +83,7 @@
                 <div id="timer-box">⏳ Thời gian: <span id="time-display">--:--</span></div>
             </div>
 
-            <!-- KHUNG HỢP NHẤT TIẾN ĐỘ VÀ SECTION -->
+            <!-- KHUNG HỢP NHẤT ĐÃ LOẠI BỎ CHỮ SECTION -->
             <div id="progress" class="progress-box"></div>
 
             <div id="question"></div>
@@ -420,11 +421,12 @@
                 const currentItem = activeItems[currentIndex];
                 let ipaHtml = currentItem.ipa ? `<div class="ipa-phonetic">/${currentItem.ipa.replace(/^\/|\/$/g, '')}/</div>` : "";
                 
-                // Gộp chung thông tin Câu phát âm và Section vào cùng 1 box
+                // Định dạng hiển thị đã loại bỏ chữ "section" và dùng chữ thường vừa phải
                 let sectionText = "";
                 if (currentItem.section) {
-                    let secName = currentItem.sectionName ? ` [${currentItem.section}] ${currentItem.sectionName}` : ` [${currentItem.section}]`;
-                    sectionText = ` &nbsp;|&nbsp; <b>${secName}</b>`;
+                    let cleanSecNum = currentItem.section.toString().replace(/section/gi, '').trim();
+                    let secName = currentItem.sectionName ? ` [${cleanSecNum}] ${currentItem.sectionName}` : ` [${cleanSecNum}]`;
+                    sectionText = ` &nbsp;|&nbsp; <span class="section-tag">${secName}</span>`;
                 }
 
                 document.getElementById('progress').innerHTML = `Câu phát âm <span>${currentIndex + 1}</span> / ${activeItems.length}${sectionText}`;
