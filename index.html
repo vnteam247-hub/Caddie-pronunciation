@@ -105,7 +105,7 @@
     <!-- KHỞI TẠO MẢNG DỮ LIỆU CHUNG -->
     <script> window.masterQuizData = []; </script>
 
-    <!-- TRÌNH NẠP DỮ LIỆU ĐỘNG (HỖ TRỢ MIX LINK NÂNG CAO) -->
+    <!-- TRÌNH NẠP DỮ LIỆU ĐỘNG -->
     <script>
         (function loadDataFilesDynamically() {
             const urlParams = new URLSearchParams(window.location.search);
@@ -115,41 +115,38 @@
 
             const filesToLoad = new Set(['data/exams.js']);
 
-            // Hàm phân tích tham số để lấy danh sách số Lesson cần nạp
+            // Hàm trích xuất các số Lesson tương ứng để nạp file .js
             const extractLessonNumbers = (str) => {
                 if (!str) return [];
                 let nums = [];
-                if (str.includes('-')) {
-                    let parts = str.split('-').map(p => parseInt(p.replace(/[^\d]/g, '')));
-                    if (parts.length === 2 && !isNaN(parts[0]) && !isNaN(parts[1])) {
-                        for (let i = Math.min(parts[0], parts[1]); i <= Math.max(parts[0], parts[1]); i++) {
-                            nums.push(i);
+                let parts = str.split(/[,&]/);
+                parts.forEach(part => {
+                    if (part.includes('-')) {
+                        let subParts = part.split('-').map(p => parseFloat(p.replace(/[^\d.]/g, '')));
+                        if (subParts.length === 2 && !isNaN(subParts[0]) && !isNaN(subParts[1])) {
+                            let start = Math.floor(Math.min(subParts[0], subParts[1]));
+                            let end = Math.floor(Math.max(subParts[0], subParts[1]));
+                            for (let i = start; i <= end; i++) nums.push(i);
                         }
-                    }
-                } else {
-                    let parts = str.split(/[,&]/);
-                    parts.forEach(p => {
-                        let n = parseInt(p.replace(/[^\d]/g, ''));
+                    } else {
+                        let n = parseInt(part.replace(/[^\d]/g, ''));
                         if (!isNaN(n)) nums.push(n);
-                    });
-                }
+                    }
+                });
                 return nums;
             };
 
-            if (reqLesson) {
-                extractLessonNumbers(reqLesson).forEach(n => filesToLoad.add(`data/lesson${n}.js`));
-            } else if (reqSection) {
+            // Nạp file dựa trên tham số (Ưu tiên nạp đúng các lesson có chứa section)
+            if (reqSection) {
                 extractLessonNumbers(reqSection).forEach(n => filesToLoad.add(`data/lesson${n}.js`));
+            } else if (reqLesson) {
+                extractLessonNumbers(reqLesson).forEach(n => filesToLoad.add(`data/lesson${n}.js`));
             } else if (reqExam) {
                 let examNums = extractLessonNumbers(reqExam);
                 let maxToLoad = examNums.length > 0 ? Math.max(...examNums, 10) : 20; 
-                for (let i = 1; i <= maxToLoad; i++) {
-                    filesToLoad.add(`data/lesson${i}.js`);
-                }
+                for (let i = 1; i <= maxToLoad; i++) filesToLoad.add(`data/lesson${i}.js`);
             } else {
-                for (let i = 1; i <= 10; i++) {
-                    filesToLoad.add(`data/lesson${i}.js`);
-                }
+                for (let i = 1; i <= 10; i++) filesToLoad.add(`data/lesson${i}.js`);
             }
 
             const filesArray = Array.from(filesToLoad);
@@ -198,6 +195,12 @@
             return text.replace(/[^a-z0-9\s]/g, "").replace(/\s+/g, " ").trim();
         }
 
+        // Hàm chuẩn hóa giá trị Section về dạng số chuẩn (VD: "section3.1" -> "3.1")
+        function cleanSectionCode(secStr) {
+            if (!secStr) return "";
+            return secStr.toString().toLowerCase().replace(/section/g, '').trim();
+        }
+
         function shuffleArray(array) {
             for (let i = array.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
@@ -205,11 +208,11 @@
             }
         }
 
-        // HÀM LỌC & MIX CÂU HỎI TỰ ĐỘNG (LESSON / SECTION / EXAM)
+        // HÀM XỬ LÝ LỌC & MIX DÃY BÀI HỌC (ƯU TIÊN TUYỆT ĐỐI SECTION)
         function getFilteredSpeakingItems() {
             const urlParams = new URLSearchParams(window.location.search);
-            const reqLesson = urlParams.get('lesson');   
             const reqSection = urlParams.get('section'); 
+            const reqLesson = urlParams.get('lesson');   
             const reqExam = urlParams.get('exam');       
 
             let rawPool = (window.masterQuizData && window.masterQuizData.length > 0) ? [...window.masterQuizData] : [];
@@ -217,32 +220,77 @@
             let targetCount = 20; 
             let titleBanner = "LUYỆN PHÁT ÂM TỔNG HỢP";
 
+            // Hàm phân tích tham số dạng chuỗi/dãy (VD: "1.1-1.3,2.1" hoặc "1-3,5")
             const parseMixParam = (paramStr) => {
                 if (!paramStr) return [];
-                let items = [];
-                if (paramStr.includes('-')) {
-                    let parts = paramStr.split('-').map(p => p.trim());
-                    let num1 = parseFloat(parts[0].replace(/[^\d.]/g, ''));
-                    let num2 = parseFloat(parts[1].replace(/[^\d.]/g, ''));
-                    if (!isNaN(num1) && !isNaN(num2)) {
-                        if (Number.isInteger(num1) && Number.isInteger(num2)) {
-                            for (let i = Math.min(num1, num2); i <= Math.max(num1, num2); i++) {
-                                items.push(i.toString());
+                let results = [];
+                let tokens = paramStr.split(/[,&]/);
+                
+                tokens.forEach(token => {
+                    token = token.trim();
+                    if (token.includes('-')) {
+                        let parts = token.split('-').map(p => p.trim());
+                        let n1 = parseFloat(cleanSectionCode(parts[0]));
+                        let n2 = parseFloat(cleanSectionCode(parts[1]));
+                        
+                        if (!isNaN(n1) && !isNaN(n2)) {
+                            // Xử lý nếu là số nguyên (Lesson / Exam)
+                            if (Number.isInteger(n1) && Number.isInteger(n2)) {
+                                for (let i = Math.min(n1, n2); i <= Math.max(n1, n2); i++) {
+                                    results.push(i.toString());
+                                }
+                            } else {
+                                // Xử lý dải Section thập phân (VD: 1.1 - 1.3)
+                                let step = 0.1;
+                                for (let v = Math.min(n1, n2); v <= Math.max(n1, n2) + 0.001; v += step) {
+                                    results.push(v.toFixed(1));
+                                }
                             }
-                        } else {
-                            items.push(parts[0], parts[1]); 
                         }
+                    } else {
+                        results.push(cleanSectionCode(token));
                     }
-                } else if (paramStr.includes(',') || paramStr.includes('&')) {
-                    items = paramStr.split(/[,&]/).map(p => p.trim()).filter(p => p !== '');
-                } else {
-                    items = [paramStr.trim()];
-                }
-                return items;
+                });
+                return results.filter(r => r !== "");
             };
 
-            // 1. MIX EXAM
-            if (reqExam) {
+            // ================= 1. ƯU TIÊN TUYỆT ĐỐI SECTION (NẾU CÓ) =================
+            if (reqSection) {
+                let targetSections = parseMixParam(reqSection);
+
+                if (targetSections.length > 0) {
+                    let displayNames = targetSections.map(s => s.toUpperCase());
+                    titleBanner = targetSections.length > 1 
+                        ? `LUYỆN PHÁT ÂM MIX - SECTION ${displayNames.join(' & ')}` 
+                        : `LUYỆN PHÁT ÂM - SECTION ${displayNames[0]}`;
+
+                    let secFiltered = rawPool.filter(q => {
+                        let qSecClean = cleanSectionCode(q.section);
+                        return targetSections.includes(qSecClean);
+                    });
+
+                    if (secFiltered.length > 0) rawPool = secFiltered;
+                    targetCount = targetSections.length > 1 ? 25 : 20;
+                }
+            } 
+            // ================= 2. KIỂM TRA LESSON (NẾU KHÔNG CÓ SECTION) =================
+            else if (reqLesson) {
+                let lessonList = parseMixParam(reqLesson).map(l => l.replace(/[^\d]/g, ''));
+                if (lessonList.length > 0) {
+                    titleBanner = lessonList.length > 1 
+                        ? `LUYỆN PHÁT ÂM MIX - LESSON ${lessonList.join(' & ')}` 
+                        : `LUYỆN PHÁT ÂM - LESSON ${lessonList[0]}`;
+
+                    let lesFiltered = rawPool.filter(q => {
+                        let qLes = (q.lesson || "").toString().replace(/[^\d]/g, '');
+                        return lessonList.includes(qLes);
+                    });
+                    if (lesFiltered.length > 0) rawPool = lesFiltered;
+                    targetCount = lessonList.length > 1 ? 30 : 20;
+                }
+            } 
+            // ================= 3. KIỂM TRA EXAM =================
+            else if (reqExam) {
                 let cleanExam = reqExam.toLowerCase().trim();
                 if (cleanExam === "all" || cleanExam === "examall") {
                     targetCount = 30;
@@ -262,44 +310,6 @@
                         if (examFiltered.length > 0) rawPool = examFiltered;
                         targetCount = 30;
                     }
-                }
-            } 
-            // 2. MIX LESSON
-            else if (reqLesson) {
-                let lessonList = parseMixParam(reqLesson).map(l => l.replace(/[^\d]/g, ''));
-                if (lessonList.length > 0) {
-                    titleBanner = lessonList.length > 1 
-                        ? `LUYỆN PHÁT ÂM MIX - LESSON ${lessonList.join(' & ')}` 
-                        : `LUYỆN PHÁT ÂM - LESSON ${lessonList[0]}`;
-
-                    let lesFiltered = rawPool.filter(q => {
-                        let qLes = (q.lesson || "").toString().replace(/[^\d]/g, '');
-                        return lessonList.includes(qLes);
-                    });
-                    if (lesFiltered.length > 0) rawPool = lesFiltered;
-                    targetCount = lessonList.length > 1 ? 30 : 20;
-                }
-            } 
-            // 3. MIX SECTION
-            else if (reqSection) {
-                let rawSections = parseMixParam(reqSection);
-                let formattedSections = rawSections.map(s => {
-                    let clean = s.toLowerCase().replace('section', '').trim();
-                    return `section${clean}`;
-                });
-
-                if (formattedSections.length > 0) {
-                    let displayNames = formattedSections.map(s => s.replace('section', '').toUpperCase());
-                    titleBanner = formattedSections.length > 1 
-                        ? `LUYỆN PHÁT ÂM MIX - SECTION ${displayNames.join(' & ')}` 
-                        : `LUYỆN PHÁT ÂM - SECTION ${displayNames[0]}`;
-
-                    let secFiltered = rawPool.filter(q => {
-                        let qSec = (q.section || "").toLowerCase().trim();
-                        return formattedSections.some(sec => qSec === sec || qSec === sec.replace('section', ''));
-                    });
-                    if (secFiltered.length > 0) rawPool = secFiltered;
-                    targetCount = formattedSections.length > 1 ? 25 : 20;
                 }
             }
 
@@ -343,10 +353,9 @@
         let totalSeconds = 0;
         let timerInterval;
         let lastSessionMessage = "🎉 HOÀN THÀNH BÀI KIỂM TRA PHÁT ÂM!";
-        let startTimeStampText = ""; // Chuỗi ghi nhận thời gian bắt đầu làm bài
+        let startTimeStampText = ""; 
 
         function initApp() {
-            // Lấy dấu mốc thời gian bắt đầu làm bài
             const now = new Date();
             const timeStr = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
             const dateStr = now.toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit', year: 'numeric' });
