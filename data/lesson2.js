@@ -14,7 +14,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.1",
         "type": "mcq",
-        "title": "[2.1 Phát âm] Từ tiếng Anh chỉ 'Trời nắng' phát âm IPA chuẩn là gì?",
+        "title": "[2.1 Phát âm] Nghe âm thanh và chọn từ tiếng Anh phát âm IPA chuẩn có nghĩa là 'Trời nắng':",
         "audioText": "It is very sunny today, Sir.",
         "phonetic": "/ɪt ɪz ˈver.i ˈsʌn.i təˈdeɪ, sɜːr/",
         "translation": "Hôm nay trời rất nắng thưa anh.",
@@ -42,7 +42,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.1",
         "type": "mcq",
-        "title": "[2.1 Phát âm] Từ tiếng Anh chỉ 'Trời sương mù' phát âm IPA chuẩn là gì?",
+        "title": "[2.1 Phát âm] Nghe âm thanh và chọn từ tiếng Anh chỉ 'Trời nhiều sương mù':",
         "audioText": "It is foggy this morning, Sir.",
         "phonetic": "/ɪt ɪz ˈfɑː.ɡi ðɪs ˈmɔːr.nɪŋ, sɜːr/",
         "translation": "Sáng nay trời nhiều sương mù thưa anh.",
@@ -70,7 +70,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.1",
         "type": "mcq",
-        "title": "[2.1 Phát âm] Từ tiếng Anh chỉ 'Trời nồm ẩm' làm mặt green bị chậm phát âm IPA chuẩn là gì?",
+        "title": "[2.1 Phát âm] Nghe âm thanh và chọn từ tiếng Anh chỉ 'Trời nồm ẩm' làm mặt green bị chậm:",
         "audioText": "It is very humid today.",
         "phonetic": "/ɪt ɪz ˈver.i ˈhjuː.mɪd təˈdeɪ/",
         "translation": "Hôm nay trời rất nồm ẩm.",
@@ -98,7 +98,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.1",
         "type": "mcq",
-        "title": "[2.1 Từ vựng] Cụm từ tiếng Anh khuyên khách 'Giữ cơ thể đủ nước / Uống đủ nước' khi trời nắng nóng là gì?",
+        "title": "[2.1 Từ vựng] Lời khuyên Caddy nhắc khách uống đủ nước khi trời nắng nóng là cụm từ nào?",
         "audioText": "Please stay hydrated, Sir.",
         "phonetic": "/pliːz steɪ haɪˈdreɪ.t̬ɪd, sɜːr/",
         "translation": "Xin anh lưu ý uống đủ nước ạ.",
@@ -126,26 +126,26 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.1",
         "type": "mcq",
-        "title": "[2.1 Từ vựng] Cụm từ 'Unpredictable weather' có nghĩa tiếng Việt là gì?",
+        "title": "[2.1 Từ vựng] Khi muốn mô tả thời tiết thất thường, khó đoán trên sân golf, Caddy dùng cụm từ tiếng Anh nào?",
         "audioText": "The weather is unpredictable today.",
         "phonetic": "/ðə ˈweð.ər ɪz ˌʌn.prɪˈdɪk.tə.bəl təˈdeɪ/",
         "translation": "Thời tiết hôm nay rất thất thường.",
         "options": [
                 {
-                        "en": "A. Thời tiết thất thường, khó đoán",
-                        "vi": "Unpredictable weather"
+                        "en": "A. Unpredictable weather",
+                        "vi": "Thời tiết thất thường, khó đoán"
                 },
                 {
-                        "en": "B. Thời tiết hoàn hảo",
-                        "vi": "Perfect weather"
+                        "en": "B. Perfect weather",
+                        "vi": "Thời tiết hoàn hảo"
                 },
                 {
-                        "en": "C. Thời tiết cực rét",
-                        "vi": "Extremely cold"
+                        "en": "C. Extremely cold",
+                        "vi": "Thời tiết cực rét"
                 },
                 {
-                        "en": "D. Thời tiết nhiều gió",
-                        "vi": "Very windy"
+                        "en": "D. Very windy",
+                        "vi": "Thời tiết nhiều gió"
                 }
         ],
         "correct": 0
@@ -154,7 +154,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.1",
         "type": "mcq",
-        "title": "[2.1 Tình huống] Khi trời đẹp, câu chào phá băng (ice-breaker) lịch sự và chuyên nghiệp nhất Caddy nên dùng:",
+        "title": "[2.1 Tình huống] Khi thời tiết trên sân rất đẹp, câu chào phá băng (ice-breaker) lịch sự và chuẩn mực nhất Caddy nên dùng:",
         "audioText": "Beautiful day, isn't it, Sir?",
         "phonetic": "/ˈbjuː.t̬ə.fəl deɪ, ˈɪz.ənt ɪt, sɜːr/",
         "translation": "Một ngày tuyệt vời phải không anh?",
@@ -294,7 +294,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.1",
         "type": "mcq",
-        "title": "[2.1 Phát âm] Từ tiếng Anh chỉ 'Cơn bão lớn / Bão nhiệt đới' có phiên âm IPA chuẩn là gì?",
+        "title": "[2.1 Phát âm] Nghe âm thanh và chọn từ tiếng Anh chỉ 'Cơn bão lớn / Bão nhiệt đới':",
         "audioText": "Typhoon warning on the course.",
         "phonetic": "/taɪˈfuːn ˈwɔːr.nɪŋ ɑːn ðə kɔːrs/",
         "translation": "Cảnh báo bão lớn trên sân.",
@@ -350,7 +350,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.1",
         "type": "mcq",
-        "title": "[2.1 Từ vựng] Từ tiếng Anh chỉ 'Trời nhiều mây' phát âm IPA chuẩn là gì?",
+        "title": "[2.1 Từ vựng] Nghe âm thanh và chọn từ tiếng Anh phát âm IPA chuẩn có nghĩa 'Trời nhiều mây':",
         "audioText": "It is cloudy now, Sir.",
         "phonetic": "/ɪt ɪz ˈklaʊ.di naʊ, sɜːr/",
         "translation": "Bây giờ trời đang nhiều mây thưa anh.",
@@ -378,26 +378,26 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.1",
         "type": "mcq",
-        "title": "[2.1 Từ vựng] Cụm từ 'Beat the heat' có nghĩa tiếng Việt là gì trong dịch vụ golf?",
+        "title": "[2.1 Từ vựng] Cụm từ 'Beat the heat' được dùng trong dịch vụ golf mùa hè với ý nghĩa gì?",
         "audioText": "Drink cold water to beat the heat, Sir.",
         "phonetic": "/drɪŋk koʊld ˈwɔː.tər tə biːt ðə hiːt, sɜːr/",
         "translation": "Uống nước lạnh để giải nhiệt tránh nóng thưa anh.",
         "options": [
                 {
-                        "en": "A. Giải nhiệt / Tránh nóng",
-                        "vi": "Beat the heat"
+                        "en": "A. Beat the heat",
+                        "vi": "Giải nhiệt / Tránh nóng"
                 },
                 {
-                        "en": "B. Chịu đựng nắng nóng",
-                        "vi": "Suffer the heat"
+                        "en": "B. Suffer the heat",
+                        "vi": "Chịu đựng nắng nóng"
                 },
                 {
-                        "en": "C. Đánh bóng dưới nắng",
-                        "vi": "Hit under the sun"
+                        "en": "C. Hit under the sun",
+                        "vi": "Đánh bóng dưới nắng"
                 },
                 {
-                        "en": "D. Chơi golf mùa hè",
-                        "vi": "Play in summer"
+                        "en": "D. Play in summer",
+                        "vi": "Chơi golf mùa hè"
                 }
         ],
         "correct": 0
@@ -406,7 +406,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.1",
         "type": "mcq",
-        "title": "[2.1 Tình huống] Khi sương mù dày đặc làm giảm tầm nhìn, Caddy khuyên khách quan sát bóng cẩn thận thế nào?",
+        "title": "[2.1 Tình huống] Khi tầm nhìn bị hạn chế do thời tiết, Caddy khuyên khách quan sát bóng cẩn thận thế nào?",
         "audioText": "It is foggy now, please watch your ball carefully, Sir.",
         "phonetic": "/ɪt ɪz ˈfɑː.ɡi naʊ, pliːz wɑːtʃ jʊər bɔːl ˈker.fə.li, sɜːr/",
         "translation": "Trời đang sương mù, xin anh quan sát bóng thật cẩn thận ạ.",
@@ -434,7 +434,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.1",
         "type": "mcq",
-        "title": "[2.1 Phát âm] Từ tiếng Anh chỉ 'Nhiệt độ' có phiên âm IPA chuẩn là gì?",
+        "title": "[2.1 Phát âm] Nghe âm thanh và chọn từ tiếng Anh chỉ 'Nhiệt độ':",
         "audioText": "What is the temperature now?",
         "phonetic": "/wɑːt ɪz ðə ˈtem.prə.tʃər naʊ/",
         "translation": "Nhiệt độ hiện tại là bao nhiêu?",
@@ -462,7 +462,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.1",
         "type": "mcq",
-        "title": "[2.1 Phát âm] Từ tiếng Anh chỉ 'Gió ngược' có phiên âm IPA chuẩn là gì?",
+        "title": "[2.1 Phát âm] Nghe âm thanh và chọn từ tiếng Anh chỉ 'Gió ngược':",
         "audioText": "The wind is against you. It is headwind.",
         "phonetic": "/ðə wɪnd ɪz əˈɡenst juː. ɪt ɪz ˈhed.wɪnd/",
         "translation": "Gió đang thổi ngược chiều anh. Đó là gió ngược.",
@@ -490,7 +490,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.1",
         "type": "mcq",
-        "title": "[2.1 Phát âm] Từ tiếng Anh chỉ 'Gió xuôi / Gió thuận' có phiên âm IPA chuẩn là gì?",
+        "title": "[2.1 Phát âm] Nghe âm thanh và chọn từ tiếng Anh chỉ 'Gió xuôi / Gió thuận':",
         "audioText": "The wind is with you. It is tailwind.",
         "phonetic": "/ðə wɪnd ɪz wɪð juː. ɪt ɪz ˈteɪl.wɪnd/",
         "translation": "Gió đang ủng hộ anh. Đó là gió xuôi.",
@@ -518,7 +518,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.1",
         "type": "mcq",
-        "title": "[2.1 Từ vựng] Cụm từ tiếng Anh chỉ 'Gió thổi ngang' là gì?",
+        "title": "[2.1 Từ vựng] Nghe âm thanh và chọn cụm từ tiếng Anh chỉ 'Gió thổi ngang':",
         "audioText": "It is crosswind from left to right, Sir.",
         "phonetic": "/ɪt ɪz ˈkrɑːs.wɪnd frəm left tə raɪt, sɜːr/",
         "translation": "Đang có gió thổi ngang từ trái sang phải thưa anh.",
@@ -602,7 +602,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.1",
         "type": "mcq",
-        "title": "[2.1 Phát âm] Từ tiếng Anh chỉ 'Cái ô / Cây dù' có phát âm trọng âm ở đâu?",
+        "title": "[2.1 Phát âm] Nghe âm thanh và chọn trọng âm chuẩn của từ chỉ 'Cái ô / Cây dù':",
         "audioText": "Would you like an umbrella, Sir?",
         "phonetic": "/wʊd juː laɪk æn ʌmˈbrel.ə, sɜːr/",
         "translation": "Anh có muốn dùng ô che không ạ?",
@@ -686,7 +686,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.1",
         "type": "mcq",
-        "title": "[2.1 Từ vựng] Cụm từ tiếng Anh chỉ 'Dự báo thời tiết' có phiên âm IPA chuẩn là gì?",
+        "title": "[2.1 Từ vựng] Nghe âm thanh và chọn cụm từ tiếng Anh chỉ 'Dự báo thời tiết':",
         "audioText": "What is the weather forecast for today?",
         "phonetic": "/wɑːt ɪz ðə ˈweð.ər ˈfɔːr.kæst fɔːr təˈdeɪ/",
         "translation": "Dự báo thời tiết hôm nay thế nào?",
@@ -720,7 +720,7 @@ window.masterQuizData.push(
         "translation": "Xin anh lưu ý uống đủ nước trong suốt vòng chơi ạ.",
         "displaySentence": "Please stay _______ during the round, Sir.",
         "targetWord": "hydrated",
-        "hint": "💡 Gợi ý: Từ gồm 8 ký tự chỉ việc giữ đủ nước cho cơ thể."
+        "hint": "💡 Gợi ý: Từ gồm 8 ký tự."
 },
     {
         "lesson": "2",
@@ -732,7 +732,7 @@ window.masterQuizData.push(
         "translation": "Hôm nay trời hơi nhiều gió thưa anh.",
         "displaySentence": "It is a bit _______ today, Sir.",
         "targetWord": "windy",
-        "hint": "💡 Gợi ý: Từ gồm 5 ký tự chỉ thời tiết nhiều gió."
+        "hint": "💡 Gợi ý: Từ gồm 5 ký tự."
 },
     {
         "lesson": "2",
@@ -744,7 +744,7 @@ window.masterQuizData.push(
         "translation": "Xin anh vui lòng thoa thêm kem chống nắng ạ.",
         "displaySentence": "Please put on some _______, Sir.",
         "targetWord": "sunscreen",
-        "hint": "💡 Gợi ý: Từ gồm 9 ký tự chỉ kem chống nắng."
+        "hint": "💡 Gợi ý: Từ gồm 9 ký tự."
 },
     {
         "lesson": "2",
@@ -756,7 +756,7 @@ window.masterQuizData.push(
         "translation": "Sáng nay trời se lạnh thưa anh.",
         "displaySentence": "It is _______ this morning, Sir.",
         "targetWord": "chilly",
-        "hint": "💡 Gợi ý: Từ gồm 6 ký tự nghĩa là se lạnh."
+        "hint": "💡 Gợi ý: Từ gồm 6 ký tự."
 },
     {
         "lesson": "2",
@@ -768,7 +768,7 @@ window.masterQuizData.push(
         "translation": "Anh có muốn dùng ô không ạ?",
         "displaySentence": "Would you like an _______, Sir?",
         "targetWord": "umbrella",
-        "hint": "💡 Gợi ý: Từ gồm 8 ký tự chỉ chiếc ô/dù che."
+        "hint": "💡 Gợi ý: Từ gồm 8 ký tự."
 },
     {
         "lesson": "2",
@@ -780,7 +780,7 @@ window.masterQuizData.push(
         "translation": "Thời tiết hôm nay thật hoàn hảo để chơi golf ạ.",
         "displaySentence": "The weather is _______ for golf today, Sir.",
         "targetWord": "perfect",
-        "hint": "💡 Gợi ý: Từ gồm 7 ký tự nghĩa là hoàn hảo."
+        "hint": "💡 Gợi ý: Từ gồm 7 ký tự."
 },
     {
         "lesson": "2",
@@ -792,7 +792,7 @@ window.masterQuizData.push(
         "translation": "Cỏ vẫn còn ướt do sương buổi sáng thưa anh.",
         "displaySentence": "The grass is wet with morning _______, Sir.",
         "targetWord": "dew",
-        "hint": "💡 Gợi ý: Từ gồm 3 ký tự nghĩa là giọt sương buổi sáng."
+        "hint": "💡 Gợi ý: Từ gồm 3 ký tự."
 },
     {
         "lesson": "2",
@@ -804,7 +804,7 @@ window.masterQuizData.push(
         "translation": "Uống chút nước lạnh cho đỡ nóng thưa anh.",
         "displaySentence": "Let's drink some cold water to _______ the heat, Sir.",
         "targetWord": "beat",
-        "hint": "💡 Gợi ý: Từ gồm 4 ký tự trong cụm giải nhiệt tránh nóng."
+        "hint": "💡 Gợi ý: Từ gồm 4 ký tự."
 },
     {
         "lesson": "2",
@@ -816,7 +816,7 @@ window.masterQuizData.push(
         "translation": "Cơn bão đang đến gần rồi thưa anh.",
         "displaySentence": "The _______ is coming near, Sir.",
         "targetWord": "storm",
-        "hint": "💡 Gợi ý: Từ gồm 5 ký tự chỉ cơn dông bão."
+        "hint": "💡 Gợi ý: Từ gồm 5 ký tự."
 },
     {
         "lesson": "2",
@@ -828,7 +828,7 @@ window.masterQuizData.push(
         "translation": "Em để sẵn 2 chai nước lạnh trong thùng đá rồi ạ.",
         "displaySentence": "I put two bottles of cold _______ in the cooler box, Sir.",
         "targetWord": "water",
-        "hint": "💡 Gợi ý: Từ gồm 5 ký tự chỉ nước uống."
+        "hint": "💡 Gợi ý: Từ gồm 5 ký tự."
 },
     {
         "lesson": "2",
@@ -1030,7 +1030,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.2",
         "type": "mcq",
-        "title": "[2.2 Từ vựng] Từ tiếng Anh chỉ 'Mùa xuân' có phiên âm IPA chuẩn là gì?",
+        "title": "[2.2 Từ vựng] Nghe âm thanh và chọn từ tiếng Anh chỉ 'Mùa xuân':",
         "audioText": "Spring is warm and green.",
         "phonetic": "/sprɪŋ ɪz wɔːrm ænd ɡriːn/",
         "translation": "Mùa xuân ấm áp và xanh tươi.",
@@ -1058,7 +1058,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.2",
         "type": "mcq",
-        "title": "[2.2 Từ vựng] Từ tiếng Anh chỉ 'Mùa hè' có phiên âm IPA chuẩn là gì?",
+        "title": "[2.2 Từ vựng] Nghe âm thanh và chọn từ tiếng Anh chỉ 'Mùa hè':",
         "audioText": "Summer in Hanoi is very hot.",
         "phonetic": "/ˈsʌm.ər ɪn hæˈnɔɪ ɪz ˈver.i hɑːt/",
         "translation": "Mùa hè ở Hà Nội rất nóng.",
@@ -1086,7 +1086,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.2",
         "type": "mcq",
-        "title": "[2.2 Từ vựng] Hai từ tiếng Anh cùng chỉ 'Mùa thu' (giọng Anh-Anh và Anh-Mỹ) là gì?",
+        "title": "[2.2 Từ vựng] Nghe âm thanh và chọn các cách gọi tiếng Anh chỉ 'Mùa thu':",
         "audioText": "Autumn or Fall in English.",
         "phonetic": "/ˈɔː.təm ɔːr fɔːl ɪn ˈɪŋ.ɡlɪʃ/",
         "translation": "Mùa thu trong tiếng Anh.",
@@ -1114,7 +1114,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.2",
         "type": "mcq",
-        "title": "[2.2 Từ vựng] Từ tiếng Anh chỉ 'Mùa đông' có phiên âm IPA chuẩn là gì?",
+        "title": "[2.2 Từ vựng] Nghe âm thanh và chọn từ tiếng Anh chỉ 'Mùa đông':",
         "audioText": "Winter is chilly and foggy.",
         "phonetic": "/ˈwɪn.tər ɪz ˈtʃɪl.i ænd ˈfɑː.ɡi/",
         "translation": "Mùa đông se lạnh và sương mù.",
@@ -1198,7 +1198,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.2",
         "type": "mcq",
-        "title": "[2.2 Tình huống] Khi khách hỏi khi nào sương mù sáng mùa đông/xuân tan: 'When will this thick fog clear up, caddy?', Caddy trả lời chuẩn:",
+        "title": "[2.2 Tình huống] Khi khách hỏi thời gian sương mù tan, Caddy giải thích như thế nào?",
         "audioText": "Usually, the fog will clear up when the sun comes out, around 9 AM, Sir.",
         "phonetic": "/ˈjuː.ʒu.ə.li, ðə fɑːɡ wɪl klɪər ʌp wen ðə sʌn kʌmz aʊt, əˈraʊnd naɪn eɪˈem, sɜːr/",
         "translation": "Thông thường sương mù sẽ tan khi mặt trời lên, khoảng 9 giờ sáng thưa anh.",
@@ -1282,7 +1282,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.2",
         "type": "mcq",
-        "title": "[2.2 Tình huống] Khách hỏi dự báo thời tiết mùa hè: 'What is the weather forecast for today?', Caddy trả lời trời nắng cả ngày:",
+        "title": "[2.2 Tình huống] Trời nắng cả ngày vào mùa hè, Caddy báo tin tức thời tiết cho khách thế nào?",
         "audioText": "The forecast says it will be sunny all day, Sir. No rain today!",
         "phonetic": "/ðə ˈfɔːr.kæst sez ɪt wɪl biː ˈsʌn.i ɔːl deɪ, sɜːr. noʊ reɪn təˈdeɪ/",
         "translation": "Dự báo nói rằng trời sẽ nắng cả ngày thưa anh. Hôm nay không có mưa đâu ạ!",
@@ -1310,7 +1310,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.2",
         "type": "mcq",
-        "title": "[2.2 Tình huống] Khách hỏi nhiệt độ hiện tại: 'Do you know what the temperature is right now?', Caddy báo 35 độ C mùa hè thế nào?",
+        "title": "[2.2 Tình huống] Khi khách hỏi về nhiệt độ hiện tại vào ngày nắng nóng, Caddy trả lời 35 độ C thế nào?",
         "audioText": "It is about 35 degrees Celsius, Sir. It is quite hot.",
         "phonetic": "/ɪt ɪz əˈbaʊt ˈθɜːr.ti faɪv dɪˈɡriːz ˈsel.si.əs, sɜːr. ɪt ɪz kwaɪt hɑːt/",
         "translation": "Bây giờ khoảng 35 độ C thưa anh. Trời khá nóng ạ.",
@@ -1338,7 +1338,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.2",
         "type": "mcq",
-        "title": "[2.2 Từ vựng] Cụm từ tiếng Anh chỉ 'Bóng râm / Bóng mát' giúp khách tránh nắng mùa hè là gì?",
+        "title": "[2.2 Từ vựng] Nghe âm thanh và chọn từ tiếng Anh chỉ 'Bóng râm / Bóng mát':",
         "audioText": "Let's wait in the shade, Sir.",
         "phonetic": "/lets weɪt ɪn ðə ʃeɪd, sɜːr/",
         "translation": "Chúng ta cùng đợi trong bóng râm thưa anh.",
@@ -1366,7 +1366,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.2",
         "type": "mcq",
-        "title": "[2.2 Từ vựng] Cụm từ tiếng Anh chỉ 'Áo khoác' khách mang theo vào mùa đông là gì?",
+        "title": "[2.2 Từ vựng] Nghe âm thanh và chọn từ tiếng Anh chỉ 'Áo khoác':",
         "audioText": "Do you have a jacket for this cold weather, Sir?",
         "phonetic": "/duː juː hæv ə ˈdʒæk.ɪt fɔːr ðɪs koʊld ˈweð.ər, sɜːr/",
         "translation": "Anh có mang áo khoác cho thời tiết lạnh này không ạ?",
@@ -1478,7 +1478,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.2",
         "type": "mcq",
-        "title": "[2.2 Từ vựng] Từ 'Degree' trong đo nhiệt độ (35 degrees Celsius) phát âm IPA chuẩn là gì?",
+        "title": "[2.2 Từ vựng] Nghe âm thanh và chọn từ chỉ đơn vị đo 'Độ' (nhiệt độ / góc):",
         "audioText": "35 degrees Celsius.",
         "phonetic": "/ˈθɜːr.ti faɪv dɪˈɡriːz ˈsel.si.əs/",
         "translation": "35 độ C.",
@@ -1534,7 +1534,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.2",
         "type": "mcq",
-        "title": "[2.2 Từ vựng] Từ vựng chỉ 'Cơn mưa nặng hạt / Mưa lớn' có phiên âm IPA chuẩn là gì?",
+        "title": "[2.2 Từ vựng] Nghe âm thanh và chọn cụm từ chỉ 'Mưa lớn / Mưa nặng hạt':",
         "audioText": "Heavy rain is expected this afternoon.",
         "phonetic": "/ˈhev.i reɪn ɪz ɪkˈspek.tɪd ðɪs ˌæf.tərˈnuːn/",
         "translation": "Mưa lớn dự kiến sẽ xuất hiện chiều nay.",
@@ -1562,7 +1562,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.2",
         "type": "mcq",
-        "title": "[2.2 Từ vựng] Từ vựng chỉ 'Mưa rào nhanh tạnh' có phiên âm IPA chuẩn là gì?",
+        "title": "[2.2 Từ vựng] Nghe âm thanh và chọn cụm từ chỉ 'Mưa rào nhanh tạnh':",
         "audioText": "It is just a quick rain shower, Sir.",
         "phonetic": "/ɪt ɪz dʒʌst ə kwɪk reɪn ˈʃaʊ.ər, sɜːr/",
         "translation": "Đó chỉ là một cơn mưa rào nhanh tạnh thôi thưa anh.",
@@ -1590,7 +1590,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.2",
         "type": "mcq",
-        "title": "[2.2 Từ vựng] Mùa thu lá cây rụng nhiều trên fairway, từ 'Lá cây' trong tiếng Anh phát âm IPA chuẩn là gì?",
+        "title": "[2.2 Từ vựng] Nghe âm thanh và chọn từ tiếng Anh chỉ 'Lá cây' trên sân:",
         "audioText": "Leaves on the fairway are loose impediments.",
         "phonetic": "/liːvz ɑːn ðə ˈfer.weɪ ɑːr luːs ɪmˈped.ə.mənts/",
         "translation": "Lá cây trên fairway là chướng ngại vật tự nhiên rời.",
@@ -1680,7 +1680,7 @@ window.masterQuizData.push(
         "translation": "Mùa xuân là mùa đáng yêu với làn gió ấm áp thưa anh.",
         "displaySentence": "_______ is a lovely season with warm breeze, Sir.",
         "targetWord": "Spring",
-        "hint": "💡 Gợi ý: Từ gồm 6 ký tự chỉ Mùa xuân."
+        "hint": "💡 Gợi ý: Từ gồm 6 ký tự."
 },
     {
         "lesson": "2",
@@ -1692,7 +1692,7 @@ window.masterQuizData.push(
         "translation": "Mùa hè ở Hà Nội có thể rất nóng thưa anh.",
         "displaySentence": "_______ in Hanoi can be very hot, Sir.",
         "targetWord": "Summer",
-        "hint": "💡 Gợi ý: Từ gồm 6 ký tự chỉ Mùa hè."
+        "hint": "💡 Gợi ý: Từ gồm 6 ký tự."
 },
     {
         "lesson": "2",
@@ -1704,7 +1704,7 @@ window.masterQuizData.push(
         "translation": "Mùa thu là mùa chơi golf tuyệt nhất ở đây thưa anh.",
         "displaySentence": "_______ is the best season for golf here, Sir.",
         "targetWord": "Autumn",
-        "hint": "💡 Gợi ý: Từ gồm 6 ký tự chỉ Mùa thu."
+        "hint": "💡 Gợi ý: Từ gồm 6 ký tự."
 },
     {
         "lesson": "2",
@@ -1716,7 +1716,7 @@ window.masterQuizData.push(
         "translation": "Mùa đông ở Hà Nội lạnh, anh có áo khoác không ạ?",
         "displaySentence": "_______ in Hanoi is cold, do you have a jacket, Sir?",
         "targetWord": "Winter",
-        "hint": "💡 Gợi ý: Từ gồm 6 ký tự chỉ Mùa đông."
+        "hint": "💡 Gợi ý: Từ gồm 6 ký tự."
 },
     {
         "lesson": "2",
@@ -1728,7 +1728,7 @@ window.masterQuizData.push(
         "translation": "Chúng ta đỗ xe điện trong bóng râm thưa anh.",
         "displaySentence": "Let's park the golf cart in the _______, Sir.",
         "targetWord": "shade",
-        "hint": "💡 Gợi ý: Từ gồm 5 ký tự chỉ bóng râm bóng mát."
+        "hint": "💡 Gợi ý: Từ gồm 5 ký tự."
 },
     {
         "lesson": "2",
@@ -1740,7 +1740,7 @@ window.masterQuizData.push(
         "translation": "Hôm nay nhiệt độ là 35 độ C thưa anh.",
         "displaySentence": "It is thirty-five degrees _______ today, Sir.",
         "targetWord": "Celsius",
-        "hint": "💡 Gợi ý: Từ chỉ đơn vị đo nhiệt độ Độ C trong tiếng Anh."
+        "hint": "💡 Gợi ý: Từ gồm 7 ký tự."
 },
     {
         "lesson": "2",
@@ -1752,7 +1752,7 @@ window.masterQuizData.push(
         "translation": "Anh có kiểm tra dự báo thời tiết hôm nay không ạ?",
         "displaySentence": "Did you check the weather _______ today, Sir?",
         "targetWord": "forecast",
-        "hint": "💡 Gợi ý: Từ gồm 8 ký tự nghĩa là sự dự báo."
+        "hint": "💡 Gợi ý: Từ gồm 8 ký tự."
 },
     {
         "lesson": "2",
@@ -1764,7 +1764,7 @@ window.masterQuizData.push(
         "translation": "Mặt green khá ướt vì trời mưa thưa anh.",
         "displaySentence": "The green is _______ because of the rain, Sir.",
         "targetWord": "wet",
-        "hint": "💡 Gợi ý: Từ gồm 3 ký tự nghĩa là ẩm ướt."
+        "hint": "💡 Gợi ý: Từ gồm 3 ký tự."
 },
     {
         "lesson": "2",
@@ -1776,7 +1776,7 @@ window.masterQuizData.push(
         "translation": "Các mặt green lăn chậm hơn vào mùa đông thưa anh.",
         "displaySentence": "The greens roll _______ in winter, Sir.",
         "targetWord": "slower",
-        "hint": "💡 Gợi ý: Từ gồm 6 ký tự nghĩa là chậm hơn."
+        "hint": "💡 Gợi ý: Từ gồm 6 ký tự."
 },
     {
         "lesson": "2",
@@ -1788,7 +1788,7 @@ window.masterQuizData.push(
         "translation": "Xin anh uống nước lạnh để tránh nóng ạ.",
         "displaySentence": "Please drink cold water to beat the _______, Sir.",
         "targetWord": "heat",
-        "hint": "💡 Gợi ý: Từ gồm 4 ký tự chỉ sức nóng / cái nóng."
+        "hint": "💡 Gợi ý: Từ gồm 4 ký tự."
 },
     {
         "lesson": "2",
@@ -1934,7 +1934,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.3",
         "type": "mcq",
-        "title": "[2.3 Đóng vai 1] Tình huống: Khách than phiền: 'It is burning hot today! I feel so tired.' Caddy đáp lại chuẩn nhất:",
+        "title": "[2.3 Đóng vai 1] Tình huống: Khách than phiền nắng nóng và mệt mỏi, Caddy đáp lại như thế nào?",
         "audioText": "Yes, Sir. It is very hot today in Summer. Please drink more water, Sir! I have cold towels here for you.",
         "phonetic": "/jes sɜːr. ɪt ɪz ˈver.i hɑːt təˈdeɪ ɪn ˈsʌm.ər. pliːz drɪŋk mɔːr ˈwɔː.tər sɜːr! aɪ hæv koʊld ˈtaʊ.əlz hɪər fɔːr juː/",
         "translation": "Vâng thưa anh. Mùa hè trời rất nóng ạ. Xin anh uống thêm nước! Em có chuẩn bị khăn lạnh ở đây cho anh rồi ạ.",
@@ -1962,7 +1962,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.3",
         "type": "mcq",
-        "title": "[2.3 Đóng vai 2] Tình huống: Đột ngột mưa lớn, Golfer lo lắng hỏi: 'Do you think we should stop playing?', Caddy khéo léo trấn an:",
+        "title": "[2.3 Đóng vai 2] Tình huống: Đột ngột mưa lớn, Golfer lo lắng hỏi có nên dừng chơi không, Caddy khéo léo trấn an:",
         "audioText": "Don't worry, Sir. The rain might stop in ten minutes. Let's wait under the kiosk for a moment.",
         "phonetic": "/doʊnt ˈwɜːr.i sɜːr. ðə reɪn maɪt stɑːp ɪn ten ˈmɪn.ɪts. lets weɪt ˈʌn.dər ðə ˈkiː.ɑːsk fɔːr ə ˈmoʊ.mənt/",
         "translation": "Anh đừng lo ạ. Cơn mưa có thể tạnh sau 10 phút nữa. Chúng ta hãy tạm trú dưới nhà chòi một lát ạ.",
@@ -1990,7 +1990,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.3",
         "type": "mcq",
-        "title": "[2.3 Đóng vai 3] Tình huống: Sương mù quá dày không thấy fairway, Golfer bảo: 'I cannot see the fairway.' Caddy hỗ trợ chuyên nghiệp:",
+        "title": "[2.3 Đóng vai 3] Tình huống: Sương mù quá dày không thấy fairway, Caddy hỗ trợ chuyên nghiệp như thế nào?",
         "audioText": "The target is on the left side, Sir. I will walk ahead to spot the ball for you.",
         "phonetic": "/ðə ˈtɑːr.ɡɪt ɪz ɑːn ðə left saɪd, sɜːr. aɪ wɪl wɔːk əˈhed tə spɑːt ðə bɔːl fɔːr juː/",
         "translation": "Mục tiêu nằm ở phía bên trái thưa anh. Em sẽ đi trước lên phía trước để canh bóng cho anh ạ.",
@@ -2018,7 +2018,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.3",
         "type": "mcq",
-        "title": "[2.3 Đóng vai 4] Tình huống: Golfer hỏi dự báo chiều nay: 'Do you think it will rain this afternoon?', Caddy check radar báo 50% mưa sau 2 PM:",
+        "title": "[2.3 Đóng vai 4] Tình huống: Khi Golfer hỏi về khả năng mưa vào chiều nay, Caddy trả lời như thế nào?",
         "audioText": "I checked the radar, Sir. There is a fifty percent chance of rain after 2 PM.",
         "phonetic": "/aɪ tʃekt ðə ˈreɪ.dɑːr, sɜːr. ðer ɪz ə ˈfɪf.ti pərˈsent tʃæns əv reɪn ˈæf.tər tuː piːˈem/",
         "translation": "Em đã kiểm tra ra-đa thời tiết thưa anh. Có 50% khả năng sẽ có mưa sau 2 giờ chiều ạ.",
@@ -2046,7 +2046,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.3",
         "type": "mcq",
-        "title": "[2.3 Đóng vai 5] Tình huống: Golfer hỏi gió trưa nay: 'Is it going to be windy today?', Caddy trả lời gió sẽ mạnh lên lúc giữa trưa:",
+        "title": "[2.3 Đóng vai 5] Tình huống: Khi Golfer hỏi về tình hình gió trưa nay, Caddy trả lời gió sẽ mạnh lên như thế nào?",
         "audioText": "Yes, Sir. The weather report says the wind will get stronger around noon.",
         "phonetic": "/jes sɜːr. ðə ˈweð.ər rɪˈpɔːrt sez ðə wɪnd wɪl ɡet ˈstrɑːŋ.ɡər əˈraʊnd nuːn/",
         "translation": "Vâng thưa anh. Báo cáo thời tiết nói rằng gió sẽ mạnh lên vào khoảng giữa trưa ạ.",
@@ -2074,7 +2074,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.3",
         "type": "mcq",
-        "title": "[2.3 Đóng vai 6] Tình huống: Golfer hỏi vị trí chai nước mát trên xe golf: 'Where is my cold water, caddy?', Caddy trả lời chu đáo:",
+        "title": "[2.3 Đóng vai 6] Tình huống: Khi Golfer hỏi vị trí chai nước mát, Caddy trả lời chu đáo như thế nào?",
         "audioText": "I put two bottles of cold water in the cooler box for you, Sir.",
         "phonetic": "/aɪ pʊt tuː ˈbɑː.t̬əlz əv koʊld ˈwɔː.tər ɪn ðə ˈkuː.lər bɑːks fɔːr juː, sɜːr/",
         "translation": "Em đã để sẵn 2 chai nước lạnh trong thùng đá cho anh rồi ạ.",
@@ -2130,7 +2130,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.3",
         "type": "mcq",
-        "title": "[2.3 Tình huống] Khi gió thổi từ trái sang phải (crosswind from left to right), Caddy tư vấn hướng ngắm đánh thế nào?",
+        "title": "[2.3 Tình huống] Khi gió thổi từ trái sang phải, Caddy tư vấn hướng ngắm đánh thế nào?",
         "audioText": "It's crosswind from left to right, Sir. Please aim to the left to compensate.",
         "phonetic": "/ɪts ˈkrɑːs.wɪnd frəm left tə raɪt, sɜːr. pliːz eɪm tə ðə left tə ˈkɑːm.pən.seɪt/",
         "translation": "Gió thổi từ trái sang phải thưa anh. Xin ngắm lệch sang trái để bù đường gió ạ.",
@@ -2158,7 +2158,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.3",
         "type": "mcq",
-        "title": "[2.3 Tình huống] Khi khách hỏi về nhiệt độ nóng bức mùa hè, Caddy nhắc nhở khách chu đáo:",
+        "title": "[2.3 Tình huống] Khi thời tiết nắng nóng mùa hè, Caddy nhắc nhở khách uống nước chu đáo:",
         "audioText": "It is thirty-five degrees Celsius, Sir. Please drink water after every hole.",
         "phonetic": "/ɪt ɪz ˈθɜːr.ti faɪv dɪˈɡriːz ˈsel.si.əs, sɜːr. pliːz drɪŋk ˈwɔː.tər ˈæf.tər ˈev.ri hoʊl/",
         "translation": "Nhiệt độ là 35 độ C thưa anh. Xin anh nhớ uống nước sau mỗi hố gôn ạ.",
@@ -2326,7 +2326,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.3",
         "type": "mcq",
-        "title": "[2.3 Tình huống] Khi khách khen ngợi Caddy phục vụ chu đáo dù thời tiết khắc nghiệt: 'Great job staying attentive in this weather, caddy!', Caddy đáp lại tôn trọng:",
+        "title": "[2.3 Tình huống] Khi khách khen ngợi Caddy phục vụ chu đáo dù thời tiết khắc nghiệt, Caddy đáp lại tôn trọng:",
         "audioText": "Thank you so much, Sir! It is my pleasure to assist you.",
         "phonetic": "/θæŋk juː soʊ mʌtʃ, sɜːr! ɪt ɪz maɪ ˈpleʒ.ər tə əˈsɪst juː/",
         "translation": "Cảm ơn anh rất nhiều ạ! Rất hân hạnh được hỗ trợ anh ạ.",
@@ -2382,7 +2382,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.3",
         "type": "mcq",
-        "title": "[2.3 Tình huống] Khi khách hỏi độ nảy của bóng trên green mùa đông lạnh khô: 'How will the ball react on this green?', Caddy giải thích:",
+        "title": "[2.3 Tình huống] Khi khách hỏi độ nảy của bóng trên green mùa đông lạnh khô, Caddy giải thích:",
         "audioText": "The green is firm and dry today, Sir. The ball will roll faster and bounce more.",
         "phonetic": "/ðə ɡriːn ɪz fɜːrm ænd draɪ təˈdeɪ, sɜːr. ðə bɔːl wɪl roʊl ˈfæst.ər ænd baʊns mɔːr/",
         "translation": "Green hôm nay khô và cứng thưa anh. Bóng sẽ lăn nhanh hơn và nảy nhiều hơn ạ.",
@@ -2578,7 +2578,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.3",
         "type": "mcq",
-        "title": "[2.3 Tình huống] Khi mặt trời lặn buổi chiều muộn kết hợp sương mù, Caddy nhắc khách di chuyển an toàn:",
+        "title": "[2.3 Tình huống] Khi trời tối dần và nhiều sương mù, Caddy nhắc khách di chuyển an toàn như thế nào?",
         "audioText": "It is getting dark and foggy, Sir. Let's drive the cart carefully.",
         "phonetic": "/ɪt ɪz ˈɡet.ɪŋ dɑːrk ænd ˈfɑː.ɡi, sɜːr. lets draɪv ðə kɑːrt ˈker.fə.li/",
         "translation": "Trời đang tối dần và nhiều sương mù thưa anh. Lái xe cẩn thận nhé ạ.",
@@ -2640,7 +2640,7 @@ window.masterQuizData.push(
         "translation": "Em sẽ đi trước lên phía trước để canh bóng cho anh ạ.",
         "displaySentence": "I will walk ahead to _______ the ball for you, Sir.",
         "targetWord": "spot",
-        "hint": "💡 Gợi ý: Từ gồm 4 ký tự nghĩa là quan sát / canh điểm rơi bóng."
+        "hint": "💡 Gợi ý: Từ gồm 4 ký tự."
 },
     {
         "lesson": "2",
@@ -2652,7 +2652,7 @@ window.masterQuizData.push(
         "translation": "Em sẽ bọc túi gậy của anh lại để che mưa ạ.",
         "displaySentence": "I will _______ your golf bag to protect it from rain, Sir.",
         "targetWord": "cover",
-        "hint": "💡 Gợi ý: Từ gồm 5 ký tự nghĩa là bọc / che phủ."
+        "hint": "💡 Gợi ý: Từ gồm 5 ký tự."
 },
     {
         "lesson": "2",
@@ -2664,7 +2664,7 @@ window.masterQuizData.push(
         "translation": "Các chai nước lạnh ở bên trong thùng đá thưa anh.",
         "displaySentence": "Cold water bottles are inside the _______ box, Sir.",
         "targetWord": "cooler",
-        "hint": "💡 Gợi ý: Từ gồm 6 ký tự chỉ thùng giữ nhiệt / thùng đá."
+        "hint": "💡 Gợi ý: Từ gồm 6 ký tự."
 },
     {
         "lesson": "2",
@@ -2676,7 +2676,7 @@ window.masterQuizData.push(
         "translation": "Chúng ta hãy đợi dưới nhà chòi cho đến khi tạnh mưa thưa anh.",
         "displaySentence": "Let's wait under the _______ until the rain stops, Sir.",
         "targetWord": "kiosk",
-        "hint": "💡 Gợi ý: Từ gồm 5 ký tự chỉ nhà chòi dừng chân trên sân."
+        "hint": "💡 Gợi ý: Từ gồm 5 ký tự."
 },
     {
         "lesson": "2",
@@ -2688,7 +2688,7 @@ window.masterQuizData.push(
         "translation": "Gió thổi từ bên trái, xin ngắm sang bên phải thưa anh.",
         "displaySentence": "The wind is blowing from the left, please aim to the _______, Sir.",
         "targetWord": "right",
-        "hint": "💡 Gợi ý: Từ gồm 5 ký tự chỉ hướng bên phải."
+        "hint": "💡 Gợi ý: Từ gồm 5 ký tự."
 },
     {
         "lesson": "2",
@@ -2700,7 +2700,7 @@ window.masterQuizData.push(
         "translation": "Đừng lo về cú đánh vừa rồi, hãy tập trung vào cú này thưa anh.",
         "displaySentence": "Don't worry about the last shot, _______ on this one, Sir.",
         "targetWord": "focus",
-        "hint": "💡 Gợi ý: Từ gồm 5 ký tự nghĩa là tập trung."
+        "hint": "💡 Gợi ý: Từ gồm 5 ký tự."
 },
     {
         "lesson": "2",
@@ -2712,7 +2712,7 @@ window.masterQuizData.push(
         "translation": "Anh có muốn lấy tăng thêm 1 gậy để bù gió ngược không ạ?",
         "displaySentence": "Would you like to _______ a club to compensate for the headwind, Sir?",
         "targetWord": "add",
-        "hint": "💡 Gợi ý: Từ gồm 3 ký tự nghĩa là thêm vào / lấy tăng."
+        "hint": "💡 Gợi ý: Từ gồm 3 ký tự."
 },
     {
         "lesson": "2",
@@ -2724,7 +2724,7 @@ window.masterQuizData.push(
         "translation": "Xin hãy cho em biết nếu anh cần nghỉ ngơi nhé ạ.",
         "displaySentence": "Please let me know if you need to _______, Sir.",
         "targetWord": "rest",
-        "hint": "💡 Gợi ý: Từ gồm 4 ký tự nghĩa là nghỉ ngơi."
+        "hint": "💡 Gợi ý: Từ gồm 4 ký tự."
 },
     {
         "lesson": "2",
@@ -2736,7 +2736,7 @@ window.masterQuizData.push(
         "translation": "Cơn mưa rào có thể sẽ tạnh sau 10 phút nữa thưa anh.",
         "displaySentence": "The rain shower might stop in _______ minutes, Sir.",
         "targetWord": "ten",
-        "hint": "💡 Gợi ý: Từ chỉ số 10 trong tiếng Anh."
+        "hint": "💡 Gợi ý: Từ gồm 3 ký tự."
 },
     {
         "lesson": "2",
@@ -2748,7 +2748,7 @@ window.masterQuizData.push(
         "translation": "Chúc anh có một trận đấu tuyệt vời hôm nay ạ!",
         "displaySentence": "Have a _______ game today, Sir!",
         "targetWord": "great",
-        "hint": "💡 Gợi ý: Từ gồm 5 ký tự nghĩa là tuyệt vời."
+        "hint": "💡 Gợi ý: Từ gồm 5 ký tự."
 },
     {
         "lesson": "2",
