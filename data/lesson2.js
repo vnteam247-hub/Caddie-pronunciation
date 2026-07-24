@@ -322,7 +322,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.1",
         "type": "mcq",
-        "title": "[2.1 Tư vấn gậy] Khi trời có gió ngược (headwind), Caddie nên tư vấn chọn gậy thế nào cho khách?",
+        "title": "[2.1 Tư vấn gậy] Khi trời có gió ngược (headwind), Caddy nên tư vấn chọn gậy thế nào cho khách?",
         "audioText": "It is headwind, Sir. Would you like to add a club?",
         "phonetic": "/ɪt ɪz ˈhed.wɪnd, sɜːr. wʊd juː laɪk tə æd ə klʌb/",
         "translation": "Gió ngược thưa anh. Anh có muốn lấy tăng thêm 1 gậy không ạ?",
@@ -581,7 +581,7 @@ window.masterQuizData.push(
         "options": [
                 {
                         "en": "A. Tiến lại gần phía sau hoặc bên cạnh, trao bằng 2 tay kèm nụ cười",
-                        "vi": "Đúng quy chuẩn Caddie"
+                        "vi": "Đúng quy chuẩn Caddy"
                 },
                 {
                         "en": "B. Đứng chính diện ngay trước mặt khách",
@@ -720,7 +720,7 @@ window.masterQuizData.push(
         "translation": "Xin anh lưu ý uống đủ nước trong suốt vòng chơi ạ.",
         "displaySentence": "Please stay _______ during the round, Sir.",
         "targetWord": "hydrated",
-        "hint": "💡 Gợi ý: Từ chỉ sự giữ đủ nước cho cơ thể."
+        "hint": "💡 Gợi ý: Từ gồm 8 ký tự chỉ việc giữ đủ nước cho cơ thể."
 },
     {
         "lesson": "2",
@@ -732,7 +732,7 @@ window.masterQuizData.push(
         "translation": "Hôm nay trời hơi nhiều gió thưa anh.",
         "displaySentence": "It is a bit _______ today, Sir.",
         "targetWord": "windy",
-        "hint": "💡 Gợi ý: Từ gồm 5 ký tự chỉ trời nhiều gió."
+        "hint": "💡 Gợi ý: Từ gồm 5 ký tự chỉ thời tiết nhiều gió."
 },
     {
         "lesson": "2",
@@ -744,7 +744,7 @@ window.masterQuizData.push(
         "translation": "Xin anh vui lòng thoa thêm kem chống nắng ạ.",
         "displaySentence": "Please put on some _______, Sir.",
         "targetWord": "sunscreen",
-        "hint": "💡 Gợi ý: Từ chỉ kem chống nắng (sunscreen/sunblock)."
+        "hint": "💡 Gợi ý: Từ gồm 9 ký tự chỉ kem chống nắng."
 },
     {
         "lesson": "2",
@@ -768,7 +768,7 @@ window.masterQuizData.push(
         "translation": "Anh có muốn dùng ô không ạ?",
         "displaySentence": "Would you like an _______, Sir?",
         "targetWord": "umbrella",
-        "hint": "💡 Gợi ý: Từ chỉ chiếc ô / cây dù."
+        "hint": "💡 Gợi ý: Từ gồm 8 ký tự chỉ chiếc ô/dù che."
 },
     {
         "lesson": "2",
@@ -792,7 +792,7 @@ window.masterQuizData.push(
         "translation": "Cỏ vẫn còn ướt do sương buổi sáng thưa anh.",
         "displaySentence": "The grass is wet with morning _______, Sir.",
         "targetWord": "dew",
-        "hint": "💡 Gợi ý: Từ gồm 3 ký tự nghĩa là hạt sương / sương mù."
+        "hint": "💡 Gợi ý: Từ gồm 3 ký tự nghĩa là giọt sương buổi sáng."
 },
     {
         "lesson": "2",
@@ -804,7 +804,7 @@ window.masterQuizData.push(
         "translation": "Uống chút nước lạnh cho đỡ nóng thưa anh.",
         "displaySentence": "Let's drink some cold water to _______ the heat, Sir.",
         "targetWord": "beat",
-        "hint": "💡 Gợi ý: Từ trong cụm 'beat the heat' (giải nhiệt)."
+        "hint": "💡 Gợi ý: Từ gồm 4 ký tự trong cụm giải nhiệt tránh nóng."
 },
     {
         "lesson": "2",
@@ -834,7 +834,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.1",
         "type": "mcq",
-        "title": "[2.1 Quy tắc 3 Nhìn] Trong quy tắc '3 Nhìn' của Caddie, bước 'Nhìn thời tiết' bao gồm hành động nào?",
+        "title": "[2.1 Quy tắc 3 Nhìn] Trong quy tắc '3 Nhìn' của Caddy, bước 'Nhìn thời tiết' bao gồm hành động nào?",
         "audioText": "Observe weather: Sunny prepared umbrella/water; Rainy prepared raincoat/towels.",
         "phonetic": "/əbˈzɜːrv ˈweð.ər/",
         "translation": "Quan sát thời tiết để chuẩn bị trang thiết bị phục vụ chu đáo.",
@@ -862,7 +862,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.1",
         "type": "mcq",
-        "title": "[2.1 Quy trình] Trình tự 4 bước tiếp cận phục vụ khách chuẩn mực theo thời tiết của Caddie:",
+        "title": "[2.1 Quy trình] Trình tự 4 bước tiếp cận phục vụ khách chuẩn mực theo thời tiết của Caddy:",
         "audioText": "Observe -> Approach -> Suggest -> Execute.",
         "phonetic": "/əbˈzɜːrv əˈproʊtʃ səˈdʒest ˈek.sə.kjuːt/",
         "translation": "Quan sát -> Tiếp cận -> Đề xuất -> Thực hiện.",
@@ -890,7 +890,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.1",
         "type": "mcq",
-        "title": "[2.1 An toàn] Khi có tiếng còi cảnh báo sấm sét (Lightning alarm) trên sân, Caddie phải xử lý thế nào?",
+        "title": "[2.1 An toàn] Khi có tiếng còi cảnh báo sấm sét (Lightning alarm) trên sân, Caddy phải xử lý thế nào?",
         "audioText": "Stop play immediately and guide golfers to the nearest shelter or clubhouse.",
         "phonetic": "/stɑːp pleɪ ɪˈmiː.di.ət.li/",
         "translation": "Dừng chơi ngay lập tức và hướng dẫn khách trú ẩn an toàn.",
@@ -946,7 +946,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.1",
         "type": "mcq",
-        "title": "[2.1 Tình huống] Khi khách đổ mồ hôi nhiều vì trời nóng, Caddie đưa khăn lạnh chủ động kèm câu nói gì?",
+        "title": "[2.1 Tình huống] Khi khách đổ mồ hôi nhiều vì trời nóng, Caddy đưa khăn lạnh chủ động kèm câu nói gì?",
         "audioText": "Here is a cold towel for you, Sir. That will help you feel refreshed.",
         "phonetic": "/hɪər ɪz ə koʊld ˈtaʊ.əl fɔːr juː, sɜːr/",
         "translation": "Gửi anh khăn lạnh ạ. Dùng khăn sẽ giúp anh sảng khoái hơn ạ.",
@@ -1198,7 +1198,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.2",
         "type": "mcq",
-        "title": "[2.2 Tình huống] Khi khách hỏi khi nào sương mù sáng mùa đông/xuân tan: 'When will this thick fog clear up, caddie?', Caddy trả lời chuẩn:",
+        "title": "[2.2 Tình huống] Khi khách hỏi khi nào sương mù sáng mùa đông/xuân tan: 'When will this thick fog clear up, caddy?', Caddy trả lời chuẩn:",
         "audioText": "Usually, the fog will clear up when the sun comes out, around 9 AM, Sir.",
         "phonetic": "/ˈjuː.ʒu.ə.li, ðə fɑːɡ wɪl klɪər ʌp wen ðə sʌn kʌmz aʊt, əˈraʊnd naɪn eɪˈem, sɜːr/",
         "translation": "Thông thường sương mù sẽ tan khi mặt trời lên, khoảng 9 giờ sáng thưa anh.",
@@ -1226,7 +1226,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.2",
         "type": "mcq",
-        "title": "[2.2 Đặc điểm sân] Vào mùa hè nóng bức, Caddie nên chuẩn bị đồ dùng gì sẵn trong cooler box trên xe golf?",
+        "title": "[2.2 Đặc điểm sân] Vào mùa hè nóng bức, Caddy nên chuẩn bị đồ dùng gì sẵn trong cooler box trên xe golf?",
         "audioText": "Cold water bottles and cold towels.",
         "phonetic": "/koʊld ˈwɔː.tər ˈbɑː.t̬əlz ænd koʊld ˈtaʊ.əlz/",
         "translation": "Các chai nước lạnh và khăn lạnh giải nhiệt.",
@@ -1680,7 +1680,7 @@ window.masterQuizData.push(
         "translation": "Mùa xuân là mùa đáng yêu với làn gió ấm áp thưa anh.",
         "displaySentence": "_______ is a lovely season with warm breeze, Sir.",
         "targetWord": "Spring",
-        "hint": "💡 Gợi ý: Từ chỉ Mùa xuân trong tiếng Anh."
+        "hint": "💡 Gợi ý: Từ gồm 6 ký tự chỉ Mùa xuân."
 },
     {
         "lesson": "2",
@@ -1692,7 +1692,7 @@ window.masterQuizData.push(
         "translation": "Mùa hè ở Hà Nội có thể rất nóng thưa anh.",
         "displaySentence": "_______ in Hanoi can be very hot, Sir.",
         "targetWord": "Summer",
-        "hint": "💡 Gợi ý: Từ chỉ Mùa hè trong tiếng Anh."
+        "hint": "💡 Gợi ý: Từ gồm 6 ký tự chỉ Mùa hè."
 },
     {
         "lesson": "2",
@@ -1704,7 +1704,7 @@ window.masterQuizData.push(
         "translation": "Mùa thu là mùa chơi golf tuyệt nhất ở đây thưa anh.",
         "displaySentence": "_______ is the best season for golf here, Sir.",
         "targetWord": "Autumn",
-        "hint": "💡 Gợi ý: Từ chỉ Mùa thu (Autumn/Fall)."
+        "hint": "💡 Gợi ý: Từ gồm 6 ký tự chỉ Mùa thu."
 },
     {
         "lesson": "2",
@@ -1716,7 +1716,7 @@ window.masterQuizData.push(
         "translation": "Mùa đông ở Hà Nội lạnh, anh có áo khoác không ạ?",
         "displaySentence": "_______ in Hanoi is cold, do you have a jacket, Sir?",
         "targetWord": "Winter",
-        "hint": "💡 Gợi ý: Từ chỉ Mùa đông trong tiếng Anh."
+        "hint": "💡 Gợi ý: Từ gồm 6 ký tự chỉ Mùa đông."
 },
     {
         "lesson": "2",
@@ -1740,7 +1740,7 @@ window.masterQuizData.push(
         "translation": "Hôm nay nhiệt độ là 35 độ C thưa anh.",
         "displaySentence": "It is thirty-five degrees _______ today, Sir.",
         "targetWord": "Celsius",
-        "hint": "💡 Gợi ý: Từ chỉ đơn vị đo nhiệt độ Độ C."
+        "hint": "💡 Gợi ý: Từ chỉ đơn vị đo nhiệt độ Độ C trong tiếng Anh."
 },
     {
         "lesson": "2",
@@ -1752,7 +1752,7 @@ window.masterQuizData.push(
         "translation": "Anh có kiểm tra dự báo thời tiết hôm nay không ạ?",
         "displaySentence": "Did you check the weather _______ today, Sir?",
         "targetWord": "forecast",
-        "hint": "💡 Gợi ý: Từ chỉ sự dự báo (forecast)."
+        "hint": "💡 Gợi ý: Từ gồm 8 ký tự nghĩa là sự dự báo."
 },
     {
         "lesson": "2",
@@ -1776,7 +1776,7 @@ window.masterQuizData.push(
         "translation": "Các mặt green lăn chậm hơn vào mùa đông thưa anh.",
         "displaySentence": "The greens roll _______ in winter, Sir.",
         "targetWord": "slower",
-        "hint": "💡 Gợi ý: Từ chỉ tốc độ chậm hơn (slower)."
+        "hint": "💡 Gợi ý: Từ gồm 6 ký tự nghĩa là chậm hơn."
 },
     {
         "lesson": "2",
@@ -1794,7 +1794,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.2",
         "type": "mcq",
-        "title": "[2.2 Phục vụ mùa hè] Khi golfer mệt mỏi vì đi bộ dưới nắng hè 38 độ C, Caddie nên ưu tiên xử lý thế nào?",
+        "title": "[2.2 Phục vụ mùa hè] Khi golfer mệt mỏi vì đi bộ dưới nắng hè 38 độ C, Caddy nên ưu tiên xử lý thế nào?",
         "audioText": "Offer cold towel, cold water, and suggest a brief rest at the nearest kiosk.",
         "phonetic": "/ˈɑː.fər koʊld ˈtaʊ.əl/",
         "translation": "Chủ động mời khăn lạnh, nước mát và đề xuất nghỉ ngơi tại chòi kiosk.",
@@ -1822,7 +1822,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.2",
         "type": "mcq",
-        "title": "[2.2 Phục vụ mùa đông] Mùa đông sương mù dày đặc làm mất dấu bóng, hành động chuyên nghiệp nhất của Caddie là gì?",
+        "title": "[2.2 Phục vụ mùa đông] Mùa đông sương mù dày đặc làm mất dấu bóng, hành động chuyên nghiệp nhất của Caddy là gì?",
         "audioText": "Inform target direction clearly and walk ahead to spot the ball position.",
         "phonetic": "/wɔːk əˈhed tə spɑːt ðə bɔːl/",
         "translation": "Thông báo hướng đánh và chủ động lên phía trước canh điểm rơi bóng.",
@@ -1850,7 +1850,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.2",
         "type": "mcq",
-        "title": "[2.2 Phục vụ mùa mưa] Khi bất ngờ xuất hiện cơn mưa rào mùa hè (Rain shower), trình tự xử lý túi gậy của Caddie:",
+        "title": "[2.2 Phục vụ mùa mưa] Khi bất ngờ xuất hiện cơn mưa rào mùa hè (Rain shower), trình tự xử lý túi gậy của Caddy:",
         "audioText": "Cover the golf bag with rain hood immediately, then hold umbrella for golfer.",
         "phonetic": "/ˈkʌv.ər ðə bæɡ ɪˈmiː.di.ət.li/",
         "translation": "Trùm nắp che mưa (rain hood) bảo vệ túi gậy ngay lập tức, sau đó giương ô cho khách.",
@@ -1878,7 +1878,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.2",
         "type": "mcq",
-        "title": "[2.2 Quy tắc dịch vụ] Theo quy định dịch vụ Caddie, Caddie có được tự ý mở túi đồ cá nhân của khách để lấy kem chống nắng không?",
+        "title": "[2.2 Quy tắc dịch vụ] Theo quy định dịch vụ Caddy, Caddy có được tự ý mở túi đồ cá nhân của khách để lấy kem chống nắng không?",
         "audioText": "No. Never open golfer's personal bag without explicit permission.",
         "phonetic": "/noʊ. ˈnev.ər ˈoʊ.pən ˈpɜːr.sən.əl bæɡ/",
         "translation": "Không. Tuyệt đối không tự ý mở túi cá nhân của khách nếu chưa được cho phép.",
@@ -1906,7 +1906,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.2",
         "type": "mcq",
-        "title": "[2.2 Tiêu chuẩn Caddie] Mục đích tối cao của Caddie khi chăm sóc khách theo các mùa và thời tiết là gì?",
+        "title": "[2.2 Tiêu chuẩn Caddy] Mục đích tối cao của Caddy khi chăm sóc khách theo các mùa và thời tiết là gì?",
         "audioText": "Ensuring golfer's safety, comfort, and exceptional playing experience.",
         "phonetic": "/ɪnˈʃʊr.ɪŋ ˈseɪf.ti, ˈkʌm.fərt/",
         "translation": "Đảm bảo an toàn, sự thoải mái và trải nghiệm chơi bóng tuyệt vời nhất cho khách.",
@@ -1934,7 +1934,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.3",
         "type": "mcq",
-        "title": "[2.3 Đóng vai 1] Tình huống: Khách than phiền: 'It is burning hot today! I feel so tired.' Caddie đáp lại chuẩn nhất:",
+        "title": "[2.3 Đóng vai 1] Tình huống: Khách than phiền: 'It is burning hot today! I feel so tired.' Caddy đáp lại chuẩn nhất:",
         "audioText": "Yes, Sir. It is very hot today in Summer. Please drink more water, Sir! I have cold towels here for you.",
         "phonetic": "/jes sɜːr. ɪt ɪz ˈver.i hɑːt təˈdeɪ ɪn ˈsʌm.ər. pliːz drɪŋk mɔːr ˈwɔː.tər sɜːr! aɪ hæv koʊld ˈtaʊ.əlz hɪər fɔːr juː/",
         "translation": "Vâng thưa anh. Mùa hè trời rất nóng ạ. Xin anh uống thêm nước! Em có chuẩn bị khăn lạnh ở đây cho anh rồi ạ.",
@@ -1962,7 +1962,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.3",
         "type": "mcq",
-        "title": "[2.3 Đóng vai 2] Tình huống: Đột ngột mưa lớn, Golfer lo lắng hỏi: 'Do you think we should stop playing?', Caddie khéo léo trấn an:",
+        "title": "[2.3 Đóng vai 2] Tình huống: Đột ngột mưa lớn, Golfer lo lắng hỏi: 'Do you think we should stop playing?', Caddy khéo léo trấn an:",
         "audioText": "Don't worry, Sir. The rain might stop in ten minutes. Let's wait under the kiosk for a moment.",
         "phonetic": "/doʊnt ˈwɜːr.i sɜːr. ðə reɪn maɪt stɑːp ɪn ten ˈmɪn.ɪts. lets weɪt ˈʌn.dər ðə ˈkiː.ɑːsk fɔːr ə ˈmoʊ.mənt/",
         "translation": "Anh đừng lo ạ. Cơn mưa có thể tạnh sau 10 phút nữa. Chúng ta hãy tạm trú dưới nhà chòi một lát ạ.",
@@ -1990,7 +1990,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.3",
         "type": "mcq",
-        "title": "[2.3 Đóng vai 3] Tình huống: Sương mù quá dày không thấy fairway, Golfer bảo: 'I cannot see the fairway.' Caddie hỗ trợ chuyên nghiệp:",
+        "title": "[2.3 Đóng vai 3] Tình huống: Sương mù quá dày không thấy fairway, Golfer bảo: 'I cannot see the fairway.' Caddy hỗ trợ chuyên nghiệp:",
         "audioText": "The target is on the left side, Sir. I will walk ahead to spot the ball for you.",
         "phonetic": "/ðə ˈtɑːr.ɡɪt ɪz ɑːn ðə left saɪd, sɜːr. aɪ wɪl wɔːk əˈhed tə spɑːt ðə bɔːl fɔːr juː/",
         "translation": "Mục tiêu nằm ở phía bên trái thưa anh. Em sẽ đi trước lên phía trước để canh bóng cho anh ạ.",
@@ -2018,7 +2018,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.3",
         "type": "mcq",
-        "title": "[2.3 Đóng vai 4] Tình huống: Golfer hỏi dự báo chiều nay: 'Do you think it will rain this afternoon?', Caddie check radar báo 50% mưa sau 2 PM:",
+        "title": "[2.3 Đóng vai 4] Tình huống: Golfer hỏi dự báo chiều nay: 'Do you think it will rain this afternoon?', Caddy check radar báo 50% mưa sau 2 PM:",
         "audioText": "I checked the radar, Sir. There is a fifty percent chance of rain after 2 PM.",
         "phonetic": "/aɪ tʃekt ðə ˈreɪ.dɑːr, sɜːr. ðer ɪz ə ˈfɪf.ti pərˈsent tʃæns əv reɪn ˈæf.tər tuː piːˈem/",
         "translation": "Em đã kiểm tra ra-đa thời tiết thưa anh. Có 50% khả năng sẽ có mưa sau 2 giờ chiều ạ.",
@@ -2046,7 +2046,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.3",
         "type": "mcq",
-        "title": "[2.3 Đóng vai 5] Tình huống: Golfer hỏi gió trưa nay: 'Is it going to be windy today?', Caddie trả lời gió sẽ mạnh lên lúc giữa trưa:",
+        "title": "[2.3 Đóng vai 5] Tình huống: Golfer hỏi gió trưa nay: 'Is it going to be windy today?', Caddy trả lời gió sẽ mạnh lên lúc giữa trưa:",
         "audioText": "Yes, Sir. The weather report says the wind will get stronger around noon.",
         "phonetic": "/jes sɜːr. ðə ˈweð.ər rɪˈpɔːrt sez ðə wɪnd wɪl ɡet ˈstrɑːŋ.ɡər əˈraʊnd nuːn/",
         "translation": "Vâng thưa anh. Báo cáo thời tiết nói rằng gió sẽ mạnh lên vào khoảng giữa trưa ạ.",
@@ -2074,7 +2074,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.3",
         "type": "mcq",
-        "title": "[2.3 Đóng vai 6] Tình huống: Golfer hỏi vị trí chai nước mát trên xe golf: 'Where is my cold water, caddie?', Caddie trả lời chu đáo:",
+        "title": "[2.3 Đóng vai 6] Tình huống: Golfer hỏi vị trí chai nước mát trên xe golf: 'Where is my cold water, caddy?', Caddy trả lời chu đáo:",
         "audioText": "I put two bottles of cold water in the cooler box for you, Sir.",
         "phonetic": "/aɪ pʊt tuː ˈbɑː.t̬əlz əv koʊld ˈwɔː.tər ɪn ðə ˈkuː.lər bɑːks fɔːr juː, sɜːr/",
         "translation": "Em đã để sẵn 2 chai nước lạnh trong thùng đá cho anh rồi ạ.",
@@ -2186,14 +2186,14 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.3",
         "type": "mcq",
-        "title": "[2.3 Tình huống] Khi che ô cho khách chuẩn bị vung gậy ở tee box, quy tắc an toàn Caddie phải nhớ là gì?",
+        "title": "[2.3 Tình huống] Khi che ô cho khách chuẩn bị vung gậy ở tee box, quy tắc an toàn Caddy phải nhớ là gì?",
         "audioText": "Always maintain a safe distance outside the golfer's swing path.",
         "phonetic": "/ˈɔːl.weɪz meɪnˈteɪn ə seɪf ˈdɪs.təns aʊtˈsaɪd ðə ˈɡɑːl.fərz swɪŋ pæθ/",
         "translation": "Luôn duy trì khoảng cách an toàn ngoài tầm vung gậy của golfer.",
         "options": [
                 {
                         "en": "A. Duy trì khoảng cách an toàn tuyệt đối ngoài tầm vung gậy swing",
-                        "vi": "An toàn Caddie"
+                        "vi": "An toàn Caddy"
                 },
                 {
                         "en": "B. Đứng sát phía sau lưng gậy",
@@ -2214,14 +2214,14 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.3",
         "type": "mcq",
-        "title": "[2.3 Tình huống] Khi khách chuẩn bị tập trung thực hiện cú gạt bóng (putt) trên Green, Caddie nên làm gì?",
+        "title": "[2.3 Tình huống] Khi khách chuẩn bị tập trung thực hiện cú gạt bóng (putt) trên Green, Caddy nên làm gì?",
         "audioText": "Keep silent, stand still outside the line of sight, and do not step on anyone's line.",
         "phonetic": "/kiːp ˈsaɪ.lənt, stænd stɪl/",
         "translation": "Giữ im lặng, đứng yên ngoài tầm nhìn và tuyệt đối không dẫm lên line gạt bóng.",
         "options": [
                 {
                         "en": "A. Giữ im lặng, đứng yên và không dẫm lên line gạt bóng của khách",
-                        "vi": "Tiêu chuẩn caddie chuyên nghiệp"
+                        "vi": "Tiêu chuẩn Caddy chuyên nghiệp"
                 },
                 {
                         "en": "B. Tiếp tục nói chuyện về thời tiết",
@@ -2326,7 +2326,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.3",
         "type": "mcq",
-        "title": "[2.3 Tình huống] Khi khách khen ngợi Caddy phục vụ chu đáo dù thời tiết khắc nghiệt: 'Great job staying attentive in this weather, Caddie!', Caddy đáp lại tôn trọng:",
+        "title": "[2.3 Tình huống] Khi khách khen ngợi Caddy phục vụ chu đáo dù thời tiết khắc nghiệt: 'Great job staying attentive in this weather, caddy!', Caddy đáp lại tôn trọng:",
         "audioText": "Thank you so much, Sir! It is my pleasure to assist you.",
         "phonetic": "/θæŋk juː soʊ mʌtʃ, sɜːr! ɪt ɪz maɪ ˈpleʒ.ər tə əˈsɪst juː/",
         "translation": "Cảm ơn anh rất nhiều ạ! Rất hân hạnh được hỗ trợ anh ạ.",
@@ -2640,7 +2640,7 @@ window.masterQuizData.push(
         "translation": "Em sẽ đi trước lên phía trước để canh bóng cho anh ạ.",
         "displaySentence": "I will walk ahead to _______ the ball for you, Sir.",
         "targetWord": "spot",
-        "hint": "💡 Gợi ý: Từ gồm 4 ký tự nghĩa là quan sát / canh điểm rơi (spot)."
+        "hint": "💡 Gợi ý: Từ gồm 4 ký tự nghĩa là quan sát / canh điểm rơi bóng."
 },
     {
         "lesson": "2",
@@ -2664,7 +2664,7 @@ window.masterQuizData.push(
         "translation": "Các chai nước lạnh ở bên trong thùng đá thưa anh.",
         "displaySentence": "Cold water bottles are inside the _______ box, Sir.",
         "targetWord": "cooler",
-        "hint": "💡 Gợi ý: Từ chỉ thùng giữ nhiệt / thùng đá (cooler)."
+        "hint": "💡 Gợi ý: Từ gồm 6 ký tự chỉ thùng giữ nhiệt / thùng đá."
 },
     {
         "lesson": "2",
@@ -2676,7 +2676,7 @@ window.masterQuizData.push(
         "translation": "Chúng ta hãy đợi dưới nhà chòi cho đến khi tạnh mưa thưa anh.",
         "displaySentence": "Let's wait under the _______ until the rain stops, Sir.",
         "targetWord": "kiosk",
-        "hint": "💡 Gợi ý: Từ chỉ nhà chòi dừng chân trên sân (kiosk)."
+        "hint": "💡 Gợi ý: Từ gồm 5 ký tự chỉ nhà chòi dừng chân trên sân."
 },
     {
         "lesson": "2",
@@ -2688,7 +2688,7 @@ window.masterQuizData.push(
         "translation": "Gió thổi từ bên trái, xin ngắm sang bên phải thưa anh.",
         "displaySentence": "The wind is blowing from the left, please aim to the _______, Sir.",
         "targetWord": "right",
-        "hint": "💡 Gợi ý: Từ chỉ bên phải (right)."
+        "hint": "💡 Gợi ý: Từ gồm 5 ký tự chỉ hướng bên phải."
 },
     {
         "lesson": "2",
@@ -2700,7 +2700,7 @@ window.masterQuizData.push(
         "translation": "Đừng lo về cú đánh vừa rồi, hãy tập trung vào cú này thưa anh.",
         "displaySentence": "Don't worry about the last shot, _______ on this one, Sir.",
         "targetWord": "focus",
-        "hint": "💡 Gợi ý: Từ gồm 5 ký tự nghĩa là tập trung (focus)."
+        "hint": "💡 Gợi ý: Từ gồm 5 ký tự nghĩa là tập trung."
 },
     {
         "lesson": "2",
@@ -2712,7 +2712,7 @@ window.masterQuizData.push(
         "translation": "Anh có muốn lấy tăng thêm 1 gậy để bù gió ngược không ạ?",
         "displaySentence": "Would you like to _______ a club to compensate for the headwind, Sir?",
         "targetWord": "add",
-        "hint": "💡 Gợi ý: Từ gồm 3 ký tự nghĩa là thêm vào / lấy tăng (add)."
+        "hint": "💡 Gợi ý: Từ gồm 3 ký tự nghĩa là thêm vào / lấy tăng."
 },
     {
         "lesson": "2",
@@ -2724,7 +2724,7 @@ window.masterQuizData.push(
         "translation": "Xin hãy cho em biết nếu anh cần nghỉ ngơi nhé ạ.",
         "displaySentence": "Please let me know if you need to _______, Sir.",
         "targetWord": "rest",
-        "hint": "💡 Gợi ý: Từ gồm 4 ký tự nghĩa là nghỉ ngơi (rest)."
+        "hint": "💡 Gợi ý: Từ gồm 4 ký tự nghĩa là nghỉ ngơi."
 },
     {
         "lesson": "2",
@@ -2736,7 +2736,7 @@ window.masterQuizData.push(
         "translation": "Cơn mưa rào có thể sẽ tạnh sau 10 phút nữa thưa anh.",
         "displaySentence": "The rain shower might stop in _______ minutes, Sir.",
         "targetWord": "ten",
-        "hint": "💡 Gợi ý: Từ chỉ số 10 (ten)."
+        "hint": "💡 Gợi ý: Từ chỉ số 10 trong tiếng Anh."
 },
     {
         "lesson": "2",
@@ -2748,20 +2748,20 @@ window.masterQuizData.push(
         "translation": "Chúc anh có một trận đấu tuyệt vời hôm nay ạ!",
         "displaySentence": "Have a _______ game today, Sir!",
         "targetWord": "great",
-        "hint": "💡 Gợi ý: Từ gồm 5 ký tự nghĩa là tuyệt vời (great)."
+        "hint": "💡 Gợi ý: Từ gồm 5 ký tự nghĩa là tuyệt vời."
 },
     {
         "lesson": "2",
         "section": "section2.3",
         "type": "mcq",
-        "title": "[2.3 Tiêu chuẩn tác phong] Theo nguyên tắc phục vụ chuẩn Caddie, khẩu hiệu 'Hành động đi trước, lời nói theo sau' được thể hiện thế nào khi đưa khăn lạnh?",
+        "title": "[2.3 Tiêu chuẩn tác phong] Theo nguyên tắc phục vụ chuẩn Caddy, khẩu hiệu 'Hành động đi trước, lời nói theo sau' được thể hiện thế nào khi đưa khăn lạnh?",
         "audioText": "Hand over the cold towel with both hands first, then speak: 'Here is a cold towel for you, Sir.'",
         "phonetic": "/hænd ˈoʊ.vər ðə koʊld ˈtaʊ.əl/",
         "translation": "Trần trọng đưa khăn bằng 2 tay trước, vừa trao vừa nói lời chào lịch sự.",
         "options": [
                 {
                         "en": "A. Trân trọng trao khăn bằng 2 tay trước, đồng thời nói: 'Here is a cold towel for you, Sir.'",
-                        "vi": "Chuẩn tác phong"
+                        "vi": "Chuẩn tác phong Caddy"
                 },
                 {
                         "en": "B. Nói trước rồi vứt khăn lên xe",
@@ -2782,14 +2782,14 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.3",
         "type": "mcq",
-        "title": "[2.3 Văn hóa ứng xử] Khi khách thi đấu chưa tốt do ảnh hưởng thời tiết xấu và tỏ ra bực bội, thái độ chuẩn mực của Caddie:",
+        "title": "[2.3 Văn hóa ứng xử] Khi khách thi đấu chưa tốt do ảnh hưởng thời tiết xấu và tỏ ra bực bội, thái độ chuẩn mực của Caddy:",
         "audioText": "Stay calm, patient, empathetic, offering mental encouragement and proper club advice.",
         "phonetic": "/steɪ kɑːm, ˈpeɪ.ʃənt, em.pəˈθet.ɪk/",
         "translation": "Luôn điềm tĩnh, kiên nhẫn, thấu hiểu, động viên tinh thần và hỗ trợ chọn gậy hợp lý.",
         "options": [
                 {
                         "en": "A. Luôn điềm tĩnh, lắng nghe, động viên tinh thần và hỗ trợ chu đáo",
-                        "vi": "Thái độ chuẩn Caddie"
+                        "vi": "Thái độ chuẩn Caddy"
                 },
                 {
                         "en": "B. Tranh cãi phân bua với khách",
@@ -2838,7 +2838,7 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.3",
         "type": "mcq",
-        "title": "[2.3 Kỹ năng On-course] Khi bóng của khách rơi vào bẫy nước (Penalty area) do gió thổi tạt bóng, Caddie hỗ trợ bước đầu tiên:",
+        "title": "[2.3 Kỹ năng On-course] Khi bóng của khách rơi vào bẫy nước (Penalty area) do gió thổi tạt bóng, Caddy hỗ trợ bước đầu tiên:",
         "audioText": "Reassure the golfer, help mark/locate the entry point, and explain relief options politely.",
         "phonetic": "/riː.əˈʃʊr, help mɑːrk ˈen.tri pɔɪnt/",
         "translation": "Trấn an khách, xác định điểm bóng cắt qua vạch bẫy nước và tư vấn các phương án giải thoát (relief).",
@@ -2866,14 +2866,14 @@ window.masterQuizData.push(
         "lesson": "2",
         "section": "section2.3",
         "type": "mcq",
-        "title": "[2.3 Nguyên tắc cốt lõi] Nguyên tắc vàng của Caddie trong giao tiếp tiếng Anh trên sân golf là gì?",
+        "title": "[2.3 Nguyên tắc cốt lõi] Nguyên tắc vàng của Caddy trong giao tiếp tiếng Anh trên sân golf là gì?",
         "audioText": "Simple, clear, polite, proactive, using Sir/Ma'am and always prioritizing guest comfort.",
         "phonetic": "/ˈsɪm.pəl, klɪər, pəˈlaɪt, proʊˈæk.tɪv/",
         "translation": "Đơn giản, rõ ràng, lịch sự, chủ động, luôn kèm Sir/Ma'am và ưu tiên sự thoải mái của khách.",
         "options": [
                 {
                         "en": "A. Đơn giản, rõ ràng, lịch sự, chủ động, luôn kèm Sir/Ma'am và ưu tiên sự thoải mái của khách",
-                        "vi": "Nguyên tắc vàng Caddie"
+                        "vi": "Nguyên tắc vàng Caddy"
                 },
                 {
                         "en": "B. Dùng từ ngữ học thuật phức tạp",
