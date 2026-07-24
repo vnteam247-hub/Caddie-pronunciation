@@ -105,7 +105,7 @@
     <!-- KHỞI TẠO MẢNG DỮ LIỆU CHUNG -->
     <script> window.masterQuizData = []; </script>
 
-    <!-- TRÌNH NẠP DỮ LIỆU ĐỘNG -->
+    <!-- TRÌNH NẠP DỮ LIỆU ĐỘNG TỐI ƯU (KHẮC PHỤC LỖI TẢI LẦN 2) -->
     <script>
         (function loadDataFilesDynamically() {
             const urlParams = new URLSearchParams(window.location.search);
@@ -115,7 +115,6 @@
 
             const filesToLoad = new Set(['data/exams.js']);
 
-            // Hàm trích xuất các số Lesson tương ứng để nạp file .js
             const extractLessonNumbers = (str) => {
                 if (!str) return [];
                 let nums = [];
@@ -136,7 +135,6 @@
                 return nums;
             };
 
-            // Nạp file dựa trên tham số (Ưu tiên nạp đúng các lesson có chứa section)
             if (reqSection) {
                 extractLessonNumbers(reqSection).forEach(n => filesToLoad.add(`data/lesson${n}.js`));
             } else if (reqLesson) {
@@ -151,6 +149,19 @@
 
             const filesArray = Array.from(filesToLoad);
             let loadedCount = 0;
+            let isInitialized = false;
+
+            // Hàm kiểm tra an toàn kích hoạt ứng dụng
+            const checkAndInit = () => {
+                if (isInitialized) return;
+                isInitialized = true;
+                initApp();
+            };
+
+            // Phòng hờ mạng chậm hoặc lỗi treo script: Tự động ép chạy sau tối đa 1.5 giây dù file chưa load xong hẳn
+            const safetyTimeout = setTimeout(() => {
+                checkAndInit();
+            }, 1500);
 
             filesArray.forEach(src => {
                 const script = document.createElement('script');
@@ -159,7 +170,8 @@
                 script.onload = script.onerror = () => {
                     loadedCount++;
                     if (loadedCount === filesArray.length) {
-                        initApp();
+                        clearTimeout(safetyTimeout);
+                        checkAndInit();
                     }
                 };
                 document.head.appendChild(script);
@@ -169,12 +181,6 @@
 
     <!-- CORE ENGINE LUYỆN PHÁT ÂM -->
     <script>
-        const fallbackSpeakingData = [
-            { text: "Good morning Sir, welcome to our golf club", meaning: "Chào buổi sáng anh, chào mừng anh đến với sân gôn" },
-            { text: "It is one hundred and fifty yards to the green", meaning: "Khoảng cách đến green là 150 yard" },
-            { text: "Please aim to the left, watch out for the bunker on the right", meaning: "Anh ngắm sang bên trái nhé, chú ý bẫy cát bên phải ạ" }
-        ];
-
         // Chuẩn hóa văn bản
         function normalizeText(str) {
             if (!str) return "";
@@ -195,7 +201,6 @@
             return text.replace(/[^a-z0-9\s]/g, "").replace(/\s+/g, " ").trim();
         }
 
-        // Hàm chuẩn hóa giá trị Section về dạng số chuẩn (VD: "section3.1" -> "3.1")
         function cleanSectionCode(secStr) {
             if (!secStr) return "";
             return secStr.toString().toLowerCase().replace(/section/g, '').trim();
@@ -208,19 +213,17 @@
             }
         }
 
-        // HÀM XỬ LÝ LỌC & MIX DÃY BÀI HỌC (ƯU TIÊN TUYỆT ĐỐI SECTION)
         function getFilteredSpeakingItems() {
             const urlParams = new URLSearchParams(window.location.search);
             const reqSection = urlParams.get('section'); 
             const reqLesson = urlParams.get('lesson');   
-            const reqExam = urlParams.get('exam');       
+            const reqExam = urlParams.get('exam');        
 
             let rawPool = (window.masterQuizData && window.masterQuizData.length > 0) ? [...window.masterQuizData] : [];
             let filtered = [];
             let targetCount = 20; 
             let titleBanner = "LUYỆN PHÁT ÂM TỔNG HỢP";
 
-            // Hàm phân tích tham số dạng chuỗi/dãy (VD: "1.1-1.3,2.1" hoặc "1-3,5")
             const parseMixParam = (paramStr) => {
                 if (!paramStr) return [];
                 let results = [];
@@ -234,13 +237,11 @@
                         let n2 = parseFloat(cleanSectionCode(parts[1]));
                         
                         if (!isNaN(n1) && !isNaN(n2)) {
-                            // Xử lý nếu là số nguyên (Lesson / Exam)
                             if (Number.isInteger(n1) && Number.isInteger(n2)) {
                                 for (let i = Math.min(n1, n2); i <= Math.max(n1, n2); i++) {
                                     results.push(i.toString());
                                 }
                             } else {
-                                // Xử lý dải Section thập phân (VD: 1.1 - 1.3)
                                 let step = 0.1;
                                 for (let v = Math.min(n1, n2); v <= Math.max(n1, n2) + 0.001; v += step) {
                                     results.push(v.toFixed(1));
@@ -254,10 +255,8 @@
                 return results.filter(r => r !== "");
             };
 
-            // ================= 1. ƯU TIÊN TUYỆT ĐỐI SECTION (NẾU CÓ) =================
             if (reqSection) {
                 let targetSections = parseMixParam(reqSection);
-
                 if (targetSections.length > 0) {
                     let displayNames = targetSections.map(s => s.toUpperCase());
                     titleBanner = targetSections.length > 1 
@@ -272,9 +271,7 @@
                     if (secFiltered.length > 0) rawPool = secFiltered;
                     targetCount = targetSections.length > 1 ? 25 : 20;
                 }
-            } 
-            // ================= 2. KIỂM TRA LESSON (NẾU KHÔNG CÓ SECTION) =================
-            else if (reqLesson) {
+            } else if (reqLesson) {
                 let lessonList = parseMixParam(reqLesson).map(l => l.replace(/[^\d]/g, ''));
                 if (lessonList.length > 0) {
                     titleBanner = lessonList.length > 1 
@@ -288,9 +285,7 @@
                     if (lesFiltered.length > 0) rawPool = lesFiltered;
                     targetCount = lessonList.length > 1 ? 30 : 20;
                 }
-            } 
-            // ================= 3. KIỂM TRA EXAM =================
-            else if (reqExam) {
+            } else if (reqExam) {
                 let cleanExam = reqExam.toLowerCase().trim();
                 if (cleanExam === "all" || cleanExam === "examall") {
                     targetCount = 30;
@@ -337,7 +332,15 @@
                 }
             });
 
-            if (filtered.length === 0) filtered = [...fallbackSpeakingData];
+            // Nếu dữ liệu trống (do mạng hoặc file lỗi), hiển thị cảnh báo nhắc mở lại hoặc reset thay vì dùng 3 câu mẫu cứng nhắc
+            if (filtered.length === 0) {
+                document.getElementById('question').innerHTML = `
+                    <div style="color: #dc3545; font-size: 16px;">⚠️ Không thể tải dữ liệu bài học!</div>
+                    <div style="font-size: 13px; font-weight: normal; margin-top: 8px; color: #555;">Vui lòng kiểm tra lại đường dẫn hoặc bấm nút <b>"Làm lại bài test" / Reset</b> bên dưới để tải lại.</div>
+                `;
+                document.getElementById('learning-buttons').style.display = 'none';
+                return [];
+            }
 
             shuffleArray(filtered);
             return filtered.slice(0, Math.min(targetCount, filtered.length));
@@ -362,6 +365,8 @@
             startTimeStampText = `${timeStr}, ngày ${dateStr}`;
 
             originalItems = getFilteredSpeakingItems();
+            if (originalItems.length === 0) return; // Dừng nếu không có dữ liệu
+
             activeItems = [...originalItems];
             itemStatus = new Array(originalItems.length).fill('pending');
             initialSeconds = originalItems.length * 60; 
