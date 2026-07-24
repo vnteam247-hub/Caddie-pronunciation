@@ -105,7 +105,7 @@
     <!-- KHỞI TẠO MẢNG DỮ LIỆU CHUNG -->
     <script> window.masterQuizData = []; </script>
 
-    <!-- TRÌNH NẠP DỮ LIỆU ĐỘNG TỐI ƯU (KHẮC PHỤC LỖI TẢI LẦN 2) -->
+    <!-- TRÌNH NẠP DỮ LIỆU ĐỘNG TỐI ƯU -->
     <script>
         (function loadDataFilesDynamically() {
             const urlParams = new URLSearchParams(window.location.search);
@@ -151,14 +151,12 @@
             let loadedCount = 0;
             let isInitialized = false;
 
-            // Hàm kiểm tra an toàn kích hoạt ứng dụng
             const checkAndInit = () => {
                 if (isInitialized) return;
                 isInitialized = true;
                 initApp();
             };
 
-            // Phòng hờ mạng chậm hoặc lỗi treo script: Tự động ép chạy sau tối đa 1.5 giây dù file chưa load xong hẳn
             const safetyTimeout = setTimeout(() => {
                 checkAndInit();
             }, 1500);
@@ -181,7 +179,6 @@
 
     <!-- CORE ENGINE LUYỆN PHÁT ÂM -->
     <script>
-        // Chuẩn hóa văn bản
         function normalizeText(str) {
             if (!str) return "";
             const numberMap = {
@@ -327,12 +324,13 @@
                     filtered.push({ 
                         text: targetText, 
                         meaning: meaningText || "Mẫu câu giao tiếp Caddie chuẩn",
-                        ipa: ipaText 
+                        ipa: ipaText,
+                        section: item.section || "",
+                        sectionName: item.sectionName || ""
                     });
                 }
             });
 
-            // Nếu dữ liệu trống (do mạng hoặc file lỗi), hiển thị cảnh báo nhắc mở lại hoặc reset thay vì dùng 3 câu mẫu cứng nhắc
             if (filtered.length === 0) {
                 document.getElementById('question').innerHTML = `
                     <div style="color: #dc3545; font-size: 16px;">⚠️ Không thể tải dữ liệu bài học!</div>
@@ -365,7 +363,7 @@
             startTimeStampText = `${timeStr}, ngày ${dateStr}`;
 
             originalItems = getFilteredSpeakingItems();
-            if (originalItems.length === 0) return; // Dừng nếu không có dữ liệu
+            if (originalItems.length === 0) return;
 
             activeItems = [...originalItems];
             itemStatus = new Array(originalItems.length).fill('pending');
@@ -419,13 +417,21 @@
                 const currentItem = activeItems[currentIndex];
                 let ipaHtml = currentItem.ipa ? `<div class="ipa-phonetic">/${currentItem.ipa.replace(/^\/|\/$/g, '')}/</div>` : "";
                 
+                // Tự động hiển thị Section và Tên phần nếu có dữ liệu
+                let sectionInfo = "";
+                if (currentItem.section) {
+                    let secName = currentItem.sectionName ? ` - ${currentItem.sectionName}` : "";
+                    sectionInfo = `<div style="font-size: 12px; color: #198754; font-weight: bold; margin-bottom: 4px;">${currentItem.section}${secName}</div>`;
+                }
+
                 document.getElementById('question').innerHTML = `
+                    ${sectionInfo}
                     <div>${currentItem.text}</div>
                     ${ipaHtml}
                     <div class="vietnamese-translation">${currentItem.meaning}</div>
                 `;
 
-                document.getElementById('progress').innerHTML = `Câu phát âm: <span>${currentIndex + 1}</span> / ${activeItems.length}`;
+                document.getElementById('progress').innerHTML = `Câu phát âm <span>${currentIndex + 1}</span> / ${activeItems.length}`;
                 document.getElementById('status').innerText = "Sẵn sàng...";
                 document.getElementById('error').innerText = "";
 
