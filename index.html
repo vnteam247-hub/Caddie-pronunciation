@@ -24,8 +24,10 @@
         .blink-red { background-color: #f8d7da !important; color: #721c24 !important; border-color: #f5c6cb !important; animation: blink 1s infinite; }
         @keyframes blink { 50% { opacity: 0.5; } }
 
-        #progress { font-size: 14px; color: #333; font-weight: bold; background: #f1f3f5; padding: 6px 14px; border-radius: 8px; display: inline-block; margin-bottom: 10px; border: 1px solid #dee2e6; }
+        .progress-container { display: flex; justify-content: center; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
+        #progress { font-size: 14px; color: #333; font-weight: bold; background: #f1f3f5; padding: 6px 14px; border-radius: 8px; border: 1px solid #dee2e6; display: inline-block; }
         #progress span { color: #d9534f; font-size: 16px; }
+        #section-badge { font-size: 13.5px; color: #198754; font-weight: bold; background: #e8f5e9; padding: 6px 14px; border-radius: 8px; border: 1px solid #c8e6c9; display: inline-block; text-transform: uppercase; }
 
         .btn-group { margin-top: 18px; display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
         button { padding: 11px 14px; font-size: 14px; font-weight: bold; border: none; border-radius: 6px; cursor: pointer; }
@@ -81,7 +83,12 @@
                 <div id="timer-box">⏳ Thời gian: <span id="time-display">--:--</span></div>
             </div>
 
-            <div id="progress"></div>
+            <!-- HÀNG HIỂN THỊ TIẾN ĐỘ VÀ SECTION Ở GIỮA -->
+            <div class="progress-container">
+                <div id="progress"></div>
+                <div id="section-badge"></div>
+            </div>
+
             <div id="question"></div>
             
             <div class="btn-group" id="learning-buttons">
@@ -417,15 +424,17 @@
                 const currentItem = activeItems[currentIndex];
                 let ipaHtml = currentItem.ipa ? `<div class="ipa-phonetic">/${currentItem.ipa.replace(/^\/|\/$/g, '')}/</div>` : "";
                 
-                // Tự động hiển thị Section và Tên phần nếu có dữ liệu
-                let sectionInfo = "";
+                // Hiển thị phần Section cùng hàng với số câu ở phía trên
+                const sectionBadge = document.getElementById('section-badge');
                 if (currentItem.section) {
                     let secName = currentItem.sectionName ? ` - ${currentItem.sectionName}` : "";
-                    sectionInfo = `<div style="font-size: 12px; color: #198754; font-weight: bold; margin-bottom: 4px;">${currentItem.section}${secName}</div>`;
+                    sectionBadge.innerText = `${currentItem.section}${secName}`;
+                    sectionBadge.style.display = 'inline-block';
+                } else {
+                    sectionBadge.style.display = 'none';
                 }
 
                 document.getElementById('question').innerHTML = `
-                    ${sectionInfo}
                     <div>${currentItem.text}</div>
                     ${ipaHtml}
                     <div class="vietnamese-translation">${currentItem.meaning}</div>
